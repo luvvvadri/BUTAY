@@ -1,0 +1,40 @@
+# Dependencies
+butay-web/node_modules/
+
+# Next.js
+butay-web/.next/
+butay-web/out/
+
+# Build output
+butay-web/build/
+butay-web/dist/
+
+# Environment variables
+butay-web/.env
+butay-web/.env.local
+butay-web/.env.*.local
+
+# Testing
+butay-web/coverage/
+
+# TypeScript
+butay-web/*.tsbuildinfo
+butay-web/next-env.d.ts
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Claude Code local settings (machine-specific, not shared)
+.claude/
+
+# Vercel
+butay-web/.vercel
