@@ -1,7 +1,7 @@
 # CONTEXT.md
 
 > **Tipo de documento:** Sistema — Memoria permanente
-> **Versión:** 1.7
+> **Versión:** 1.8
 > **Fecha de creación:** 2026-07-18
 > **Última actualización:** 2026-07-21
 > **Estado:** Vivo (se reescribe, no se acumula)
@@ -77,9 +77,11 @@ completó el 2026-07-20 su entrega técnica ("Developer Handoff") para
 Claude Code: `WEB_HANDOFF.md`, `CLAUDE_CODE.md`,
 `FRONTEND_ARCHITECTURE.md` y `DEVELOPMENT_ROADMAP.md` (Decisión 021),
 precedida de una auditoría completa de toda la documentación
-existente. El desarrollo web en sí **todavía no ha comenzado** — el
-roadmap técnico está listo, pero requiere confirmación explícita del
-fundador para iniciar la Fase 1 de `DEVELOPMENT_ROADMAP.md`.
+existente. El desarrollo web **ya ha comenzado**: la Fase 1 de
+`DEVELOPMENT_ROADMAP.md` (Configuración del proyecto) está **completa**
+— proyecto técnico inicializado, repositorio conectado a GitHub y
+despliegue en producción funcionando en Vercel. Ver más abajo el
+detalle completo.
 
 **Resumen:** Los cuatro documentos raíz de la Fase 1 —Visión, Misión y
 Valores; Mercado y Público Objetivo; Análisis de Competencia;
