@@ -1,9 +1,9 @@
 # CONTEXT.md
 
 > **Tipo de documento:** Sistema — Memoria permanente
-> **Versión:** 1.6
+> **Versión:** 1.7
 > **Fecha de creación:** 2026-07-18
-> **Última actualización:** 2026-07-20
+> **Última actualización:** 2026-07-21
 > **Estado:** Vivo (se reescribe, no se acumula)
 > **Depende de:** Ninguno (documento raíz de continuidad)
 
@@ -152,22 +152,23 @@ corrigió tres fechas de "Última actualización" desincronizadas
 2026-07-19 pese a contener cambios del día siguiente) — sin más
 hallazgos de fondo.
 
-**Inicio del desarrollo — Fase 1 de `DEVELOPMENT_ROADMAP.md`
-(2026-07-20).** El fundador dio la instrucción explícita de iniciar la
+**Fase 1 de `DEVELOPMENT_ROADMAP.md` completa (2026-07-20 —
+2026-07-21).** El fundador dio la instrucción explícita de iniciar la
 Fase 1 (Configuración del proyecto). El directorio de trabajo del
 proyecto se trasladó de una carpeta sincronizada por OneDrive a
 `C:\Users\butay\Claude\` (Decisión 025), como raíz única de `docs/` y
 `butay-web/`. Se inicializó el proyecto técnico: Next.js 16 (App
 Router) + TypeScript (`strict`) + Tailwind CSS v4 + ESLint + Prettier,
 con la estructura de carpetas de `FRONTEND_ARCHITECTURE.md` (apartado
-2), y un repositorio Git con commit inicial (`9e9b31f`). `npm run
-lint`, `npm run format:check` y `npm run build` se ejecutan sin
-errores. **La Fase 1 no está cerrada todavía**: falta el entregable
-"pipeline de despliegue básico (previsualización por rama)", que
-requiere que el fundador conecte una cuenta de GitHub y de un proveedor
-de hosting — ninguna sesión de Claude Code puede hacerlo en su nombre.
-Ver el apartado "Estado" de la Fase 1 en `DEVELOPMENT_ROADMAP.md` para
-el detalle completo.
+2), y un repositorio Git con commit inicial. El repositorio se conectó
+a GitHub (`github.com/luvvvadri/BUTAY`, rama `main`) y se empujó el
+historial; el proyecto se conectó a Vercel (Root Directory
+`butay-web/`), con despliegue de producción verificado en vivo en
+`https://butay.vercel.app/`. `npm run lint`, `npm run format:check` y
+`npm run build` se ejecutan sin errores. **La Fase 1 queda oficialmente
+cerrada** — todos sus entregables y criterios de finalización se
+cumplen. Ver el apartado "Estado" de la Fase 1 en
+`DEVELOPMENT_ROADMAP.md` para el detalle completo.
 
 ## Aprobado
 
@@ -189,7 +190,7 @@ el detalle completo.
 - **WEB_HANDOFF.md (v1.0, Final)**
 - **CLAUDE_CODE.md (v1.1, Final)**
 - **FRONTEND_ARCHITECTURE.md (v1.0, Final)**
-- **DEVELOPMENT_ROADMAP.md (v1.0, Final en estructura, vivo en su seguimiento de estado)**
+- **DEVELOPMENT_ROADMAP.md (v1.2, Final en estructura, vivo en su seguimiento de estado — Fase 1 Completa)**
 - **00_SYSTEM_WORKFLOW.md (v1.0, `Approved`, Decisión 022)**
 
 ## En borrador / en curso
@@ -200,17 +201,12 @@ técnico en estado `En borrador` o `Release Candidate`.
 ## Próximo paso
 
 La Fase 1 de `DEVELOPMENT_ROADMAP.md` (Configuración del proyecto) está
-en curso y solo le falta un entregable para cerrarse: el pipeline de
-despliegue básico (previsualización por rama). Ese paso depende
-exclusivamente del fundador — requiere conectar una cuenta de GitHub y
-un proveedor de hosting compatible con Next.js (p. ej. Vercel); ninguna
-sesión de Claude Code puede crear cuentas ni autorizar conexiones OAuth
-en su nombre. Hasta que ese entregable exista, la Fase 1 no se
-considera cerrada, y la Fase 2 (Fundamentos visuales provisionales) no
-se abre — ninguna fase del roadmap técnico se abre automáticamente al
-avanzar la anterior. La Fase 4 (Identidad Visual / Design System) del
-roadmap de marca/producto sigue sin abrirse, en paralelo, a la espera
-de instrucción explícita del fundador.
+completa y cerrada. La Fase 2 (Fundamentos visuales provisionales) no
+se abre de forma automática por haberse completado la Fase 1 —
+requiere instrucción explícita del fundador, igual que cualquier otra
+fase del proyecto. La Fase 4 (Identidad Visual / Design System) del
+roadmap de marca/producto sigue sin abrirse, en paralelo, también a la
+espera de instrucción explícita del fundador.
 
 ## Notas para cualquier IA que retome el proyecto
 
@@ -280,7 +276,9 @@ de instrucción explícita del fundador.
     `butay-web/` (código fuente de la web, Next.js). Cualquier IA que
     retome el proyecto debe trabajar sobre esta ubicación.
 19. La Fase 1 de `DEVELOPMENT_ROADMAP.md` (Configuración del proyecto)
-    está en curso desde el 2026-07-20, con un único entregable
-    pendiente (pipeline de despliegue) — ver el apartado "Estado" de la
-    Fase 1 en ese documento antes de asumir que puede darse por
-    cerrada o de abrir la Fase 2.
+    está **Completa** desde el 2026-07-21, incluido el pipeline de
+    despliegue (GitHub → Vercel, producción en
+    `https://butay.vercel.app/`) — ver el apartado "Estado" de la
+    Fase 1 en ese documento. La Fase 2 (Fundamentos visuales
+    provisionales) sigue sin abrirse: hace falta instrucción explícita
+    del fundador, no se abre solo por haberse completado la Fase 1.

@@ -1,9 +1,9 @@
 # DEVELOPMENT_ROADMAP.md
 
 > **Tipo de documento:** Plan técnico de desarrollo
-> **Versión:** 1.1
+> **Versión:** 1.2
 > **Fecha de creación:** 2026-07-20
-> **Última actualización:** 2026-07-20
+> **Última actualización:** 2026-07-21
 > **Estado:** Final (vivo en su seguimiento — el estado de cada fase se actualiza a medida que avanza el desarrollo)
 > **Depende de:** CLAUDE_CODE.md; FRONTEND_ARCHITECTURE.md; WEB_HANDOFF.md
 
@@ -43,7 +43,7 @@ orden se construye la web.
 
 | Fase | Estado |
 |---|---|
-| 1 — Configuración del proyecto | En curso — pendiente de un entregable (pipeline de despliegue) |
+| 1 — Configuración del proyecto | Completa |
 | 2 — Fundamentos visuales provisionales | Pendiente |
 | 3 — Sistema de componentes base | Pendiente |
 | 4 — Modelo de datos y capa de catálogo | Pendiente |
@@ -80,24 +80,31 @@ entorno de previsualización; la estructura de carpetas existe y
 coincide con `FRONTEND_ARCHITECTURE.md`; linting y formateo se
 ejecutan sin errores en un proyecto vacío.
 
-**Estado (actualizado 2026-07-20).** En curso. Completado y verificado:
-proyecto Next.js 16 (App Router) + TypeScript (`strict` activado) +
-Tailwind CSS v4 inicializado en `butay-web/`; ESLint y Prettier
-configurados e integrados sin conflicto de reglas; estructura de
-carpetas de `FRONTEND_ARCHITECTURE.md` (apartado 2) creada; repositorio
-Git inicializado en la raíz del proyecto (Decisión 025), con commit
-inicial. `npm run lint`, `npm run format:check` y `npm run build` se
-ejecutan sin errores; el proyecto arranca en local.
+**Estado (actualizado 2026-07-21).** **Completa.** Todos los
+entregables están cumplidos y verificados:
+- Proyecto Next.js 16 (App Router) + TypeScript (`strict` activado) +
+  Tailwind CSS v4 inicializado en `butay-web/`.
+- ESLint y Prettier configurados e integrados sin conflicto de reglas.
+- Estructura de carpetas de `FRONTEND_ARCHITECTURE.md` (apartado 2)
+  creada.
+- Repositorio Git inicializado en la raíz del proyecto (Decisión 025),
+  conectado a GitHub (`github.com/luvvvadri/BUTAY`, rama `main`) y con
+  historial empujado (`git push`).
+- Pipeline de despliegue conectado: proyecto importado en Vercel desde
+  el repositorio de GitHub, con "Root Directory" apuntando a
+  `butay-web/`. Despliegue de producción verificado en vivo en
+  `https://butay.vercel.app/` (confirmado por fetch directo de la
+  página el 2026-07-21, sirviendo el contenido esperado). Vercel genera
+  automáticamente un Preview Deployment por cada push a una rama
+  distinta de `main` y por cada Pull Request — comportamiento por
+  defecto de la integración GitHub↔Vercel una vez conectada, no
+  requiere configuración adicional; no se ha ejecutado una prueba en
+  vivo de un push a una rama secundaria dentro de esta sesión de
+  cierre.
 
-Pendiente: el **pipeline de despliegue básico (previsualización por
-rama)** no existe todavía. Requiere que el fundador conecte una cuenta
-de GitHub y un proveedor de hosting compatible con Next.js (p. ej.
-Vercel) — ninguna sesión de Claude Code puede crear cuentas ni
-autorizar conexiones OAuth en nombre del fundador (restricción de
-seguridad, no técnica). Mientras este entregable no exista, no se
-cumple el criterio de finalización "arranca... en un entorno de
-previsualización", y esta fase no puede darse por completa conforme a
-la Regla de uso 2 de este documento.
+`npm run lint`, `npm run format:check` y `npm run build` se ejecutan
+sin errores; el proyecto arranca en local y en producción. Se cumplen
+todos los criterios de finalización de esta fase.
 
 ## Fase 2 — Fundamentos visuales provisionales
 
@@ -350,9 +357,9 @@ plan de ejecución de los dos anteriores.
 seguimiento de estado de cada fase (tabla "Estado de avance"), que se
 actualiza a medida que el desarrollo avanza.
 
-**Próxima fase recomendada:** ninguna todavía. La Fase 1 de este
-roadmap (Configuración del proyecto) está en curso, con un único
-entregable pendiente (pipeline de despliegue — ver apartado "Estado"
-de la Fase 1). La Fase 2 (Fundamentos visuales provisionales) no se
-abre hasta que la Fase 1 esté completa, conforme a la Regla de uso 1 de
-este documento.
+**Próxima fase recomendada:** Fase 2 (Fundamentos visuales
+provisionales). La Fase 1 (Configuración del proyecto) está
+**Completa** desde el 2026-07-21 — ver apartado "Estado" de la Fase 1.
+Conforme a la Regla de uso 1 de este documento, cumplir la Fase 1 no
+abre automáticamente la Fase 2: requiere instrucción explícita del
+fundador.

@@ -1,9 +1,9 @@
 # CHANGELOG.md
 
 > **Tipo de documento:** Sistema — Historial de cambios (append-only)
-> **Versión:** 1.6
+> **Versión:** 1.7
 > **Fecha de creación:** 2026-07-18
-> **Última actualización:** 2026-07-20
+> **Última actualización:** 2026-07-21
 > **Estado:** Vivo (solo se añade, nunca se reescribe)
 > **Depende de:** INDEX.md (todo cambio aquí debe reflejarse en el estado
 > de INDEX.md)
@@ -53,6 +53,51 @@ por todo el historial. Si el archivo crece demasiado, se archivan por año
 ---
 
 ## Historial
+
+### 2026-07-21 (cierre oficial de la Fase 1 de DEVELOPMENT_ROADMAP.md)
+
+- **Repositorio Git** — conectado a GitHub
+  (`https://github.com/luvvvadri/BUTAY.git`) como remoto `origin`; la
+  rama local se renombró de `master` a `main` (repo remoto vacío en el
+  momento del push, sin conflicto de historial); primer `git push`
+  completado. Credential helper configurado solo a nivel de
+  repositorio (no global) para la autenticación del push.
+- **Vercel** — proyecto importado desde el repositorio de GitHub
+  (Root Directory: `butay-web/`, framework autodetectado: Next.js).
+  Despliegue de producción verificado en vivo en
+  `https://butay.vercel.app/` (fetch directo de la página, contenido
+  confirmado). Preview Deployments por rama quedan activos por
+  comportamiento por defecto de la integración GitHub↔Vercel — no se
+  ejecutó una prueba en vivo de push a una rama secundaria en esta
+  sesión.
+- **DEVELOPMENT_ROADMAP.md** — v1.1 → v1.2. La Fase 1 (Configuración
+  del proyecto) pasa a estado **Completa** en la tabla "Estado de
+  avance" y en su apartado "Estado"; se actualiza el bloque de cierre
+  estándar (próxima fase recomendada: Fase 2, sin abrirse todavía).
+- **CONTEXT.md** — v1.6 → v1.7. Se reescribe el estado general para
+  reflejar el cierre de la Fase 1 (repositorio en GitHub, despliegue en
+  Vercel, URL de producción); se actualiza "Próximo paso" y la nota 19
+  para cualquier IA.
+- **DECISIONS.md** — sin cambios. No corresponde ninguna decisión
+  nueva: conectar GitHub y Vercel es la ejecución de la recomendación
+  de stack ya fijada (`CLAUDE_CODE.md` §5) y de los entregables ya
+  definidos en la Decisión 021, no una elección nueva con alternativas.
+- **INDEX.md** — v1.5 → v1.6. Se actualizan las versiones de CONTEXT.md
+  y CHANGELOG.md en la tabla "Documentos de sistema", y la versión y
+  estado de `DEVELOPMENT_ROADMAP.md` en la tabla "Documentos técnicos
+  de desarrollo" (Fase 1 Completa).
+- **CHANGELOG.md** — este mismo registro.
+
+**Nota de auditoría de cierre de Fase 1.** Se verificó de forma
+independiente la URL de producción (`https://butay.vercel.app/`) por
+fetch directo, confirmando que sirve el contenido esperado del
+placeholder de la Fase 1. Se repitieron `npm run lint`, `npm run
+format:check` y `npm run build` sobre `butay-web/`: los tres sin
+errores. Se comprobó que el árbol de trabajo de Git está limpio antes
+del commit de cierre. Se revisaron referencias cruzadas entre
+documentos y numeración de versiones en INDEX.md: sin discrepancias ni
+enlaces rotos. Con todos los entregables y criterios de finalización de
+la Fase 1 cumplidos y verificados, la fase se marca **Completa**.
 
 ### 2026-07-20 (Fase 1 de DEVELOPMENT_ROADMAP.md — configuración técnica del proyecto)
 
