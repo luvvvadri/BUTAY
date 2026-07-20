@@ -1,7 +1,7 @@
 # DEVELOPMENT_ROADMAP.md
 
 > **Tipo de documento:** Plan técnico de desarrollo
-> **Versión:** 1.0
+> **Versión:** 1.1
 > **Fecha de creación:** 2026-07-20
 > **Última actualización:** 2026-07-20
 > **Estado:** Final (vivo en su seguimiento — el estado de cada fase se actualiza a medida que avanza el desarrollo)
@@ -43,7 +43,7 @@ orden se construye la web.
 
 | Fase | Estado |
 |---|---|
-| 1 — Configuración del proyecto | Pendiente de inicio |
+| 1 — Configuración del proyecto | En curso — pendiente de un entregable (pipeline de despliegue) |
 | 2 — Fundamentos visuales provisionales | Pendiente |
 | 3 — Sistema de componentes base | Pendiente |
 | 4 — Modelo de datos y capa de catálogo | Pendiente |
@@ -79,6 +79,25 @@ por rama).
 entorno de previsualización; la estructura de carpetas existe y
 coincide con `FRONTEND_ARCHITECTURE.md`; linting y formateo se
 ejecutan sin errores en un proyecto vacío.
+
+**Estado (actualizado 2026-07-20).** En curso. Completado y verificado:
+proyecto Next.js 16 (App Router) + TypeScript (`strict` activado) +
+Tailwind CSS v4 inicializado en `butay-web/`; ESLint y Prettier
+configurados e integrados sin conflicto de reglas; estructura de
+carpetas de `FRONTEND_ARCHITECTURE.md` (apartado 2) creada; repositorio
+Git inicializado en la raíz del proyecto (Decisión 025), con commit
+inicial. `npm run lint`, `npm run format:check` y `npm run build` se
+ejecutan sin errores; el proyecto arranca en local.
+
+Pendiente: el **pipeline de despliegue básico (previsualización por
+rama)** no existe todavía. Requiere que el fundador conecte una cuenta
+de GitHub y un proveedor de hosting compatible con Next.js (p. ej.
+Vercel) — ninguna sesión de Claude Code puede crear cuentas ni
+autorizar conexiones OAuth en nombre del fundador (restricción de
+seguridad, no técnica). Mientras este entregable no exista, no se
+cumple el criterio de finalización "arranca... en un entorno de
+previsualización", y esta fase no puede darse por completa conforme a
+la Regla de uso 2 de este documento.
 
 ## Fase 2 — Fundamentos visuales provisionales
 
@@ -325,11 +344,15 @@ WEB_HANDOFF.md; Product Strategy — Butay (v1.0); Brand Bible — Butay
 **Documentos derivados:** ninguno todavía — este documento es en sí el
 plan de ejecución de los dos anteriores.
 
-**Decisiones relacionadas:** 018, 019, 020, 021 (ver DECISIONS.md).
+**Decisiones relacionadas:** 018, 019, 020, 021, 025 (ver DECISIONS.md).
 
 **Estado del documento:** Final en su estructura; vivo en el
 seguimiento de estado de cada fase (tabla "Estado de avance"), que se
 actualiza a medida que el desarrollo avanza.
 
-**Próxima fase recomendada:** Fase 1 de este roadmap (Configuración del
-proyecto), cuando el fundador confirme el inicio del desarrollo.
+**Próxima fase recomendada:** ninguna todavía. La Fase 1 de este
+roadmap (Configuración del proyecto) está en curso, con un único
+entregable pendiente (pipeline de despliegue — ver apartado "Estado"
+de la Fase 1). La Fase 2 (Fundamentos visuales provisionales) no se
+abre hasta que la Fase 1 esté completa, conforme a la Regla de uso 1 de
+este documento.

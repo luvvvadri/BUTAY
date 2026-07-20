@@ -1,7 +1,7 @@
 # DECISIONS.md
 
 > **Tipo de documento:** Sistema — Registro de decisiones (append-only)
-> **Versión:** 1.1
+> **Versión:** 1.2
 > **Fecha de creación:** 2026-07-18
 > **Última actualización:** 2026-07-20
 > **Estado:** Vivo (solo se añade, nunca se reescribe)
@@ -442,4 +442,24 @@ RGPD como el hueco más serio detectado en toda la documentación técnica
 — exponer al desarrollo a recoger datos o gestionar secretos sin
 principios mínimos es un riesgo evitable desde ya, sin necesidad de
 esperar a una política legal formal ni de inventarla.
+**Estado:** Activa.
+
+### Decisión 025 — 2026-07-20
+**Decisión:** Se traslada el directorio de trabajo del proyecto de
+`C:\Users\butay\OneDrive\Desktop\Escritorio de Claude Memorias\Butay\`
+(sincronizado por OneDrive) a `C:\Users\butay\Claude\` (no
+sincronizado), como raíz única del repositorio para `docs/` y
+`butay-web/` a partir de la Fase 1 de `DEVELOPMENT_ROADMAP.md`
+(Configuración del proyecto).
+**Alternativas consideradas:** Mantener el proyecto completo dentro de
+la carpeta de OneDrive ya existente, añadiendo `butay-web/` junto a
+`docs/` en esa misma ubicación.
+**Razón:** Inicializar un repositorio Git y un proyecto Next.js (con
+`node_modules` y recompilación en caliente) dentro de una carpeta
+sincronizada por OneDrive es una fuente conocida de bloqueos de
+archivo, conflictos de sincronización y ralentización del entorno de
+desarrollo. Planteada la disyuntiva, el fundador confirmó el traslado.
+Los 18 documentos de `docs/` se copiaron y se verificaron con hash
+SHA-256 antes de eliminar el origen, sin pérdida ni alteración de
+contenido.
 **Estado:** Activa.

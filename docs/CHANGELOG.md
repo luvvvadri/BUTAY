@@ -1,7 +1,7 @@
 # CHANGELOG.md
 
 > **Tipo de documento:** Sistema — Historial de cambios (append-only)
-> **Versión:** 1.5
+> **Versión:** 1.6
 > **Fecha de creación:** 2026-07-18
 > **Última actualización:** 2026-07-20
 > **Estado:** Vivo (solo se añade, nunca se reescribe)
@@ -53,6 +53,63 @@ por todo el historial. Si el archivo crece demasiado, se archivan por año
 ---
 
 ## Historial
+
+### 2026-07-20 (Fase 1 de DEVELOPMENT_ROADMAP.md — configuración técnica del proyecto)
+
+- **DECISIONS.md** — v1.1 → v1.2. Se añade la Decisión 025: traslado del
+  directorio de trabajo del proyecto de la carpeta de OneDrive a
+  `C:\Users\butay\Claude\` (no sincronizada), como raíz única de
+  `docs/` y `butay-web/`.
+- **Estructura del proyecto** — se reorganiza a `docs/` + `butay-web/`
+  + `.gitignore` + `README.md` en la raíz, según la Decisión 025. Los
+  18 documentos existentes se trasladaron sin cambios de contenido
+  (verificado por hash SHA-256).
+- **butay-web/** — creado. Proyecto Next.js 16 (App Router) +
+  TypeScript (`strict`) + Tailwind CSS v4 + ESLint, inicializado con
+  `create-next-app`; se añaden Prettier, `eslint-config-prettier` y
+  `prettier-plugin-tailwindcss`, integrados con ESLint sin conflicto de
+  reglas; se crea la estructura de carpetas de
+  `FRONTEND_ARCHITECTURE.md` (apartado 2) dentro de `src/`, vacía
+  (marcada con `.gitkeep`); se limpia el contenido de plantilla
+  genérico de `create-next-app` (SVGs de ejemplo, home de demostración,
+  metadatos por defecto) sin introducir contenido de marca.
+- **Repositorio Git** — inicializado en la raíz del proyecto; commit
+  inicial `9e9b31f` (48 archivos). Identidad de Git configurada solo a
+  nivel de repositorio (no global), a petición explícita del fundador.
+- **DEVELOPMENT_ROADMAP.md** — v1.0 → v1.1. Se actualiza el estado de
+  la Fase 1 en la tabla "Estado de avance" y se añade un apartado
+  "Estado (actualizado 2026-07-20)" a la Fase 1, documentando qué
+  entregables están completos y verificados (proyecto, ESLint/Prettier,
+  estructura de carpetas, repositorio Git) y cuál queda pendiente
+  (pipeline de despliegue / previsualización por rama, que requiere una
+  cuenta de hosting del fundador). Se actualiza el bloque de cierre
+  estándar (decisiones relacionadas, próxima fase recomendada).
+- **CONTEXT.md** — v1.5 → v1.6. Se actualiza el estado general para
+  reflejar el inicio de la Fase 1 de `DEVELOPMENT_ROADMAP.md`, su
+  estado casi completo, y el bloqueo pendiente del pipeline de
+  despliegue; se añade una nota nueva sobre la nueva ubicación del
+  directorio de trabajo (Decisión 025).
+- **INDEX.md** — v1.4 → v1.5. Se actualizan las versiones de CONTEXT.md,
+  DECISIONS.md y CHANGELOG.md en la tabla "Documentos de sistema" para
+  mantenerla sincronizada con el estado real.
+- **CHANGELOG.md** — este mismo registro.
+
+**Nota de auditoría de cierre de fase.** Se ejecutaron `npm run lint`,
+`npm run format:check` y `npm run build` en `butay-web/`: los tres sin
+errores. Se verificó que el árbol de trabajo de Git está limpio
+(`git status` sin cambios pendientes tras el commit inicial). Se
+comprobaron las referencias a nombres de archivo `.md` citadas en toda
+la documentación contra los archivos reales de `docs/`: no se
+encontraron referencias rotas — las únicas menciones a archivos
+inexistentes (`CHANGELOG_2026.md`, `DECISIONS_ARCHIVE.md`,
+`00_SISTEMA_metodologia.md`, los documentos técnicos fragmentados
+descartados por la Decisión 021, etc.) corresponden a alternativas
+futuras o descartadas ya documentadas como tales en sus propios
+apartados, no a enlaces rotos. **La Fase 1 de `DEVELOPMENT_ROADMAP.md`
+no se marca como cerrada**: el entregable "pipeline de despliegue
+básico (previsualización por rama)" sigue pendiente de una acción del
+fundador (cuenta de GitHub/hosting) que ninguna sesión de Claude Code
+puede realizar en su nombre.
 
 ### 2026-07-19 (continuación — Product Strategy redactado y en Release Candidate)
 - **DECISIONS.md** — se añade la Decisión 018: redacción del documento

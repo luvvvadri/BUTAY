@@ -1,7 +1,7 @@
 # CONTEXT.md
 
 > **Tipo de documento:** Sistema — Memoria permanente
-> **Versión:** 1.5
+> **Versión:** 1.6
 > **Fecha de creación:** 2026-07-18
 > **Última actualización:** 2026-07-20
 > **Estado:** Vivo (se reescribe, no se acumula)
@@ -152,6 +152,23 @@ corrigió tres fechas de "Última actualización" desincronizadas
 2026-07-19 pese a contener cambios del día siguiente) — sin más
 hallazgos de fondo.
 
+**Inicio del desarrollo — Fase 1 de `DEVELOPMENT_ROADMAP.md`
+(2026-07-20).** El fundador dio la instrucción explícita de iniciar la
+Fase 1 (Configuración del proyecto). El directorio de trabajo del
+proyecto se trasladó de una carpeta sincronizada por OneDrive a
+`C:\Users\butay\Claude\` (Decisión 025), como raíz única de `docs/` y
+`butay-web/`. Se inicializó el proyecto técnico: Next.js 16 (App
+Router) + TypeScript (`strict`) + Tailwind CSS v4 + ESLint + Prettier,
+con la estructura de carpetas de `FRONTEND_ARCHITECTURE.md` (apartado
+2), y un repositorio Git con commit inicial (`9e9b31f`). `npm run
+lint`, `npm run format:check` y `npm run build` se ejecutan sin
+errores. **La Fase 1 no está cerrada todavía**: falta el entregable
+"pipeline de despliegue básico (previsualización por rama)", que
+requiere que el fundador conecte una cuenta de GitHub y de un proveedor
+de hosting — ninguna sesión de Claude Code puede hacerlo en su nombre.
+Ver el apartado "Estado" de la Fase 1 en `DEVELOPMENT_ROADMAP.md` para
+el detalle completo.
+
 ## Aprobado
 
 - Arquitectura del proyecto Butay (v1.0)
@@ -182,14 +199,18 @@ técnico en estado `En borrador` o `Release Candidate`.
 
 ## Próximo paso
 
-El proyecto tiene su entrega técnica ("Developer Handoff") completa y
-su normativa metodológica formalmente aprobada. No queda ningún bloqueo
-documental detectado para iniciar el desarrollo. El siguiente paso
-depende del fundador: dar la instrucción explícita para iniciar la
-Fase 1 de `DEVELOPMENT_ROADMAP.md` (Configuración del proyecto) con
-Claude Code, o abrir formalmente la Fase 4 (Identidad Visual / Design
-System) antes o en paralelo. Ninguna ruta se activa de forma
-automática.
+La Fase 1 de `DEVELOPMENT_ROADMAP.md` (Configuración del proyecto) está
+en curso y solo le falta un entregable para cerrarse: el pipeline de
+despliegue básico (previsualización por rama). Ese paso depende
+exclusivamente del fundador — requiere conectar una cuenta de GitHub y
+un proveedor de hosting compatible con Next.js (p. ej. Vercel); ninguna
+sesión de Claude Code puede crear cuentas ni autorizar conexiones OAuth
+en su nombre. Hasta que ese entregable exista, la Fase 1 no se
+considera cerrada, y la Fase 2 (Fundamentos visuales provisionales) no
+se abre — ninguna fase del roadmap técnico se abre automáticamente al
+avanzar la anterior. La Fase 4 (Identidad Visual / Design System) del
+roadmap de marca/producto sigue sin abrirse, en paralelo, a la espera
+de instrucción explícita del fundador.
 
 ## Notas para cualquier IA que retome el proyecto
 
@@ -253,3 +274,13 @@ automática.
     técnicos obligatorios, sin imponer herramientas ni política legal
     *(Decisiones 023, 024)*. Cualquier sesión de desarrollo debe
     respetarlos igual que el resto de reglas del documento.
+18. El directorio de trabajo del proyecto es, desde el 2026-07-20,
+    `C:\Users\butay\Claude\` — no la antigua carpeta de OneDrive
+    *(Decisión 025)*. La raíz contiene `docs/` (esta carpeta) y
+    `butay-web/` (código fuente de la web, Next.js). Cualquier IA que
+    retome el proyecto debe trabajar sobre esta ubicación.
+19. La Fase 1 de `DEVELOPMENT_ROADMAP.md` (Configuración del proyecto)
+    está en curso desde el 2026-07-20, con un único entregable
+    pendiente (pipeline de despliegue) — ver el apartado "Estado" de la
+    Fase 1 en ese documento antes de asumir que puede darse por
+    cerrada o de abrir la Fase 2.
