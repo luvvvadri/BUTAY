@@ -1,7 +1,7 @@
 # CHANGELOG.md
 
 > **Tipo de documento:** Sistema — Historial de cambios (append-only)
-> **Versión:** 2.6
+> **Versión:** 2.7
 > **Fecha de creación:** 2026-07-18
 > **Última actualización:** 2026-07-21
 > **Estado:** Vivo (solo se añade, nunca se reescribe)
@@ -53,6 +53,79 @@ por todo el historial. Si el archivo crece demasiado, se archivan por año
 ---
 
 ## Historial
+
+### 2026-07-21 (merge de PR #4 y cierre de la Fase 4 técnica de DEVELOPMENT_ROADMAP.md — modelo de datos y capa de catálogo)
+
+- **PR #4** (`feature/fase-3-component-system` → `main`) aprobado por
+  el fundador y fusionado. Rama eliminada (local y remoto). Árbol de
+  trabajo verificado limpio antes de continuar.
+- **Rama `feature/fase-4-catalog-data-layer`** (creada desde `main`
+  tras el merge de PR #4; sin fusionar todavía). Por instrucción
+  explícita del fundador de continuar el desarrollo con máxima
+  autonomía, se ejecutó la Fase 4 completa en dos bloques:
+  1. Tipos de catálogo (`src/types/catalog.ts`): `Category`,
+     `Collection`, `Drop`, `Sku`, `Variant`, `MessageVisibility`,
+     `ProductStatus`, siguiendo `FRONTEND_ARCHITECTURE.md` §10. `status`
+     (`Sku`) y `type` (`Collection`) son campos obligatorios, no
+     opcionales — hace imposible a nivel de tipos crear un producto sin
+     estado activo/archivado o una colección sin distinguir
+     permanente/temporal. `Variant.size`/`color` se modelan como
+     `string` libre, no como unión de literales, porque fit/silueta/
+     tallaje sigue `PENDIENTE DE DEFINIR` (Product Strategy §4) — el
+     tipo no asume una filosofía de tallaje. Datos de prueba de
+     categorías y colecciones (`src/data/categories.ts`,
+     `collections.ts`) con sus funciones de acceso.
+  2. Drops y productos (`src/data/drops.ts`, `products.ts`): 10 SKUs
+     ficticios repartidos entre camisetas y sudaderas, una colección
+     permanente y una temporal con un drop, los tres niveles de
+     visibilidad de mensaje representados, y un producto archivado
+     (alcanzable vía `getSkusByStatus('archived')`, nunca eliminado).
+     Funciones de acceso: listar por categoría, por colección, por
+     estado; obtener por slug. Nombres y mensajes documentados
+     explícitamente como datos de prueba, no copy de marca aprobado.
+  19 tests nuevos (63 en total): rango de tamaño del catálogo (8-15),
+  integridad referencial entre SKU/categoría/colección/drop, cobertura
+  de los tres niveles de visibilidad, alcanzabilidad del archivado, y
+  comportamiento de cada función de acceso.
+- **DEVELOPMENT_ROADMAP.md** — v1.5 → v1.6. La Fase 4 (Modelo de datos
+  y capa de catálogo) pasa a estado **Completa** en la tabla "Estado de
+  avance" y se le añade un apartado "Estado"; se actualiza el bloque de
+  cierre estándar (próxima fase recomendada: Fase 5 — Layouts y
+  navegación, sin abrirse todavía).
+- **CONTEXT.md** — v2.6 → v2.7. Se añaden los párrafos de fusión del PR
+  #4 y de cierre de la Fase 4 técnica en "Estado general"; se actualiza
+  "Aprobado" (versión de `DEVELOPMENT_ROADMAP.md`), "Próximo paso" y
+  las notas 19 y 23 para cualquier IA.
+- **INDEX.md** — v2.5 → v2.6. Se actualiza la fila de
+  `DEVELOPMENT_ROADMAP.md` en "Documentos técnicos de desarrollo"
+  (v1.6, Fases 1-4 Completas, Fase 3 fusionada, Fase 4 pendiente de
+  PR); se sincroniza la versión de CONTEXT.md; se añaden notas sobre el
+  merge del PR #4 y el cierre de la Fase 4 técnica.
+- **CHANGELOG.md** — este mismo registro.
+
+**Nota de auditoría de cierre de fase.** Se ejecutaron `npm run lint`,
+`npm run format:check`, `npm run test`, `npx tsc --noEmit` y `npm run
+build` sobre `butay-web/` en el estado final de
+`feature/fase-4-catalog-data-layer`: los cinco sin errores (63/63
+tests). Al ejecutar `format:check` por primera vez tras el merge de PR
+#4 aparecieron 32 archivos marcados como no formateados — investigado:
+no eran cambios de contenido real (`git diff --numstat` confirmó cero
+líneas añadidas o eliminadas en esos archivos), sino un artefacto de
+`core.autocrlf=true` de Git en Windows al reescribir finales de línea
+durante el `pull` del merge; `prettier --write .` normalizó el árbol de
+trabajo sin alterar el contenido de ningún archivo (verificado por
+diff antes y después). Se verificaron los criterios de finalización de
+la Fase 4: imposibilidad a nivel de tipos de crear estados inválidos
+(campos obligatorios, no verificación en tiempo de ejecución); los
+datos de prueba cubren los tres niveles de visibilidad de mensaje. Se
+verificaron por grep las versiones de cabecera de
+`DEVELOPMENT_ROADMAP.md`, `CONTEXT.md` e `INDEX.md` contra la tabla de
+`INDEX.md`: coinciden. No se registra ninguna decisión nueva en
+`DECISIONS.md`: el modelo de datos ejecuta directamente lo ya
+especificado en `FRONTEND_ARCHITECTURE.md` §10 y Product Strategy
+§3-§7, sin alternativas de arquitectura nuevas evaluadas. La Fase 4
+técnica queda **Completa**, pendiente de creación de PR y revisión del
+fundador — no se fusiona a `main` en este movimiento.
 
 ### 2026-07-21 (cierre de la Fase 3 técnica de DEVELOPMENT_ROADMAP.md — sistema de componentes base)
 
