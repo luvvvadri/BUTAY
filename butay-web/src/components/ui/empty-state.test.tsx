@@ -9,12 +9,21 @@ describe('EmptyState', () => {
   });
 
   it('renders an optional description', () => {
-    render(<EmptyState title="No products yet" description="Check back soon." />);
+    render(
+      <EmptyState title="No products yet" description="Check back soon." />,
+    );
     expect(screen.getByText('Check back soon.')).toBeInTheDocument();
   });
 
   it('renders an optional action', () => {
-    render(<EmptyState title="No products yet" action={<button type="button">Browse all</button>} />);
-    expect(screen.getByRole('button', { name: 'Browse all' })).toBeInTheDocument();
+    render(
+      <EmptyState
+        title="No products yet"
+        action={<button type="button">Browse all</button>}
+      />,
+    );
+    expect(
+      screen.getByRole('button', { name: 'Browse all' }),
+    ).toBeInTheDocument();
   });
 });

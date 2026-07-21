@@ -10,9 +10,16 @@ describe('Breadcrumb', () => {
 
   it('renders a labeled nav landmark', () => {
     render(
-      <Breadcrumb items={[{ label: 'Catalog', href: '/catalog' }, { label: 'Hoodies', href: '/catalog/hoodies' }]} />,
+      <Breadcrumb
+        items={[
+          { label: 'Catalog', href: '/catalog' },
+          { label: 'Hoodies', href: '/catalog/hoodies' },
+        ]}
+      />,
     );
-    expect(screen.getByRole('navigation', { name: 'Breadcrumb' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('navigation', { name: 'Breadcrumb' }),
+    ).toBeInTheDocument();
   });
 
   it('renders every item but the last as a link', () => {
@@ -24,8 +31,13 @@ describe('Breadcrumb', () => {
         ]}
       />,
     );
-    expect(screen.getByRole('link', { name: 'Catalog' })).toHaveAttribute('href', '/catalog');
-    expect(screen.queryByRole('link', { name: 'Hoodies' })).not.toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Catalog' })).toHaveAttribute(
+      'href',
+      '/catalog',
+    );
+    expect(
+      screen.queryByRole('link', { name: 'Hoodies' }),
+    ).not.toBeInTheDocument();
   });
 
   it('marks the last item as the current page', () => {

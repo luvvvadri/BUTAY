@@ -10,9 +10,19 @@ interface EmptyStateProps {
 }
 
 /** Generic empty-result placeholder — no hardcoded copy, reused across catalog/category/collection/archive. */
-export function EmptyState({ title, description, action, className }: EmptyStateProps) {
+export function EmptyState({
+  title,
+  description,
+  action,
+  className,
+}: EmptyStateProps) {
   return (
-    <div className={cn('flex flex-col items-center gap-2 py-16 text-center', className)}>
+    <div
+      className={cn(
+        'flex flex-col items-center gap-2 py-16 text-center',
+        className,
+      )}
+    >
       <Typography variant="h3">{title}</Typography>
       {description && (
         <Typography variant="body" tone="muted">
