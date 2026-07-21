@@ -1,7 +1,7 @@
 # DEVELOPMENT_ROADMAP.md
 
 > **Tipo de documento:** Plan técnico de desarrollo
-> **Versión:** 1.4
+> **Versión:** 1.5
 > **Fecha de creación:** 2026-07-20
 > **Última actualización:** 2026-07-21
 > **Estado:** Final (vivo en su seguimiento — el estado de cada fase se actualiza a medida que avanza el desarrollo)
@@ -45,7 +45,7 @@ orden se construye la web.
 |---|---|
 | 1 — Configuración del proyecto | Completa |
 | 2 — Fundamentos visuales provisionales | Completa |
-| 3 — Sistema de componentes base | Pendiente |
+| 3 — Sistema de componentes base | Completa |
 | 4 — Modelo de datos y capa de catálogo | Pendiente |
 | 5 — Layouts y navegación | Pendiente |
 | 6 — Páginas de catálogo | Pendiente |
@@ -171,6 +171,45 @@ estados), accesibles por teclado, con contraste verificado.
 **Criterios de finalización.** Cada componente base se ha usado en al
 menos un caso de prueba real (no solo aislado); ninguno depende de
 datos de catálogo ni de contenido de marca específico.
+
+**Estado (actualizado 2026-07-21).** **Completa.** Trabajado en
+`feature/fase-3-component-system`. Entregables:
+- **Infraestructura de testing** (previamente inexistente): Vitest +
+  React Testing Library + jest-dom + user-event, `npm run test` /
+  `test:watch`.
+- **Componentes base** en `src/components/ui/`, los cinco nombrados
+  explícitamente en `FRONTEND_ARCHITECTURE.md` §4.1 (botón, input,
+  badge, modal, tarjeta genérica) más los primitivos de layout y
+  tipografía: `Container`, `Stack`, `Grid`, `Section`, `Typography`,
+  `Button`, `Link`, `Badge`, `Card`, `Input`, `Modal` (además del
+  `Icon` ya existente de la Fase 2). `Navbar`/`Footer`/`Layout`
+  deliberadamente excluidos — pertenecen a la Fase 5 (Layouts y
+  navegación), no a esta.
+- **Modal** envuelve `@radix-ui/react-dialog` (foco, Escape, retorno de
+  foco, ARIA) en vez de reimplementar accesibilidad de diálogo a mano —
+  coherente con la recomendación explícita de `CLAUDE_CODE.md` §5.
+- **Utilidades compartidas**: `lib/cn.ts` (combinador de clases),
+  `lib/spacing.ts` (escala de espaciado tipada, mapeada a clases
+  Tailwind literales para el escaneo JIT).
+- Ningún componente depende de datos de catálogo ni de contenido de
+  marca — todos reciben contenido por props. Ninguno implementa
+  countdowns, badges de stock limitado ni gamificación.
+- 44 tests, incluidas dos pruebas de composición (todos los
+  primitivos de layout juntos; los nueve componentes de contenido/
+  interacción juntos en un layout realista con interacción de teclado
+  y clic real) — cumple el criterio "no solo aislado".
+- Accesibilidad: navegación completa por teclado verificada por test
+  (tab, Enter, Escape); contraste de los tokens existentes ya
+  verificado en la Fase 2 (acento ~6.3:1); los tonos nuevos
+  (`neutral-600`/`700` sobre fondo claro, `red-600` para error) están
+  dentro de los rangos de contraste bien documentados de esas escalas
+  de Tailwind — no se ejecutó una auditoría automatizada de contraste
+  (p. ej. axe) en esta fase; queda como mejora recomendada para la
+  Fase 11 (Accesibilidad).
+
+`npm run lint`, `npm run format:check`, `npm run test` y `npm run
+build` se ejecutan sin errores. Se cumplen los criterios de
+finalización de esta fase.
 
 ## Fase 4 — Modelo de datos y capa de catálogo
 
@@ -383,9 +422,10 @@ plan de ejecución de los dos anteriores.
 seguimiento de estado de cada fase (tabla "Estado de avance"), que se
 actualiza a medida que el desarrollo avanza.
 
-**Próxima fase recomendada:** Fase 3 (Sistema de componentes base). Las
-Fases 1 (Configuración del proyecto) y 2 (Fundamentos visuales
-provisionales) están **Completas** desde el 2026-07-21 — ver sus
-apartados "Estado" respectivos. Conforme a la Regla de uso 1 de este
-documento, cumplir la Fase 2 no abre automáticamente la Fase 3:
-requiere instrucción explícita del fundador.
+**Próxima fase recomendada:** Fase 4 (Modelo de datos y capa de
+catálogo). Las Fases 1 (Configuración del proyecto), 2 (Fundamentos
+visuales provisionales) y 3 (Sistema de componentes base) están
+**Completas** — ver sus apartados "Estado" respectivos. Conforme a la
+Regla de uso 1 de este documento, cumplir la Fase 3 no abre
+automáticamente la Fase 4: requiere instrucción explícita del
+fundador.
