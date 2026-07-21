@@ -39,4 +39,29 @@ describe('NavLink', () => {
       'aria-current',
     );
   });
+
+  it('with exact, does not stay active on a nested route', () => {
+    usePathname.mockReturnValue('/catalog/hoodies');
+    render(
+      <NavLink href="/catalog" exact>
+        All
+      </NavLink>,
+    );
+    expect(screen.getByRole('link', { name: 'All' })).not.toHaveAttribute(
+      'aria-current',
+    );
+  });
+
+  it('with exact, still matches the exact path', () => {
+    usePathname.mockReturnValue('/catalog');
+    render(
+      <NavLink href="/catalog" exact>
+        All
+      </NavLink>,
+    );
+    expect(screen.getByRole('link', { name: 'All' })).toHaveAttribute(
+      'aria-current',
+      'page',
+    );
+  });
 });

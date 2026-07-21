@@ -1,11 +1,10 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { CategoryFilters } from '@/components/product/category-filters';
+import { ProductGrid } from '@/components/product/product-grid';
 import { Breadcrumb } from '@/components/ui/breadcrumb';
-import { Card } from '@/components/ui/card';
-import { EmptyState } from '@/components/ui/empty-state';
-import { Grid } from '@/components/ui/grid';
-import { Link } from '@/components/ui/link';
 import { Section } from '@/components/ui/section';
+import { Stack } from '@/components/ui/stack';
 import { Typography } from '@/components/ui/typography';
 import { getCategories, getCategoryBySlug } from '@/data/categories';
 import { getSkusByCategory } from '@/data/products';
@@ -42,31 +41,15 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   return (
     <Section>
       <Breadcrumb items={categoryBreadcrumb(categorySlug)} />
-      <Typography variant="h1" className="mt-4">
-        {category.name}
-      </Typography>
-      {skus.length === 0 ? (
-        <EmptyState
-          title="No products in this category yet"
-          description="Check back soon."
-          className="mt-8"
-        />
-      ) : (
-        <Grid columns={3} className="mt-8">
-          {skus.map((sku) => (
-            <Link
-              key={sku.sku}
-              href={`/product/${sku.slug}`}
-              className="block"
-              underline="hover"
-            >
-              <Card as="article">
-                <Typography variant="h4">{sku.name}</Typography>
-              </Card>
-            </Link>
-          ))}
-        </Grid>
-      )}
+      <Stack gap="md" className="mt-4">
+        <Typography variant="h1">{category.name}</Typography>
+        <CategoryFilters />
+      </Stack>
+      <ProductGrid
+        skus={skus}
+        emptyTitle="No products in this category yet"
+        emptyDescription="Check back soon."
+      />
     </Section>
   );
 }
