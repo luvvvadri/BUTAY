@@ -1,7 +1,7 @@
 # CONTEXT.md
 
 > **Tipo de documento:** Sistema — Memoria permanente
-> **Versión:** 1.8
+> **Versión:** 1.9
 > **Fecha de creación:** 2026-07-18
 > **Última actualización:** 2026-07-21
 > **Estado:** Vivo (se reescribe, no se acumula)
@@ -103,9 +103,8 @@ Próxima fase recomendada) como convención obligatoria para todos los
 documentos raíz del proyecto a partir del Brand Bible. *(Decisión 013)*
 
 La metodología de trabajo de 10 etapas está formalizada en
-`00_SYSTEM_WORKFLOW.md` (v0.1, en borrador funcionalmente en uso desde
-la Fase 2), de consulta obligatoria antes de cualquier tarea futura.
-*(Decisión 017)*
+`00_SYSTEM_WORKFLOW.md` (v1.0, `Approved`, Decisión 022), de consulta
+obligatoria antes de cualquier tarea futura. *(Decisión 017)*
 
 La Fase 3 se cerró tras una segunda ronda de revisión crítica
 exhaustiva (equivalente a la aplicada al Brand Bible), que produjo una

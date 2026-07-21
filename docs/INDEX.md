@@ -1,7 +1,7 @@
 # INDEX.md
 
 > **Tipo de documento:** Sistema — Mapa maestro
-> **Versión:** 1.6
+> **Versión:** 1.7
 > **Fecha de creación:** 2026-07-18
 > **Última actualización:** 2026-07-21
 > **Estado:** Vivo
@@ -97,7 +97,7 @@ convención de carpeta plana ya establecida sin aportar valor.
 
 | Documento | Versión | Estado | Última actualización | Depende de |
 |---|---|---|---|---|
-| CONTEXT.md | 1.7 | Vivo | 2026-07-21 | — |
+| CONTEXT.md | 1.9 | Vivo | 2026-07-21 | — |
 | INDEX.md | 1.6 | Vivo | 2026-07-21 | CONTEXT.md |
 | DECISIONS.md | 1.2 | Vivo | 2026-07-20 | — |
 | GLOSSARY.md | 0.9 | Vivo | 2026-07-20 | DECISIONS.md |

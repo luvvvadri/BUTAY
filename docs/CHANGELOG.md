@@ -1,7 +1,7 @@
 # CHANGELOG.md
 
 > **Tipo de documento:** Sistema — Historial de cambios (append-only)
-> **Versión:** 1.7
+> **Versión:** 1.8
 > **Fecha de creación:** 2026-07-18
 > **Última actualización:** 2026-07-21
 > **Estado:** Vivo (solo se añade, nunca se reescribe)
@@ -53,6 +53,33 @@ por todo el historial. Si el archivo crece demasiado, se archivan por año
 ---
 
 ## Historial
+
+### 2026-07-21 (corrección de coherencia — CONTEXT.md desincronizado tras el cierre de la Fase 1)
+
+- **CONTEXT.md** — v1.7 → v1.9. Auditoría previa a la apertura de la
+  Fase 2 detectó dos frases de "Estado general" que quedaron
+  desactualizadas al ir añadiendo párrafos en sesiones anteriores sin
+  revisar la apertura del apartado: (1) la frase inicial seguía
+  afirmando que "el desarrollo web todavía no ha comenzado" y pedía
+  confirmación para iniciar la Fase 1, pese a que un párrafo posterior
+  del mismo documento ya registraba su cierre — corregida para reflejar
+  que la Fase 1 está completa; (2) una mención a
+  `00_SYSTEM_WORKFLOW.md` seguía citándolo como "v0.1, en borrador",
+  pese a su aprobación formal a v1.0 `Approved` (Decisión 022) — 
+  corregida a "(v1.0, `Approved`, Decisión 022)". Ambas son
+  correcciones de sincronización documental, no decisiones de fondo —
+  no generan entrada en DECISIONS.md.
+- **INDEX.md** — v1.6 → v1.7. Se actualiza la versión de CONTEXT.md en
+  la tabla "Documentos de sistema" (1.7 → 1.9) para que coincida con el
+  estado real del documento.
+- **CHANGELOG.md** — este mismo registro.
+
+**Nota de auditoría.** Se revisó `CONTEXT.md` completo en busca de más
+referencias obsoletas a `00_SYSTEM_WORKFLOW.md` o a otros estados
+superados: no se encontraron más. Se detectó, fuera del alcance
+pedido, que `INDEX.md` contiene una frase equivalente y desactualizada
+("El desarrollo web todavía no ha comenzado...", apartado "Notas") —
+reportada al fundador, no corregida en este movimiento.
 
 ### 2026-07-21 (cierre oficial de la Fase 1 de DEVELOPMENT_ROADMAP.md)
 
