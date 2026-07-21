@@ -1,7 +1,7 @@
 # CHANGELOG.md
 
 > **Tipo de documento:** Sistema — Historial de cambios (append-only)
-> **Versión:** 2.3
+> **Versión:** 2.4
 > **Fecha de creación:** 2026-07-18
 > **Última actualización:** 2026-07-21
 > **Estado:** Vivo (solo se añade, nunca se reescribe)
@@ -53,6 +53,63 @@ por todo el historial. Si el archivo crece demasiado, se archivan por año
 ---
 
 ## Historial
+
+### 2026-07-21 (revisión crítica del PR #3 — correcciones al Design System v0.1)
+
+- **`04_IDENTIDAD_VISUAL_design_system.md`** — sin cambio de versión
+  (sigue v0.1, `En borrador`; los cambios son correcciones previas a
+  la primera aprobación, no una revisión formal nueva). Se corrigen
+  seis hallazgos de una auditoría crítica del PR #3:
+  1. §11 y §16.2 ya no afirman que la respuesta de fit/silueta de la
+     entrevista "resuelve" el `PENDIENTE DE DEFINIR` de Product
+     Strategy §4 — Product Strategy sigue marcándolo pendiente, y el
+     documento ahora lo dice explícitamente, sin duplicarlo como
+     resuelto.
+  2. §12 corrige la cita de la frase "nota personal, no publicidad de
+     marca dentro de la caja", mal atribuida a Product Strategy —
+     pertenece a Brand Bible §14. Se revisaron el resto de citas
+     cruzadas del documento; no se encontró ninguna otra mal
+     atribuida (se precisó además la fila "Arquetipo" de la tabla de
+     Herencia, que citaba solo Brand Bible §5 cuando la frase exacta
+     está en §16).
+  3. §11 distingue ahora explícitamente entre la respuesta literal del
+     fundador ("nivel predominante dentro de los tres niveles ya
+     existentes"), la interpretación de trabajo ("discreto") y el
+     hecho de que la confirmación explícita sigue `PENDIENTE DE
+     DEFINIR` — antes se presentaba la interpretación como si la
+     entrevista la hubiera confirmado literalmente.
+  4. La tensión entre la posición de pecho del logo y el rechazo a
+     parecer marca deportiva (§6) pasa a la lista `PENDIENTE DE
+     DEFINIR` con la etiqueta literal, en vez de una nota aparte sin
+     esa etiqueta.
+  5. El rango abreviado "009-021" en Decisiones relacionadas (§17) se
+     sustituye por la lista explícita y precisa de decisiones
+     realmente relacionadas (005, 006, 009, 011, 013, 016, 018, 020,
+     021, 026, 027), siguiendo la convención de Brand Bible/Product
+     Strategy.
+  6. La fila "Esencia de marca" de la tabla de Herencia (§2) pierde
+     las comillas de cita directa, para igualar el estilo del resto
+     de la tabla y el de las tablas de Herencia de Brand Bible/Product
+     Strategy, que nunca citan textualmente.
+- **CONTEXT.md** — v2.3 → v2.4. Se corrige, de paso, un séptimo
+  hallazgo detectado en la segunda auditoría (no estaba en la lista
+  original): la primera frase de "Estado general" seguía afirmando
+  que la Fase 4 "sigue sin abrirse", contradiciendo el propio párrafo
+  de apertura de la Fase 4 más abajo en el mismo documento — mismo
+  patrón de frase de apertura no actualizada ya corregido dos veces
+  antes en esta sesión.
+- **INDEX.md** — v2.2 → v2.3. Se sincronizan las versiones de
+  CONTEXT.md y de sí mismo.
+- **CHANGELOG.md** — este mismo registro.
+
+**Nota de auditoría de la segunda revisión.** Se repitió la
+comprobación completa: coherencia con Brand Bible, coherencia con
+Product Strategy, referencias cruzadas, versiones, estado de la Fase 4
+y ausencia de contenido visual definitivo (hex, tipografías, formas de
+logo) — todo verificado por grep, no de memoria. Único hallazgo nuevo:
+la frase de apertura de `CONTEXT.md` señalada arriba, ya corregida. No
+se encontró ningún otro problema. El PR #3 queda listo para revisión;
+sigue sin fusionarse.
 
 ### 2026-07-21 (apertura formal de la Fase 4 — Identidad Visual / Design System)
 

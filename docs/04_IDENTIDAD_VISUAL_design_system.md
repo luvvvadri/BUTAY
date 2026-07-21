@@ -98,11 +98,11 @@ Tabla resumen — no redefine, solo hereda:
 | Minimalismo | Principio, no carencia — restricción visual intencionada | Brand Bible §12, §16 |
 | Ausencia de ostentación | Sin logos dominantes, sin señales visuales de estatus o lujo | Brand Bible §9, §10, §12, §16 |
 | El mensaje por encima del adorno | Ninguna decisión visual debe competir con la frase de la prenda | Brand Bible §16 |
-| Arquetipo | El hermano mayor: presencia, no espectáculo | Brand Bible §5 |
+| Arquetipo | El hermano mayor: presencia, no espectáculo | Brand Bible §5, §16 |
 | Visibilidad del mensaje | Tres niveles fijos: protagonista / discreto / oculto — nunca un cuarto nivel | Product Strategy §3, §13.1 |
 | Durabilidad sobre tendencia | Decisiones visuales pensadas para no caducar | Product Strategy §8, §13.1 |
 | Empaquetado íntimo | El packaging debe sentirse personal, nunca publicitario | Product Strategy §9, §13.1 |
-| Esencia de marca | "Butay no vende ropa, vende expresión" — el arte de pensar y no saber hablar también existe | Brand Bible §4 (Decisión 026) |
+| Esencia de marca | Butay no vende ropa, vende expresión — el arte de pensar y no saber hablar también existe | Brand Bible §4 (Decisión 026) |
 
 Este documento no redefine ninguno de estos puntos. Cuando algo aquí
 parezca nuevo, es un desarrollo de lo anterior, nunca una sustitución.
@@ -222,12 +222,6 @@ izquierdo de las prendas como firma reconocible — sin replicar la
 estética de marcas deportivas de referencia (mencionadas solo como
 ejemplo de ubicación, no de estilo).
 
-*Nota de diseño a vigilar en la siguiente iteración (no resuelta
-aquí):* el pecho es, culturalmente, una posición de logo asociada a
-menudo con marcas deportivas — justo lo que Butay quiere evitar
-parecer. Esta tensión no se resuelve en este documento; queda señalada
-para cuando se aborde el diseño concreto.
-
 **Evolución.** Equilibrio entre atemporalidad (debe poder durar
 décadas) y capacidad de evolucionar si la marca crece — coherente con
 "durabilidad sobre tendencia" (Product Strategy §8).
@@ -241,6 +235,10 @@ décadas) y capacidad de evolucionar si la marca crece — coherente con
   origen como zona sensible, a tratar con respeto y nunca como
   decoración; esta pregunta queda abierta explícitamente, no resuelta
   por defecto en ningún sentido.
+- Cómo resolver la tensión entre la posición de pecho (código visual
+  asociado a menudo con marcas deportivas) y el rechazo explícito a
+  parecer una marca deportiva (apartado 5) — no se resuelve en este
+  documento, queda señalada para cuando se aborde el diseño concreto.
 - Cualquier forma, símbolo o boceto concreto — no se diseña en este
   documento.
 
@@ -357,10 +355,23 @@ no se añade, por bonito que sea.
 
 Los tres niveles de visibilidad del mensaje ya están fijados y no se
 tocan aquí (protagonista / discreto / oculto — Product Strategy §3,
-§13.1; prohibido inventar un cuarto nivel). La entrevista de identidad
-visual confirma que, en la mayoría de piezas, el nivel predominante es
-**discreto** — no que sea el único nivel disponible, sino la tendencia
-general de la colección.
+§13.1; prohibido inventar un cuarto nivel).
+
+**Respuesta literal del fundador.** Al aclarar qué significaba
+"presencia intermedia" en la entrevista, la respuesta fue: *"nivel
+predominante dentro de los tres niveles ya existentes"* — sin nombrar
+cuál de los tres.
+
+**Interpretación de trabajo (no confirmada literalmente).** En la
+síntesis de comprensión previa a esta redacción se interpretó
+"intermedia" como el nivel **discreto** — la posición central entre
+protagonista y oculto —, y esa interpretación no fue corregida en las
+respuestas siguientes. Se registra aquí como interpretación de
+trabajo, no como una respuesta literal del fundador.
+
+**PENDIENTE DE DEFINIR:** cuál es, en la práctica, el nivel
+predominante — y si varía por prenda o colección — sigue sin
+confirmación explícita.
 
 **Técnicas de aplicación imaginadas:** serigrafía, relieve, bordado —
 mezcladas según la pieza, no una técnica única para todo el catálogo.
@@ -369,16 +380,19 @@ La fabricación debe sentirse cuidada y con intención.
 **PENDIENTE DE DEFINIR:** qué técnica corresponde a qué nivel de
 visibilidad o a qué tipo de prenda — no se resuelve en este documento.
 
-*Nota de alcance — no es contenido de este documento:* la filosofía de
-fit y silueta (oversize como línea principal, regular fit como
-alternativa, unisex) fue respondida en la misma entrevista, pero es
-información de **producto**, no de sistema visual. Se traslada como
-actualización pendiente a `03_PRODUCTO_product_strategy.md` (§4), no se
-duplica aquí.
+*Nota de alcance — no es contenido de este documento:* la entrevista de
+identidad visual recogió preferencias de fit y silueta (oversize como
+línea principal, regular fit como alternativa, unisex), pero esa
+información es de **producto**, no de sistema visual, y **sigue sin
+resolverse formalmente**: `03_PRODUCTO_product_strategy.md` (§4)
+mantiene fit/silueta/tallaje como `PENDIENTE DE DEFINIR` — su propia
+nota de la Decisión 026 aclara que esa misma mención "no equivale a una
+decisión de fit". Este documento no la duplica ni la da por cerrada.
 
-**Síntesis:** el nivel discreto es la tendencia predominante, no una
-regla absoluta; la técnica de aplicación se decide pieza a pieza, con
-intención, nunca por defecto.
+**Síntesis:** "discreto" es una interpretación de trabajo del nivel
+predominante, no una confirmación literal del fundador — no se trata
+como cerrado hasta que se confirme explícitamente; la técnica de
+aplicación se decide pieza a pieza, con intención, nunca por defecto.
 
 ---
 
@@ -386,8 +400,9 @@ intención, nunca por defecto.
 
 **Sensación buscada:** *"parece un regalo, incluso aunque yo lo haya
 comprado."* Personal, especial, íntimo — coherente con el packaging
-íntimo ya fijado en Product Strategy (§9, §13.1: "nota personal, no
-publicidad de marca dentro de la caja").
+íntimo ya fijado en Product Strategy (§9, §13.1) y con la instrucción
+ya dada en Brand Bible §14: "nota personal, no publicidad de marca
+dentro de la caja."
 
 **Referencias:** libro, carta.
 
@@ -513,13 +528,15 @@ para este propósito.
 
 ### 16.2 Puente hacia Product Strategy
 
-La respuesta de fit y silueta recogida en la entrevista de identidad
-visual (oversize como línea principal, regular fit como alternativa,
-unisex) resuelve el `PENDIENTE DE DEFINIR` de fit/silueta/tallaje que
-Product Strategy (§4) tenía abierto. Esta información pertenece
-formalmente a Product Strategy, no a este documento — su traslado a
-`03_PRODUCTO_product_strategy.md` (v1.1 → v1.2) es una actualización
-pendiente y separada de esta redacción.
+La entrevista de identidad visual recogió preferencias de fit y
+silueta (oversize como línea principal, regular fit como alternativa,
+unisex). Esta información pertenece formalmente a Product Strategy, no
+a este documento, y **no resuelve** su `PENDIENTE DE DEFINIR` de
+fit/silueta/tallaje (§4) — Product Strategy ya registra esta misma
+mención (Decisión 026) como información recogida, explícitamente "sin
+equivaler a una decisión de fit". Si en algún momento se decide cerrar
+formalmente esa pregunta, será mediante una actualización propia de
+Product Strategy, no mediante este documento.
 
 **Síntesis:** ninguna implementación técnica ni de producto debe
 adelantarse a este documento — pero tampoco debe esperar más de lo
@@ -535,8 +552,8 @@ referencia):
 - Brand Bible — Butay (v1.1)
 - Product Strategy — Butay (v1.1)
 - FRONTEND_ARCHITECTURE.md (v1.0)
-- DECISIONS.md (Decisión 027, y por herencia las decisiones 005, 006,
-  009-021, 025, 026)
+- DECISIONS.md (decisiones 005, 006, 009, 011, 013, 016, 018, 020, 021,
+  026, 027)
 - GLOSSARY.md
 - 00_SYSTEM_WORKFLOW.md (v1.0, Approved)
 
@@ -545,13 +562,17 @@ este Design System como fuente):
 - Iteración posterior de este mismo documento (valores concretos:
   color, tipografía, forma del logo).
 - Fase 6 — Digital / Web: hereda los apartados 9, 11, 13 y 16.1.
-- `03_PRODUCTO_product_strategy.md` (actualización pendiente, v1.1 →
-  v1.2): hereda el apartado 16.2 (fit y silueta).
+- `03_PRODUCTO_product_strategy.md`: el apartado 16.2 registra que la
+  información de fit/silueta recogida en la entrevista **no resuelve**
+  su `PENDIENTE DE DEFINIR` — cualquier cierre futuro de ese punto es
+  una decisión propia de Product Strategy, no una herencia automática
+  de este documento.
 - `FRONTEND_ARCHITECTURE.md`: sustituirá sus tokens provisionales
   (§13-15) cuando este documento resuelva sus propios `PENDIENTE DE
   DEFINIR`.
 
-**Decisiones relacionadas:** 027 (ver DECISIONS.md).
+**Decisiones relacionadas:** 005, 006, 009, 011, 013, 016, 018, 020,
+021, 026, 027 (ver DECISIONS.md para el detalle completo de cada una).
 
 **Estado del documento:** `En borrador` (v0.1) — pendiente de
 autoauditoría (Etapa 6) y aprobación explícita del fundador (Etapa 8).
@@ -560,7 +581,11 @@ documento.
 
 **Próxima fase recomendada:** ninguna fase nueva se abre con este
 documento. El siguiente paso es una iteración de este mismo documento
-para resolver los puntos marcados `PENDIENTE DE DEFINIR` (símbolo del
-logo, monograma, referencia cultural, valores exactos de color/
-tipografía/fotografía) — o su aprobación tal cual, si el fundador
-considera que esos vacíos pueden quedar abiertos por ahora.
+para resolver los puntos marcados `PENDIENTE DE DEFINIR`: símbolo del
+logo, monograma, referencia cultural del logo, tensión pecho/código
+deportivo, nivel de visibilidad del mensaje predominante (hoy solo
+interpretación de trabajo), técnica de aplicación por nivel/prenda,
+elementos gráficos concretos, composición visual exacta de la web, y
+valores exactos de color/tipografía/fotografía — o su aprobación tal
+cual, si el fundador considera que esos vacíos pueden quedar abiertos
+por ahora.

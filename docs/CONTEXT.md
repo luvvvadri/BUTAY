@@ -1,7 +1,7 @@
 # CONTEXT.md
 
 > **Tipo de documento:** Sistema — Memoria permanente
-> **Versión:** 2.3
+> **Versión:** 2.4
 > **Fecha de creación:** 2026-07-18
 > **Última actualización:** 2026-07-21
 > **Estado:** Vivo (se reescribe, no se acumula)
@@ -72,7 +72,9 @@ mantiene siempre corto (objetivo: legible en menos de dos minutos).
 ## Estado general
 
 **Fase actual:** Fase 2 y Fase 3 cerradas y aprobadas. La Fase 4
-(Identidad Visual / Design System) **sigue sin abrirse**. El proyecto
+(Identidad Visual / Design System) **está abierta, con un documento
+raíz en borrador (v0.1) pendiente de aprobación** — ver más abajo. El
+proyecto
 completó el 2026-07-20 su entrega técnica ("Developer Handoff") para
 Claude Code: `WEB_HANDOFF.md`, `CLAUDE_CODE.md`,
 `FRONTEND_ARCHITECTURE.md` y `DEVELOPMENT_ROADMAP.md` (Decisión 021),
