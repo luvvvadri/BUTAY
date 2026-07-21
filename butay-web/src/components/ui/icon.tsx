@@ -1,33 +1,41 @@
-import type { LucideIcon } from 'lucide-react';
+import { ArrowRight, type LucideIcon } from 'lucide-react';
 
 /**
  * Icon wrapper — FRONTEND_ARCHITECTURE.md §14.
  *
- * Every icon in the app is consumed through this component instead of
- * importing lucide-react directly, so the icon set can be swapped in one
- * place if Fase 4 (Identidad Visual / Design System) requires a
- * different one.
+ * Icons are consumed by name (`<Icon name="arrow-right" />`), never by
+ * importing lucide-react directly in a component. The registry below is
+ * the only place that knows about the underlying icon library, so
+ * swapping it for a different set in Fase 4 (Identidad Visual / Design
+ * System) touches this one file, not every call site.
+ *
+ * Only one entry exists today ("arrow-right") — enough to prove the
+ * registry works end-to-end. New names are added here as real usages
+ * need them, never speculatively.
  *
  * Defaults to `aria-hidden` (decorative) unless `label` is provided, in
  * which case it renders as a labeled graphic for assistive technology —
  * CLAUDE_CODE.md §15 (accessibility).
  */
 
+const icons = {
+  'arrow-right': ArrowRight,
+} satisfies Record<string, LucideIcon>;
+
+export type IconName = keyof typeof icons;
+
 interface IconProps {
-  icon: LucideIcon;
+  name: IconName;
   label?: string;
   size?: number;
   className?: string;
 }
 
-export function Icon({
-  icon: LucideIconComponent,
-  label,
-  size = 20,
-  className,
-}: IconProps) {
+export function Icon({ name, label, size = 20, className }: IconProps) {
+  const IconComponent = icons[name];
+
   return (
-    <LucideIconComponent
+    <IconComponent
       size={size}
       strokeWidth={1.75}
       className={className}
