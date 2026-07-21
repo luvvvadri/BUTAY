@@ -1,13 +1,13 @@
 # Product Strategy — Butay
 
 > **Tipo de documento:** Fase 3 — Product Strategy (documento raíz)
-> **Versión:** 1.0
+> **Versión:** 1.1
 > **Fecha de creación:** 2026-07-19
-> **Última actualización:** 2026-07-19
+> **Última actualización:** 2026-07-21
 > **Estado:** Approved (equivalente a Congelado — ver GLOSSARY.md)
-> **Depende de:** Brand Bible — Butay (v1.0); Visión, Misión y Valores (v1.0); Mercado y Público Objetivo (v1.0); Análisis de Competencia (v1.0); Posicionamiento de Marca (v1.0); DECISIONS.md; GLOSSARY.md
+> **Depende de:** Brand Bible — Butay (v1.1); Visión, Misión y Valores (v1.0); Mercado y Público Objetivo (v1.0); Análisis de Competencia (v1.0); Posicionamiento de Marca (v1.0); DECISIONS.md; GLOSSARY.md
 > **Arquitectura:** índice v1.0, aprobado el 2026-07-19 tras revisión crítica exhaustiva (Etapas 2-3 del workflow)
-> **Aprobación:** Decisión 020 — documento oficial de Butay a partir de esta versión
+> **Aprobación:** Decisión 020 — documento oficial de Butay a partir de esta versión; Decisión 026 — nota informativa v1.0 → v1.1 (preferencias de estilo registradas, fit/silueta/tallaje sigue `PENDIENTE DE DEFINIR`)
 
 ---
 
@@ -175,9 +175,15 @@ referencias.
 **Fit, silueta y tallaje — PENDIENTE DE DEFINIR.** Este documento no
 fija la filosofía de ajuste (oversized, regular, ajustado), el enfoque
 de tallaje (unisex por defecto, líneas separadas por género) ni el
-rango de tallas. Es información que no se ha recogido todavía en
-ninguna entrevista del proyecto. Queda pendiente de una futura
-ampliación documental — no se infiere ni se inventa aquí.
+rango de tallas. Queda pendiente de una futura ampliación documental —
+no se infiere ni se inventa aquí.
+
+*Nota (2026-07-21, Decisión 026).* La entrevista de identidad de marca
+mencionó preferencias de estilo generales (casual, minimalista,
+oversize, streetwear) al describir la personalidad de Butay. Se
+registra aquí como información recogida para cuando se aborde esta
+pregunta formalmente — no equivale a una decisión de fit ni sustituye
+la ampliación documental pendiente.
 
 **Cómo crece el catálogo.** Crece en dos direcciones: hacia abajo
 (nuevas variantes de talla o color dentro de un SKU existente) y hacia
@@ -518,10 +524,13 @@ este Product Strategy como fuente):
   Code.
 
 **Decisiones relacionadas:** 005, 006, 009, 010, 011, 012, 013, 014,
-016, 017, 018, 019, 020 (ver DECISIONS.md para el detalle completo).
+016, 017, 018, 019, 020, 026 (ver DECISIONS.md para el detalle
+completo).
 
-**Estado del documento:** Approved / Congelado (v1.0) — Decisión 020.
-Es fuente definitiva para toda decisión de producto futura de Butay.
+**Estado del documento:** Approved / Congelado (v1.1) — Decisión 020
+(v1.0), con una nota informativa añadida por Decisión 026 (v1.1; fit y
+silueta siguen `PENDIENTE DE DEFINIR`). Sigue siendo fuente definitiva
+para toda decisión de producto futura de Butay.
 
 **Próxima fase recomendada:** Fase 4 — Identidad Visual / Design
 System, según el roadmap. El fundador ha decidido generar primero
