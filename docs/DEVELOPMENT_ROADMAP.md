@@ -349,7 +349,7 @@ estructura de menú arbitraria.
   `(shop)` usan directamente los primitivos ya existentes de la Fase 3
   (`Card`, `Grid`, `Link`, `Typography`) para demostrar que rutas y
   datos funcionan, sin adelantar trabajo de esas fases.
-- 34 archivos de test, 109 tests en total (65 nuevos desde el cierre de
+- 34 archivos de test, 109 tests en total (46 nuevos desde el cierre de
   la Fase 4), incluidos los de navegación por teclado (apertura/cierre
   del `Drawer`, estado activo de `NavLink`), integridad referencial de
   `Breadcrumb`, y comportamiento de `notFound()`.

@@ -315,7 +315,7 @@ ruta `/drops` dedicada (no está en la arquitectura aprobada): un drop
 activo se muestra como sección dentro de su colección. Deliberadamente
 fuera de alcance: ningún componente de dominio (`components/product`)
 ni diseño visual pulido — eso corresponde a las Fases 6 y 7. 109 tests
-en total (65 nuevos). `npm run lint`, `npm run format:check`, `npm run
+en total (46 nuevos). `npm run lint`, `npm run format:check`, `npm run
 test`, `npx tsc --noEmit` y `npm run build` se ejecutan sin errores —
 23 rutas generadas correctamente. **La Fase 5 técnica queda
 oficialmente cerrada** — ver el apartado "Estado" de la Fase 5 en
