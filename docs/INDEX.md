@@ -1,7 +1,7 @@
 # INDEX.md
 
 > **Tipo de documento:** Sistema — Mapa maestro
-> **Versión:** 2.5
+> **Versión:** 2.6
 > **Fecha de creación:** 2026-07-18
 > **Última actualización:** 2026-07-21
 > **Estado:** Vivo
@@ -97,8 +97,8 @@ convención de carpeta plana ya establecida sin aportar valor.
 
 | Documento | Versión | Estado | Última actualización | Depende de |
 |---|---|---|---|---|
-| CONTEXT.md | 2.6 | Vivo | 2026-07-21 | — |
-| INDEX.md | 2.5 | Vivo | 2026-07-21 | CONTEXT.md |
+| CONTEXT.md | 2.7 | Vivo | 2026-07-21 | — |
+| INDEX.md | 2.6 | Vivo | 2026-07-21 | CONTEXT.md |
 | DECISIONS.md | 1.4 | Vivo | 2026-07-21 | — |
 | GLOSSARY.md | 0.9 | Vivo | 2026-07-20 | DECISIONS.md |
 | CHANGELOG.md | 2.5 | Vivo | 2026-07-21 | INDEX.md |
@@ -127,7 +127,7 @@ convención de carpeta plana ya establecida sin aportar valor.
 | Handoff técnico de transición | WEB_HANDOFF.md | 1.0 | Final | 2026-07-19 | Product Strategy (v1.0); Brand Bible (v1.0) |
 | Puerta de entrada técnica para Claude Code | CLAUDE_CODE.md | 1.1 | Final | 2026-07-20 | WEB_HANDOFF.md; Brand Bible (v1.0); Product Strategy (v1.0); 00_SYSTEM_WORKFLOW.md (v1.0, Approved) |
 | Arquitectura de frontend | FRONTEND_ARCHITECTURE.md | 1.0 | Final | 2026-07-20 | CLAUDE_CODE.md; WEB_HANDOFF.md; Product Strategy (v1.0) |
-| Plan de desarrollo por fases | DEVELOPMENT_ROADMAP.md | 1.5 | Final en estructura, vivo en su seguimiento de estado — Fases 1, 2 y 3 Completas (Fase 3 en `feature/fase-3-component-system`, sin fusionar) | 2026-07-21 | CLAUDE_CODE.md; FRONTEND_ARCHITECTURE.md; WEB_HANDOFF.md |
+| Plan de desarrollo por fases | DEVELOPMENT_ROADMAP.md | 1.6 | Final en estructura, vivo en su seguimiento de estado — Fases 1, 2, 3 y 4 Completas (Fase 3 fusionada vía PR #4; Fase 4 en `feature/fase-4-catalog-data-layer`, sin fusionar) | 2026-07-21 | CLAUDE_CODE.md; FRONTEND_ARCHITECTURE.md; WEB_HANDOFF.md |
 
 ## Documentos de Fase 2 (Identidad de marca conceptual)
 
@@ -246,6 +246,19 @@ usan "Fase N" para conceptos distintos). Se construyeron los
 componentes base de `src/components/ui/` (botón, input, badge, modal,
 tarjeta, layout, tipografía) y la infraestructura de testing del
 proyecto (Vitest + Testing Library), trabajados en
-`feature/fase-3-component-system`. Ver el apartado "Estado" de la Fase
-3 en `DEVELOPMENT_ROADMAP.md`. La rama está pendiente de PR y revisión
-del fundador — no se ha fusionado a `main`.
+`feature/fase-3-component-system` y fusionados a `main` el mismo día
+vía PR #4, tras la aprobación del fundador.
+
+Inmediatamente después, el mismo 2026-07-21, se completó la **Fase 4
+técnica (Modelo de datos y capa de catálogo)**, cuya única dependencia
+(Fase 1) ya estaba satisfecha. Se centralizaron en
+`src/types/catalog.ts` los tipos del catálogo (`Category`,
+`Collection`, `Drop`, `Sku`, `Variant`, `MessageVisibility`,
+`ProductStatus`), con `status` y `type` como campos obligatorios para
+que sea imposible a nivel de tipos violar las reglas de producto ya
+aprobadas (activo/archivado; permanente/temporal). Se creó la capa
+`/data` con 10 SKUs de prueba ficticios y sus funciones de acceso
+tipadas, trabajados en `feature/fase-4-catalog-data-layer`. Ver el
+apartado "Estado" de la Fase 4 en `DEVELOPMENT_ROADMAP.md`. Esta rama
+está pendiente de PR y revisión del fundador — no se ha fusionado a
+`main`.

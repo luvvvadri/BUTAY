@@ -1,7 +1,7 @@
 # DEVELOPMENT_ROADMAP.md
 
 > **Tipo de documento:** Plan técnico de desarrollo
-> **Versión:** 1.5
+> **Versión:** 1.6
 > **Fecha de creación:** 2026-07-20
 > **Última actualización:** 2026-07-21
 > **Estado:** Final (vivo en su seguimiento — el estado de cada fase se actualiza a medida que avanza el desarrollo)
@@ -46,7 +46,7 @@ orden se construye la web.
 | 1 — Configuración del proyecto | Completa |
 | 2 — Fundamentos visuales provisionales | Completa |
 | 3 — Sistema de componentes base | Completa |
-| 4 — Modelo de datos y capa de catálogo | Pendiente |
+| 4 — Modelo de datos y capa de catálogo | Completa |
 | 5 — Layouts y navegación | Pendiente |
 | 6 — Páginas de catálogo | Pendiente |
 | 7 — Ficha de producto | Pendiente |
@@ -235,6 +235,48 @@ producto sin estado activo/archivado, o una colección sin distinguir
 permanente/temporal; los datos de prueba cubren los tres niveles de
 visibilidad de mensaje.
 
+**Estado (actualizado 2026-07-21).** **Completa.** Trabajado en
+`feature/fase-4-catalog-data-layer`. Entregables:
+- **Tipos centralizados** en `src/types/catalog.ts`: `Category`,
+  `Collection` (`type: 'permanent' | 'temporary'`, campo obligatorio),
+  `Drop` (opcional por colección), `Sku` (`status: 'active' |
+  'archived'`, campo obligatorio — nunca `deleted`, coherente con
+  "archivar, no borrar" de Product Strategy §7), `Variant`
+  (`size`/`color` como `string` libre, no unión de literales, porque
+  fit/silueta/tallaje sigue `PENDIENTE DE DEFINIR` en Product Strategy
+  §4) y `MessageVisibility` (`'featured' | 'subtle' | 'hidden'`).
+  `status` y `type` son campos obligatorios, no opcionales: el
+  compilador impide crear un `Sku` sin estado o una `Collection` sin
+  distinguir permanente/temporal — cumple el criterio de finalización
+  a nivel de tipos, no solo por convención.
+- **Datos de prueba** en `src/data/` (`categories.ts`, `collections.ts`,
+  `drops.ts`, `products.ts`): 10 SKUs ficticios (dentro del rango 8-15
+  de Product Strategy §4) repartidos entre las dos categorías de
+  lanzamiento (camisetas, sudaderas), una colección permanente y una
+  temporal con un drop, los tres niveles de visibilidad de mensaje
+  representados, y un producto archivado (accesible por
+  `getSkusByStatus('archived')`, no eliminado). Nombres y mensajes son
+  marcadores de prueba, no copy de marca aprobado — documentado como
+  tal en cada archivo para que ninguna sesión futura los confunda con
+  contenido real.
+- **Funciones de acceso** tipadas: `getCategories`/`getCategoryBySlug`,
+  `getCollections`/`getCollectionBySlug`, `getDrops`/`getDropBySlug`,
+  `getSkus`/`getSkuBySlug`/`getSkusByCategory`/`getSkusByCollection`/
+  `getSkusByStatus`.
+- 19 tests nuevos (63 en total en el proyecto) verifican los
+  entregables: rango de tamaño del catálogo, referencias cruzadas
+  válidas entre SKU/categoría/colección/drop, cobertura de los tres
+  niveles de visibilidad, alcanzabilidad del producto archivado, y el
+  comportamiento de cada función de acceso.
+- La capa `/data` está aislada de `/types` (dato vs. contrato,
+  `FRONTEND_ARCHITECTURE.md` §2) para poder sustituir los datos locales
+  por un backend real sin tocar los tipos ni los componentes que los
+  consuman en fases futuras.
+
+`npm run lint`, `npm run format:check`, `npm run test` (63/63), `npx
+tsc --noEmit` y `npm run build` se ejecutan sin errores. Se cumplen
+todos los criterios de finalización de esta fase.
+
 ## Fase 5 — Layouts y navegación
 
 **Objetivo.** Construir el layout raíz (header, footer, navegación
@@ -422,10 +464,10 @@ plan de ejecución de los dos anteriores.
 seguimiento de estado de cada fase (tabla "Estado de avance"), que se
 actualiza a medida que el desarrollo avanza.
 
-**Próxima fase recomendada:** Fase 4 (Modelo de datos y capa de
-catálogo). Las Fases 1 (Configuración del proyecto), 2 (Fundamentos
-visuales provisionales) y 3 (Sistema de componentes base) están
-**Completas** — ver sus apartados "Estado" respectivos. Conforme a la
-Regla de uso 1 de este documento, cumplir la Fase 3 no abre
-automáticamente la Fase 4: requiere instrucción explícita del
-fundador.
+**Próxima fase recomendada:** Fase 5 (Layouts y navegación). Las Fases
+1 (Configuración del proyecto), 2 (Fundamentos visuales
+provisionales), 3 (Sistema de componentes base) y 4 (Modelo de datos y
+capa de catálogo) están **Completas** — ver sus apartados "Estado"
+respectivos. Conforme a la Regla de uso 1 de este documento, cumplir
+la Fase 4 no abre automáticamente la Fase 5: requiere instrucción
+explícita del fundador.
