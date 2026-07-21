@@ -1,7 +1,7 @@
 # CONTEXT.md
 
 > **Tipo de documento:** Sistema — Memoria permanente
-> **Versión:** 1.9
+> **Versión:** 2.0
 > **Fecha de creación:** 2026-07-18
 > **Última actualización:** 2026-07-21
 > **Estado:** Vivo (se reescribe, no se acumula)
@@ -171,6 +171,26 @@ cerrada** — todos sus entregables y criterios de finalización se
 cumplen. Ver el apartado "Estado" de la Fase 1 en
 `DEVELOPMENT_ROADMAP.md` para el detalle completo.
 
+**Fase 2 de `DEVELOPMENT_ROADMAP.md` completa (2026-07-21).** Trabajada
+en la rama `feature/fase-2-foundations` (PR #1, sin merge todavía),
+siguiendo el mismo criterio de cierre que la Fase 1. Entregables:
+token de acento provisional y tipografía Geist centralizados en
+`src/styles/tokens.css` (escala de grises reutiliza directamente la
+paleta `neutral` de Tailwind); envoltorio propio de iconografía
+(`src/components/ui/icon.tsx`) que consume iconos por nombre a través
+de un registro interno, sin que ningún otro archivo importe
+`lucide-react` directamente. Una revisión de PR detectó y corrigió dos
+riesgos antes de este cierre: uso inconsistente de la escala de grises
+(`zinc` en vez de `neutral` en una página heredada de la Fase 1) y un
+acoplamiento del wrapper de iconos a la librería Lucide que habría
+dificultado sustituirla en la Fase 4. Ningún valor visual se presenta
+ni se usa como definitivo de marca — todos están comentados como
+provisionales en el propio código. `npm run lint`, `npm run
+format:check` y `npm run build` se ejecutan sin errores. **La Fase 2
+queda oficialmente cerrada** — todos sus entregables y criterios de
+finalización se cumplen. Ver el apartado "Estado" de la Fase 2 en
+`DEVELOPMENT_ROADMAP.md` para el detalle completo.
+
 ## Aprobado
 
 - Arquitectura del proyecto Butay (v1.0)
@@ -191,7 +211,7 @@ cumplen. Ver el apartado "Estado" de la Fase 1 en
 - **WEB_HANDOFF.md (v1.0, Final)**
 - **CLAUDE_CODE.md (v1.1, Final)**
 - **FRONTEND_ARCHITECTURE.md (v1.0, Final)**
-- **DEVELOPMENT_ROADMAP.md (v1.2, Final en estructura, vivo en su seguimiento de estado — Fase 1 Completa)**
+- **DEVELOPMENT_ROADMAP.md (v1.3, Final en estructura, vivo en su seguimiento de estado — Fases 1 y 2 Completas)**
 - **00_SYSTEM_WORKFLOW.md (v1.0, `Approved`, Decisión 022)**
 
 ## En borrador / en curso
@@ -201,13 +221,16 @@ técnico en estado `En borrador` o `Release Candidate`.
 
 ## Próximo paso
 
-La Fase 1 de `DEVELOPMENT_ROADMAP.md` (Configuración del proyecto) está
-completa y cerrada. La Fase 2 (Fundamentos visuales provisionales) no
-se abre de forma automática por haberse completado la Fase 1 —
-requiere instrucción explícita del fundador, igual que cualquier otra
-fase del proyecto. La Fase 4 (Identidad Visual / Design System) del
-roadmap de marca/producto sigue sin abrirse, en paralelo, también a la
-espera de instrucción explícita del fundador.
+Las Fases 1 y 2 de `DEVELOPMENT_ROADMAP.md` (Configuración del
+proyecto; Fundamentos visuales provisionales) están completas y
+cerradas. El PR #1 (`feature/fase-2-foundations`), que contiene el
+trabajo de la Fase 2, sigue sin fusionarse a `main` — el merge es una
+decisión pendiente del fundador. La Fase 3 (Sistema de componentes
+base) no se abre de forma automática por haberse completado la Fase 2
+— requiere instrucción explícita del fundador, igual que cualquier
+otra fase del proyecto. La Fase 4 (Identidad Visual / Design System)
+del roadmap de marca/producto sigue sin abrirse, en paralelo, también a
+la espera de instrucción explícita del fundador.
 
 ## Notas para cualquier IA que retome el proyecto
 
@@ -276,10 +299,17 @@ espera de instrucción explícita del fundador.
     *(Decisión 025)*. La raíz contiene `docs/` (esta carpeta) y
     `butay-web/` (código fuente de la web, Next.js). Cualquier IA que
     retome el proyecto debe trabajar sobre esta ubicación.
-19. La Fase 1 de `DEVELOPMENT_ROADMAP.md` (Configuración del proyecto)
-    está **Completa** desde el 2026-07-21, incluido el pipeline de
-    despliegue (GitHub → Vercel, producción en
-    `https://butay.vercel.app/`) — ver el apartado "Estado" de la
-    Fase 1 en ese documento. La Fase 2 (Fundamentos visuales
-    provisionales) sigue sin abrirse: hace falta instrucción explícita
-    del fundador, no se abre solo por haberse completado la Fase 1.
+19. Las Fases 1 y 2 de `DEVELOPMENT_ROADMAP.md` (Configuración del
+    proyecto; Fundamentos visuales provisionales) están **Completas**
+    desde el 2026-07-21 — la Fase 1 incluye el pipeline de despliegue
+    (GitHub → Vercel, producción en `https://butay.vercel.app/`); la
+    Fase 2, los tokens de diseño provisionales y el envoltorio de
+    iconografía. Ver el apartado "Estado" de cada fase en ese documento.
+    La Fase 3 (Sistema de componentes base) sigue sin abrirse: hace
+    falta instrucción explícita del fundador, no se abre solo por
+    haberse completado la Fase 2.
+20. El trabajo de la Fase 2 vive en la rama `feature/fase-2-foundations`
+    y el PR #1 (`github.com/luvvvadri/BUTAY/pull/1`), **todavía sin
+    fusionar a `main`** — cualquier IA que retome el proyecto debe
+    comprobar el estado real de ese PR antes de asumir que el código de
+    `main` ya incluye los tokens y el envoltorio de iconografía.
