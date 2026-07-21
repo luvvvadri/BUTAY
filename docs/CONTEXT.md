@@ -1,7 +1,7 @@
 # CONTEXT.md
 
 > **Tipo de documento:** Sistema — Memoria permanente
-> **Versión:** 2.2
+> **Versión:** 2.4
 > **Fecha de creación:** 2026-07-18
 > **Última actualización:** 2026-07-21
 > **Estado:** Vivo (se reescribe, no se acumula)
@@ -72,7 +72,9 @@ mantiene siempre corto (objetivo: legible en menos de dos minutos).
 ## Estado general
 
 **Fase actual:** Fase 2 y Fase 3 cerradas y aprobadas. La Fase 4
-(Identidad Visual / Design System) **sigue sin abrirse**. El proyecto
+(Identidad Visual / Design System) **está abierta, con un documento
+raíz en borrador (v0.1) pendiente de aprobación** — ver más abajo. El
+proyecto
 completó el 2026-07-20 su entrega técnica ("Developer Handoff") para
 Claude Code: `WEB_HANDOFF.md`, `CLAUDE_CODE.md`,
 `FRONTEND_ARCHITECTURE.md` y `DEVELOPMENT_ROADMAP.md` (Decisión 021),
@@ -207,9 +209,26 @@ v1.1 en el mismo movimiento, solo con una nota informativa sobre
 preferencias de estilo; la filosofía de fit/silueta/tallaje sigue
 `PENDIENTE DE DEFINIR`. **No se creó ningún documento nuevo de
 marca** — el Brand Bible sigue siendo la única fuente de verdad. La
-Fase 2 de marca se vuelve a cerrar en el mismo movimiento. No se tocó
-logo, color, tipografía ni ninguna decisión de la Fase 4 (Identidad
-Visual), que sigue sin abrirse.
+Fase 2 de marca se vuelve a cerrar en el mismo movimiento.
+
+**Fase 4 (Identidad Visual / Design System) abierta formalmente —
+`04_IDENTIDAD_VISUAL_design_system.md` v0.1, En borrador (2026-07-21,
+Decisión 027).** Tras dos entrevistas de identidad visual (dirección
+general y logo) y el protocolo completo de `00_SYSTEM_WORKFLOW.md`
+(Comprensión → Arquitectura → Aprobación del índice → Redacción), se
+redactó el documento raíz de la Fase 4, consolidando en uno solo lo que
+el roadmap original preveía como tres piezas ("Manual de marca",
+"Paleta de color", "Sistema tipográfico") — mismo patrón que Brand
+Bible y Product Strategy. Fija dirección visual completa (personalidad
+visual, territorio emocional, referencias, logo, color, tipografía,
+fotografía, dirección artística, aplicación en prenda, packaging,
+experiencia web) sin cerrar ningún valor concreto — color exacto,
+tipografía concreta, forma del logo, símbolo, monograma, referencia al
+origen visayo/filipino: todo queda explícitamente `PENDIENTE DE
+DEFINIR`, sin inventarse. **El documento queda en estado `En borrador`
+— la Fase 4 se abre, pero no se cierra**, pendiente de autoauditoría y
+aprobación explícita del fundador. Trabajado en la rama
+`docs/design-system-v1.0`.
 
 ## Aprobado
 
@@ -231,13 +250,15 @@ Visual), que sigue sin abrirse.
 - **WEB_HANDOFF.md (v1.0, Final)**
 - **CLAUDE_CODE.md (v1.1, Final)**
 - **FRONTEND_ARCHITECTURE.md (v1.0, Final)**
-- **DEVELOPMENT_ROADMAP.md (v1.3, Final en estructura, vivo en su seguimiento de estado — Fases 1 y 2 Completas)**
+- **DEVELOPMENT_ROADMAP.md (v1.4, Final en estructura, vivo en su seguimiento de estado — Fases 1 y 2 Completas)**
 - **00_SYSTEM_WORKFLOW.md (v1.0, `Approved`, Decisión 022)**
 
 ## En borrador / en curso
 
-Ninguno. No queda ningún documento de sistema, de fase cerrada, ni
-técnico en estado `En borrador` o `Release Candidate`.
+- **`04_IDENTIDAD_VISUAL_design_system.md` (v0.1, En borrador,
+  Decisión 027)** — documento raíz de la Fase 4, pendiente de
+  autoauditoría y aprobación explícita del fundador. Rama
+  `docs/design-system-v1.0`, sin fusionar.
 
 ## Próximo paso
 
@@ -247,11 +268,17 @@ cerradas. El PR #1 (`feature/fase-2-foundations`), que contenía el
 trabajo de la Fase 2, se fusionó a `main` el 2026-07-21 — `main` ya
 incluye los tokens de diseño y el envoltorio de iconografía. La Fase 3
 (Sistema de componentes base) no se abre de forma automática por
-haberse completado la Fase 2
-— requiere instrucción explícita del fundador, igual que cualquier
-otra fase del proyecto. La Fase 4 (Identidad Visual / Design System)
-del roadmap de marca/producto sigue sin abrirse, en paralelo, también a
-la espera de instrucción explícita del fundador.
+haberse completado la Fase 2 — requiere instrucción explícita del
+fundador, igual que cualquier otra fase del proyecto.
+
+La Fase 4 (Identidad Visual / Design System) del roadmap de marca/
+producto está **abierta pero no cerrada**: existe un documento raíz en
+borrador (v0.1) con dirección visual completa y varios puntos
+explícitamente `PENDIENTE DE DEFINIR` (símbolo del logo, monograma,
+referencia al origen del nombre, valores exactos de color/tipografía).
+El siguiente paso es una decisión del fundador: aprobar el documento
+tal cual (dejando esos vacíos para una iteración posterior) o resolver
+primero alguno de ellos antes de aprobar.
 
 ## Notas para cualquier IA que retome el proyecto
 
@@ -346,3 +373,14 @@ la espera de instrucción explícita del fundador.
     `main`) — cualquier IA que retome el proyecto debe comprobar el
     estado real de esa rama/PR antes de asumir que `main` ya incluye
     esta revisión de marca.
+22. La Fase 4 (Identidad Visual / Design System) está **abierta pero
+    no cerrada** desde el 2026-07-21 (Decisión 027):
+    `04_IDENTIDAD_VISUAL_design_system.md` (v0.1, `En borrador`) fija
+    dirección visual completa a partir de dos entrevistas, pero deja
+    explícitamente `PENDIENTE DE DEFINIR` el símbolo del logo, el
+    monograma, la referencia al origen del nombre, y los valores
+    concretos de color/tipografía/fotografía — ninguna IA debe
+    inventarlos ni tratarlos como resueltos. El trabajo vive en la rama
+    `docs/design-system-v1.0` (creada desde `docs/brand-bible-v1.1`,
+    ya que el PR #2 seguía sin fusionar) — comprobar el estado real de
+    ambas ramas/PRs antes de asumir qué hay ya en `main`.

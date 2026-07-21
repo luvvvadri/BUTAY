@@ -1,7 +1,7 @@
 # DECISIONS.md
 
 > **Tipo de documento:** Sistema — Registro de decisiones (append-only)
-> **Versión:** 1.3
+> **Versión:** 1.4
 > **Fecha de creación:** 2026-07-18
 > **Última actualización:** 2026-07-21
 > **Estado:** Vivo (solo se añade, nunca se reescribe)
@@ -498,4 +498,36 @@ nueva encaja como enriquecimiento (personalidad, territorio narrativo,
 tagline) y no como contradicción real, salvo la Visión, que se
 mantiene intacta en Fase 1 y se incorpora como expresión narrativa
 adicional dentro del Brand Bible.
+**Estado:** Activa.
+
+### Decisión 027 — 2026-07-21
+**Decisión:** Se abre formalmente la Fase 4 del roadmap de marca/
+producto (Identidad Visual / Design System) y se redacta su documento
+raíz, `04_IDENTIDAD_VISUAL_design_system.md` (v0.1, `En borrador`),
+siguiendo el índice aprobado tras dos entrevistas de identidad visual
+con el fundador (dirección visual general y logo). Consolida en un
+único documento raíz lo que el roadmap original de `INDEX.md` preveía
+como tres piezas separadas ("Manual de marca", "Paleta de color",
+"Sistema tipográfico") — mismo patrón de consolidación aplicado por el
+Brand Bible (Decisión 011) y Product Strategy (Decisión 018). El
+documento fija dirección visual (personalidad, territorio emocional,
+color, tipografía, fotografía, dirección artística, logo, aplicación
+en prenda, packaging, experiencia web) sin cerrar valores concretos
+(colores hex, tipografías, forma del logo), marcados explícitamente
+`PENDIENTE DE DEFINIR`. No se abre ninguna otra fase junto con esta
+decisión.
+**Alternativas consideradas:** Fragmentar en tres documentos separados,
+siguiendo el roadmap original de `INDEX.md`; completar los valores
+concretos (color, tipografía, logo) por inferencia a partir de la
+dirección cualitativa de la entrevista, en vez de dejarlos marcados
+como pendientes.
+**Razón:** El fundador confirmó, tras aprobar un índice de 18
+apartados (Etapas 1-3 del workflow), que el documento debía redactarse
+completo siguiendo exactamente ese índice, sin inventar ningún valor
+que siguiera sin decidir — coherente con el principio de no completar
+huecos por inferencia (`00_SYSTEM_WORKFLOW.md` §3, §10) y con el
+patrón de consolidación ya aplicado dos veces en el proyecto. El
+documento queda en estado `En borrador`, pendiente de autoauditoría y
+aprobación explícita, no `Approved` — sigue el mismo protocolo que
+gobernó la primera redacción del Brand Bible (Decisión 015).
 **Estado:** Activa.
