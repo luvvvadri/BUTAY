@@ -1,10 +1,16 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { Gallery } from '@/components/product/gallery';
+import { VariantSelector } from '@/components/product/variant-selector';
 import { Badge } from '@/components/ui/badge';
 import { Breadcrumb } from '@/components/ui/breadcrumb';
+import { Button } from '@/components/ui/button';
+import { Grid } from '@/components/ui/grid';
 import { Section } from '@/components/ui/section';
 import { Stack } from '@/components/ui/stack';
 import { Typography } from '@/components/ui/typography';
+import { getCategoryBySlug } from '@/data/categories';
+import { getCollectionBySlug } from '@/data/collections';
 import { getSkuBySlug, getSkus } from '@/data/products';
 import { productBreadcrumb } from '@/lib/breadcrumb';
 
@@ -27,7 +33,9 @@ export async function generateMetadata({
 /**
  * Archived products stay reachable here, never 404 — "archive, never
  * delete" (Product Strategy §7, WEB_HANDOFF.md §5). Only a slug that
- * matches no SKU at all triggers not-found.
+ * matches no SKU at all triggers not-found. No cart, no checkout —
+ * that's Fase 12, not started; the CTA below is intentionally
+ * disabled.
  */
 export default async function ProductPage({ params }: ProductPageProps) {
   const { sku: skuSlug } = await params;
@@ -37,28 +45,46 @@ export default async function ProductPage({ params }: ProductPageProps) {
     notFound();
   }
 
+  const category = getCategoryBySlug(sku.categorySlug);
+  const collection = getCollectionBySlug(sku.collectionSlug);
+
   return (
     <Section>
       <Breadcrumb items={productBreadcrumb(sku)} />
-      <Stack direction="row" align="center" gap="sm" className="mt-4">
-        <Typography variant="h1">{sku.name}</Typography>
-        {sku.status === 'archived' && <Badge variant="outline">Archived</Badge>}
-      </Stack>
-      <Typography tone="muted" className="mt-2">
-        Message visibility: {sku.messageVisibility}
-      </Typography>
-      <Typography variant="h4" className="mt-8">
-        Available options
-      </Typography>
-      <Stack as="ul" gap="sm" className="mt-2">
-        {sku.variants.map((variant) => (
-          <li key={variant.id}>
-            <Typography as="span" tone="muted">
-              {variant.size} — {variant.color}
+
+      <Grid columns={2} gap="xl" className="mt-8">
+        <Gallery productName={sku.name} />
+
+        <Stack gap="lg">
+          <Stack direction="row" align="center" gap="sm" wrap>
+            <Typography variant="h1">{sku.name}</Typography>
+            {sku.status === 'archived' && (
+              <Badge variant="outline">Archived</Badge>
+            )}
+            {sku.messageVisibility === 'featured' && (
+              <Badge variant="accent">Featured</Badge>
+            )}
+          </Stack>
+
+          <Stack direction="row" gap="sm" wrap>
+            {category && <Badge variant="neutral">{category.name}</Badge>}
+            {collection && <Badge variant="neutral">{collection.name}</Badge>}
+          </Stack>
+
+          <Stack gap="xs">
+            <Typography tone="muted">Status: {sku.status}</Typography>
+            <Typography tone="muted">
+              Message visibility: {sku.messageVisibility}
             </Typography>
-          </li>
-        ))}
-      </Stack>
+          </Stack>
+
+          <VariantSelector variants={sku.variants} />
+
+          <Button size="lg" disabled className="w-fit">
+            Add to bag — coming soon
+          </Button>
+        </Stack>
+      </Grid>
     </Section>
   );
 }
