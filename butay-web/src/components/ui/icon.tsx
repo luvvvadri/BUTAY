@@ -21,6 +21,7 @@ import { ArrowRight, Menu, X, type LucideIcon } from 'lucide-react';
 const icons = {
   'arrow-right': ArrowRight,
   close: X,
+  menu: Menu,
 } satisfies Record<string, LucideIcon>;
 
 export type IconName = keyof typeof icons;
