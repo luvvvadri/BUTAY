@@ -1,4 +1,4 @@
-import { ArrowRight, X, type LucideIcon } from 'lucide-react';
+import { ArrowRight, Menu, X, type LucideIcon } from 'lucide-react';
 
 /**
  * Icon wrapper — FRONTEND_ARCHITECTURE.md §14.
@@ -10,7 +10,8 @@ import { ArrowRight, X, type LucideIcon } from 'lucide-react';
  * System) touches this one file, not every call site.
  *
  * Entries are added only as real usages need them, never
- * speculatively — "close" was added for the Modal's dismiss button.
+ * speculatively — "close" was added for the Modal's dismiss button,
+ * "menu" for the mobile navigation toggle.
  *
  * Defaults to `aria-hidden` (decorative) unless `label` is provided, in
  * which case it renders as a labeled graphic for assistive technology —
@@ -20,6 +21,7 @@ import { ArrowRight, X, type LucideIcon } from 'lucide-react';
 const icons = {
   'arrow-right': ArrowRight,
   close: X,
+  menu: Menu,
 } satisfies Record<string, LucideIcon>;
 
 export type IconName = keyof typeof icons;

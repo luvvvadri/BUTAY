@@ -1,7 +1,7 @@
 # CHANGELOG.md
 
 > **Tipo de documento:** Sistema — Historial de cambios (append-only)
-> **Versión:** 2.7
+> **Versión:** 2.8
 > **Fecha de creación:** 2026-07-18
 > **Última actualización:** 2026-07-21
 > **Estado:** Vivo (solo se añade, nunca se reescribe)
@@ -53,6 +53,92 @@ por todo el historial. Si el archivo crece demasiado, se archivan por año
 ---
 
 ## Historial
+
+### 2026-07-21 (cierre de la Fase 5 técnica de DEVELOPMENT_ROADMAP.md — layouts y navegación)
+
+- **Rama `feature/fase-5-layouts-navigation`** (creada sobre
+  `feature/fase-4-catalog-data-layer`; sin fusionar todavía). Tras la
+  aprobación explícita del fundador de la propuesta de arquitectura
+  (Etapas 1-2 del workflow — comprensión y arquitectura, presentadas y
+  aprobadas en el chat, sin generar un documento nuevo), se ejecutó la
+  Etapa 3 (Implementación completa) en bloques:
+  1. Primitivos de nivel 1 nuevos: `Drawer` (mismo patrón que `Modal`
+     — Radix Dialog, foco, Escape, retorno de foco — anclado a un
+     lateral en vez de centrado), `Breadcrumb` (agnóstico de
+     catálogo/marca, recibe `{label, href}[]`), `EmptyState`. Icono
+     `menu` añadido al registro de `Icon`.
+  2. Componentes de layout: `Header`, `Footer`, `Navigation` (única
+     fuente de enlaces — Catálogo, Archivo, Manifiesto —, renderizada
+     de forma responsive: nav horizontal en escritorio, `Drawer` en
+     móvil; sin entrada "Collections" porque no existe una ruta índice
+     aprobada, solo `/collections/[collection]`), `NavLink` (compone
+     `Link` con `usePathname()` para `aria-current` y estado activo),
+     `AnnouncementBar` (slot estructural, inactivo por defecto).
+  3. Layout raíz reescrito (`Header` + `AnnouncementBar` + `Footer`
+     envolviendo `children`, metadata con plantilla de título) y
+     estados raíz (`loading.tsx`, `error.tsx`, `not-found.tsx`).
+  4. Route group `(site)`: `/` y `/manifesto` (stubs estructurales).
+  5. Route group `(shop)`: `/catalog`, `/catalog/[category]`,
+     `/collections/[collection]`, `/product/[sku]`, `/archive` —
+     todas consumiendo exclusivamente las funciones de acceso de la
+     Fase 4 (`getSkus*`, `getCategories`, `getCollections`,
+     `getDrops`), sin ningún producto hardcodeado. `src/lib/breadcrumb.ts`
+     traduce datos de catálogo a la forma genérica que `Breadcrumb`
+     espera. Los productos archivados permanecen consultables (nunca
+     404), coherente con "archivar, no borrar" (Product Strategy §7).
+     `catalog/[category]` y `collections/[collection]` llaman a
+     `notFound()` para slugs inexistentes.
+  6. `robots.ts`/`sitemap.ts`, estructurales, generados íntegramente
+     desde `/data` — sin contenido ni optimización real (Fase 10).
+  Resolución de una ambigüedad de alcance detectada en la Etapa 1: no
+  existe una ruta `/drops` dedicada (no está en
+  `FRONTEND_ARCHITECTURE.md` §6; un Drop es un nivel opcional dentro
+  de una Colección, Product Strategy §6) — un drop activo se muestra
+  como sección dentro de `/collections/[collection]`. Deliberadamente
+  fuera de alcance (Fases 6 y 7): ningún componente de dominio
+  (`components/product`) ni diseño visual pulido — las páginas de
+  `(shop)` reutilizan directamente los primitivos de la Fase 3.
+- **DEVELOPMENT_ROADMAP.md** — v1.6 → v1.7. La Fase 5 (Layouts y
+  navegación) pasa a estado **Completa** en la tabla "Estado de
+  avance" y se le añade un apartado "Estado"; se actualiza el bloque
+  de cierre estándar (próxima fase recomendada: Fase 6 — Páginas de
+  catálogo, sin abrirse todavía).
+- **CONTEXT.md** — v2.7 → v2.8. Se añade el párrafo de cierre de la
+  Fase 5 técnica en "Estado general"; se corrige la frase de apertura
+  de "Estado general" para reflejar las cinco fases técnicas
+  completas; se actualiza "Aprobado" (versión de
+  `DEVELOPMENT_ROADMAP.md`), "Próximo paso" y las notas 19 y 23 para
+  cualquier IA; se añade la nota 24 documentando el alcance
+  deliberadamente excluido (componentes de dominio, ruta `/drops`).
+- **INDEX.md** — v2.6 → v2.7. Se actualiza la fila de
+  `DEVELOPMENT_ROADMAP.md` en "Documentos técnicos de desarrollo"
+  (v1.7, Fases 1-5 Completas); se sincroniza la versión de CONTEXT.md;
+  se añade nota sobre el cierre de la Fase 5 técnica.
+- **CHANGELOG.md** — este mismo registro.
+
+**Nota de auditoría de cierre de fase.** Se ejecutaron `npm run lint`,
+`npm run format:check`, `npm run test`, `npx tsc --noEmit` y `npm run
+build` sobre `butay-web/` en el estado final de
+`feature/fase-5-layouts-navigation`: los cinco sin errores (109/109
+tests, 23 rutas generadas, incluidas las estáticas de
+`generateStaticParams` para categorías, colecciones y productos). Un
+`format:check` intermedio detectó 3 archivos sin formatear
+(`drawer`/`breadcrumb`/`empty-state`, un `prettier --write` por
+archivo suelto anterior que no cubrió todos) — corregido antes del
+cierre. Se verificaron los criterios de finalización de la Fase 5:
+navegación completa operable por teclado (apertura/cierre del
+`Drawer`, `Tab`/`Enter`/`Escape`, verificado por test); las rutas
+siguen la jerarquía de catálogo ya fijada en
+`FRONTEND_ARCHITECTURE.md` §6, no una estructura arbitraria. Se
+verificaron por grep las versiones de cabecera de
+`DEVELOPMENT_ROADMAP.md`, `CONTEXT.md` e `INDEX.md` contra la tabla de
+`INDEX.md`: coinciden. No se registra ninguna decisión nueva en
+`DECISIONS.md`: la estructura de rutas y layouts ejecuta directamente
+lo ya fijado en `FRONTEND_ARCHITECTURE.md` §5-6; la resolución de
+"Drops" y "Sobre Butay" fue una interpretación de arquitectura ya
+aprobada, no una decisión de fondo nueva. La Fase 5 técnica queda
+**Completa**, pendiente de creación de PR y revisión del fundador — no
+se fusiona a `main` en este movimiento.
 
 ### 2026-07-21 (merge de PR #4 y cierre de la Fase 4 técnica de DEVELOPMENT_ROADMAP.md — modelo de datos y capa de catálogo)
 

@@ -1,7 +1,7 @@
 # CONTEXT.md
 
 > **Tipo de documento:** Sistema — Memoria permanente
-> **Versión:** 2.7
+> **Versión:** 2.8
 > **Fecha de creación:** 2026-07-18
 > **Última actualización:** 2026-07-21
 > **Estado:** Vivo (se reescribe, no se acumula)
@@ -75,10 +75,11 @@ mantiene siempre corto (objetivo: legible en menos de dos minutos).
 La Fase 4 (Identidad Visual / Design System) **está abierta, con un
 documento raíz en borrador (v0.1) pendiente de aprobación** — ver más
 abajo. En el track técnico de `DEVELOPMENT_ROADMAP.md`, las Fases 1, 2,
-3 y 4 (Configuración del proyecto; Fundamentos visuales provisionales;
-Sistema de componentes base; Modelo de datos y capa de catálogo) están
-**completas**; el PR de la Fase 4 técnica está pendiente de
-creación/revisión. El proyecto
+3, 4 y 5 (Configuración del proyecto; Fundamentos visuales
+provisionales; Sistema de componentes base; Modelo de datos y capa de
+catálogo; Layouts y navegación) están **completas**; los PR de las
+Fases 4 y 5 técnicas siguen pendientes de revisión (Fase 3 ya
+fusionada vía PR #4). El proyecto
 completó el 2026-07-20 su entrega técnica ("Developer Handoff") para
 Claude Code: `WEB_HANDOFF.md`, `CLAUDE_CODE.md`,
 `FRONTEND_ARCHITECTURE.md` y `DEVELOPMENT_ROADMAP.md` (Decisión 021),
@@ -286,6 +287,38 @@ nuevos (63 en total en el proyecto). `npm run lint`, `npm run
 format:check`, `npm run test`, `npx tsc --noEmit` y `npm run build` se
 ejecutan sin errores. **La Fase 4 técnica queda oficialmente
 cerrada** — ver el apartado "Estado" de la Fase 4 en
+`DEVELOPMENT_ROADMAP.md`. El PR correspondiente (PR #5) sigue abierto,
+pendiente de revisión del fundador — no se ha fusionado a `main`.
+
+**Fase 5 de `DEVELOPMENT_ROADMAP.md` completa (2026-07-21) — Layouts y
+navegación.** Tras la aprobación explícita del fundador de la
+arquitectura propuesta (Etapas 1-2 del workflow), se ejecutó la Etapa
+3 (Implementación completa) sin nueva comprensión ni entrevistas.
+Trabajada en `feature/fase-5-layouts-navigation` (creada sobre
+`feature/fase-4-catalog-data-layer`, sin fusionar todavía). Se
+construyeron tres componentes nuevos de nivel 1 (`Drawer`, agnóstico
+de marca — mismo patrón que `Modal` con Radix Dialog, anclado a un
+lateral; `Breadcrumb`; `EmptyState`) y los componentes de
+`src/components/layout/` (`Header`, `Footer`, `Navigation`, `NavLink`,
+`AnnouncementBar`). Se implementó la estructura de rutas completa de
+`FRONTEND_ARCHITECTURE.md` §6 mediante route groups: `(site)` (home,
+manifiesto) y `(shop)` (catálogo, categoría, colección, producto,
+archivo), todas consumiendo exclusivamente la capa `/data` de la Fase
+4 — ningún producto hardcodeado. Los ítems de `Breadcrumb` se
+construyen en `src/lib/breadcrumb.ts` a partir de los datos reales,
+manteniendo el componente agnóstico. Los productos archivados
+permanecen consultables en `/product/[sku]` (nunca 404), coherente con
+"archivar, no borrar" (Product Strategy §7). Se añadió andamiaje SEO
+mínimo (`robots.ts`, `sitemap.ts`, generados desde `/data`, sin
+contenido definitivo — la optimización real es Fase 10). No existe una
+ruta `/drops` dedicada (no está en la arquitectura aprobada): un drop
+activo se muestra como sección dentro de su colección. Deliberadamente
+fuera de alcance: ningún componente de dominio (`components/product`)
+ni diseño visual pulido — eso corresponde a las Fases 6 y 7. 109 tests
+en total (46 nuevos). `npm run lint`, `npm run format:check`, `npm run
+test`, `npx tsc --noEmit` y `npm run build` se ejecutan sin errores —
+23 rutas generadas correctamente. **La Fase 5 técnica queda
+oficialmente cerrada** — ver el apartado "Estado" de la Fase 5 en
 `DEVELOPMENT_ROADMAP.md`. El PR correspondiente está pendiente de
 creación/revisión — no se ha fusionado a `main`.
 
@@ -309,7 +342,7 @@ creación/revisión — no se ha fusionado a `main`.
 - **WEB_HANDOFF.md (v1.0, Final)**
 - **CLAUDE_CODE.md (v1.1, Final)**
 - **FRONTEND_ARCHITECTURE.md (v1.0, Final)**
-- **DEVELOPMENT_ROADMAP.md (v1.6, Final en estructura, vivo en su seguimiento de estado — Fases 1, 2, 3 y 4 Completas)**
+- **DEVELOPMENT_ROADMAP.md (v1.7, Final en estructura, vivo en su seguimiento de estado — Fases 1-5 Completas)**
 - **00_SYSTEM_WORKFLOW.md (v1.0, `Approved`, Decisión 022)**
 
 ## En borrador / en curso
@@ -321,14 +354,16 @@ creación/revisión — no se ha fusionado a `main`.
 
 ## Próximo paso
 
-Las Fases 1, 2, 3 y 4 de `DEVELOPMENT_ROADMAP.md` (Configuración del
-proyecto; Fundamentos visuales provisionales; Sistema de componentes
-base; Modelo de datos y capa de catálogo) están completas. La Fase 4
-se trabajó en `feature/fase-4-catalog-data-layer`, pendiente de PR y
-revisión del fundador — no se ha fusionado a `main` todavía. El
-siguiente paso es crear ese PR y esperar la revisión del fundador
-antes de considerar la apertura de la Fase 5 técnica (Layouts y
-navegación), que requiere instrucción explícita, igual que el resto de
+Las Fases 1-5 de `DEVELOPMENT_ROADMAP.md` (Configuración del proyecto;
+Fundamentos visuales provisionales; Sistema de componentes base;
+Modelo de datos y capa de catálogo; Layouts y navegación) están
+completas. Las Fases 4 y 5 se trabajaron en `feature/fase-4-catalog-data-layer`
+y `feature/fase-5-layouts-navigation` (esta última creada sobre la
+primera), ambas pendientes de PR/revisión del fundador — ninguna se ha
+fusionado a `main` todavía (PR #5 de la Fase 4 sigue abierto; el PR de
+la Fase 5 está por crear). El siguiente paso es esperar esa revisión
+antes de considerar la apertura de la Fase 6 técnica (Páginas de
+catálogo), que requiere instrucción explícita, igual que el resto de
 fases.
 
 La Fase 4 (Identidad Visual / Design System) del roadmap de marca/
@@ -405,20 +440,26 @@ contradicción crítica que lo exija.
     *(Decisión 025)*. La raíz contiene `docs/` (esta carpeta) y
     `butay-web/` (código fuente de la web, Next.js). Cualquier IA que
     retome el proyecto debe trabajar sobre esta ubicación.
-19. Las Fases 1, 2, 3 y 4 de `DEVELOPMENT_ROADMAP.md` (Configuración
-    del proyecto; Fundamentos visuales provisionales; Sistema de
-    componentes base; Modelo de datos y capa de catálogo) están
-    **Completas** — la Fase 1 incluye el pipeline de despliegue
-    (GitHub → Vercel, producción en `https://butay.vercel.app/`); la
-    Fase 2, los tokens de diseño provisionales y el envoltorio de
-    iconografía; la Fase 3, los componentes base de
-    `src/components/ui/` (botón, input, badge, modal, tarjeta,
-    layout, tipografía) y la infraestructura de testing (Vitest); la
-    Fase 4, los tipos de catálogo (`src/types/catalog.ts`) y la capa
-    de datos de prueba con sus funciones de acceso (`src/data/`). Ver
-    el apartado "Estado" de cada fase en ese documento. La Fase 3 ya
-    está fusionada a `main` (PR #4, 2026-07-21); la Fase 4 vive en
-    `feature/fase-4-catalog-data-layer`, sin fusionar todavía.
+19. Las Fases 1-5 de `DEVELOPMENT_ROADMAP.md` (Configuración del
+    proyecto; Fundamentos visuales provisionales; Sistema de
+    componentes base; Modelo de datos y capa de catálogo; Layouts y
+    navegación) están **Completas** — la Fase 1 incluye el pipeline de
+    despliegue (GitHub → Vercel, producción en
+    `https://butay.vercel.app/`); la Fase 2, los tokens de diseño
+    provisionales y el envoltorio de iconografía; la Fase 3, los
+    componentes base de `src/components/ui/` (botón, input, badge,
+    modal, tarjeta, layout, tipografía) y la infraestructura de testing
+    (Vitest); la Fase 4, los tipos de catálogo
+    (`src/types/catalog.ts`) y la capa de datos de prueba con sus
+    funciones de acceso (`src/data/`); la Fase 5, el layout raíz
+    (`Header`/`Footer`/`Navigation`/`AnnouncementBar`), los primitivos
+    `Drawer`/`Breadcrumb`/`EmptyState`, y la estructura de rutas
+    completa en `src/app/(site)/` y `src/app/(shop)/`. Ver el apartado
+    "Estado" de cada fase en ese documento. La Fase 3 ya está fusionada
+    a `main` (PR #4, 2026-07-21); las Fases 4 y 5 viven en
+    `feature/fase-4-catalog-data-layer` y
+    `feature/fase-5-layouts-navigation` respectivamente, sin fusionar
+    todavía.
 20. Los PR #1, #2 y #3 están **fusionados a `main`** desde el
     2026-07-21 — no queda ninguna rama de trabajo pendiente de
     fusionar; las tres ramas (`feature/fase-2-foundations`,
@@ -441,8 +482,14 @@ contradicción crítica que lo exija.
 23. Desde el 2026-07-21, el foco del proyecto es el **desarrollo**
     técnico — por instrucción explícita del fundador, no se retoma
     documentación de marca/identidad salvo que surja una contradicción
-    crítica que lo exija. Las Fases 3 y 4 técnicas (Sistema de
-    componentes base; Modelo de datos y capa de catálogo) ya están
-    completas; el siguiente movimiento de desarrollo (Fase 5 técnica,
-    Layouts y navegación) requiere instrucción explícita del fundador,
-    igual que el resto de fases.
+    crítica que lo exija. Las Fases 3, 4 y 5 técnicas (Sistema de
+    componentes base; Modelo de datos y capa de catálogo; Layouts y
+    navegación) ya están completas; el siguiente movimiento de
+    desarrollo (Fase 6 técnica, Páginas de catálogo) requiere
+    instrucción explícita del fundador, igual que el resto de fases.
+24. La Fase 5 (Layouts y navegación) no incluye componentes de dominio
+    (`components/product`) ni diseño visual pulido de catálogo —
+    deliberadamente reservado a las Fases 6 (Páginas de catálogo) y 7
+    (Ficha de producto). Tampoco existe una ruta `/drops` dedicada: no
+    está en `FRONTEND_ARCHITECTURE.md` §6, y un Drop se muestra como
+    sección dentro de `/collections/[collection]` cuando existe.
