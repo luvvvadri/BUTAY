@@ -1,7 +1,7 @@
 # CONTEXT.md
 
 > **Tipo de documento:** Sistema — Memoria permanente
-> **Versión:** 2.8
+> **Versión:** 2.9
 > **Fecha de creación:** 2026-07-18
 > **Última actualización:** 2026-07-21
 > **Estado:** Vivo (se reescribe, no se acumula)
@@ -77,9 +77,10 @@ documento raíz en borrador (v0.1) pendiente de aprobación** — ver más
 abajo. En el track técnico de `DEVELOPMENT_ROADMAP.md`, las Fases 1, 2,
 3, 4 y 5 (Configuración del proyecto; Fundamentos visuales
 provisionales; Sistema de componentes base; Modelo de datos y capa de
-catálogo; Layouts y navegación) están **completas**; los PR de las
-Fases 4 y 5 técnicas siguen pendientes de revisión (Fase 3 ya
-fusionada vía PR #4). El proyecto
+catálogo; Layouts y navegación) están **completas y fusionadas a
+`main`** (PR #4, #5 y #6, el último el 2026-07-21) — no queda ninguna
+rama de desarrollo pendiente de fusionar; solo existe `main`. El
+proyecto
 completó el 2026-07-20 su entrega técnica ("Developer Handoff") para
 Claude Code: `WEB_HANDOFF.md`, `CLAUDE_CODE.md`,
 `FRONTEND_ARCHITECTURE.md` y `DEVELOPMENT_ROADMAP.md` (Decisión 021),
@@ -287,15 +288,16 @@ nuevos (63 en total en el proyecto). `npm run lint`, `npm run
 format:check`, `npm run test`, `npx tsc --noEmit` y `npm run build` se
 ejecutan sin errores. **La Fase 4 técnica queda oficialmente
 cerrada** — ver el apartado "Estado" de la Fase 4 en
-`DEVELOPMENT_ROADMAP.md`. El PR correspondiente (PR #5) sigue abierto,
-pendiente de revisión del fundador — no se ha fusionado a `main`.
+`DEVELOPMENT_ROADMAP.md`. El PR correspondiente (PR #5) se fusionó a
+`main` el 2026-07-21, tras la revisión y aprobación explícita del
+fundador; la rama `feature/fase-4-catalog-data-layer` se eliminó.
 
 **Fase 5 de `DEVELOPMENT_ROADMAP.md` completa (2026-07-21) — Layouts y
 navegación.** Tras la aprobación explícita del fundador de la
 arquitectura propuesta (Etapas 1-2 del workflow), se ejecutó la Etapa
 3 (Implementación completa) sin nueva comprensión ni entrevistas.
 Trabajada en `feature/fase-5-layouts-navigation` (creada sobre
-`feature/fase-4-catalog-data-layer`, sin fusionar todavía). Se
+`feature/fase-4-catalog-data-layer`). Se
 construyeron tres componentes nuevos de nivel 1 (`Drawer`, agnóstico
 de marca — mismo patrón que `Modal` con Radix Dialog, anclado a un
 lateral; `Breadcrumb`; `EmptyState`) y los componentes de
@@ -319,8 +321,17 @@ en total (46 nuevos). `npm run lint`, `npm run format:check`, `npm run
 test`, `npx tsc --noEmit` y `npm run build` se ejecutan sin errores —
 23 rutas generadas correctamente. **La Fase 5 técnica queda
 oficialmente cerrada** — ver el apartado "Estado" de la Fase 5 en
-`DEVELOPMENT_ROADMAP.md`. El PR correspondiente está pendiente de
-creación/revisión — no se ha fusionado a `main`.
+`DEVELOPMENT_ROADMAP.md`. El PR correspondiente (PR #6) se fusionó a
+`main` el 2026-07-21, tras una última auditoría completa (que corrigió
+un desajuste real de versión de CHANGELOG.md en la tabla de INDEX.md)
+y la aprobación explícita del fundador; la rama
+`feature/fase-5-layouts-navigation` se eliminó.
+
+**Cierre y limpieza de ramas (2026-07-21).** Con los PR #5 y #6
+aprobados y fusionados, `main` queda como única rama del repositorio
+— ninguna rama de desarrollo pendiente de fusionar. El proyecto está
+listo para abrir la Fase 6 técnica (Páginas de catálogo) en cuanto el
+fundador dé la instrucción explícita.
 
 ## Aprobado
 
@@ -357,14 +368,11 @@ creación/revisión — no se ha fusionado a `main`.
 Las Fases 1-5 de `DEVELOPMENT_ROADMAP.md` (Configuración del proyecto;
 Fundamentos visuales provisionales; Sistema de componentes base;
 Modelo de datos y capa de catálogo; Layouts y navegación) están
-completas. Las Fases 4 y 5 se trabajaron en `feature/fase-4-catalog-data-layer`
-y `feature/fase-5-layouts-navigation` (esta última creada sobre la
-primera), ambas pendientes de PR/revisión del fundador — ninguna se ha
-fusionado a `main` todavía (PR #5 de la Fase 4 sigue abierto; el PR de
-la Fase 5 está por crear). El siguiente paso es esperar esa revisión
-antes de considerar la apertura de la Fase 6 técnica (Páginas de
-catálogo), que requiere instrucción explícita, igual que el resto de
-fases.
+completas y **fusionadas a `main`** (PR #4, #5 y #6) — no queda
+ninguna rama de desarrollo pendiente, solo `main`. El siguiente paso
+es esperar instrucción explícita del fundador para abrir la Fase 6
+técnica (Páginas de catálogo), que no se abre automáticamente por
+haberse cerrado la Fase 5.
 
 La Fase 4 (Identidad Visual / Design System) del roadmap de marca/
 producto sigue **abierta pero no cerrada**: el documento raíz (v0.1)
@@ -455,11 +463,9 @@ contradicción crítica que lo exija.
     (`Header`/`Footer`/`Navigation`/`AnnouncementBar`), los primitivos
     `Drawer`/`Breadcrumb`/`EmptyState`, y la estructura de rutas
     completa en `src/app/(site)/` y `src/app/(shop)/`. Ver el apartado
-    "Estado" de cada fase en ese documento. La Fase 3 ya está fusionada
-    a `main` (PR #4, 2026-07-21); las Fases 4 y 5 viven en
-    `feature/fase-4-catalog-data-layer` y
-    `feature/fase-5-layouts-navigation` respectivamente, sin fusionar
-    todavía.
+    "Estado" de cada fase en ese documento. Las Fases 3, 4 y 5 están
+    **fusionadas a `main`** (PR #4, #5 y #6, el último el 2026-07-21) —
+    sus ramas de desarrollo se eliminaron; solo existe `main`.
 20. Los PR #1, #2 y #3 están **fusionados a `main`** desde el
     2026-07-21 — no queda ninguna rama de trabajo pendiente de
     fusionar; las tres ramas (`feature/fase-2-foundations`,

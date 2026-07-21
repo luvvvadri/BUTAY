@@ -1,7 +1,7 @@
 # CHANGELOG.md
 
 > **Tipo de documento:** Sistema — Historial de cambios (append-only)
-> **Versión:** 2.8
+> **Versión:** 2.9
 > **Fecha de creación:** 2026-07-18
 > **Última actualización:** 2026-07-21
 > **Estado:** Vivo (solo se añade, nunca se reescribe)
@@ -53,6 +53,58 @@ por todo el historial. Si el archivo crece demasiado, se archivan por año
 ---
 
 ## Historial
+
+### 2026-07-21 (cierre de documentación — merge de PR #5 y PR #6, limpieza de ramas)
+
+- **Auditoría previa a la fusión.** A petición del fundador, antes de
+  fusionar ningún PR se ejecutó una última auditoría completa sobre
+  `feature/fase-5-layouts-navigation` (que incluye todo lo de la Fase
+  4): `npm run lint`, `npm run format:check`, `npm run test`
+  (109/109), `npx tsc --noEmit` y `npm run build`, los cinco sin
+  errores. Se revisaron referencias cruzadas (`.md` citados en toda la
+  documentación contra los archivos reales de `docs/` — sin hallazgos
+  nuevos, solo las menciones ya documentadas como descartadas o
+  futuras en `DECISIONS.md`), se confirmó que ningún documento
+  congelado (`CLAUDE_CODE.md`, `FRONTEND_ARCHITECTURE.md`,
+  `WEB_HANDOFF.md`, Brand Bible, Product Strategy, Design System,
+  `00_SYSTEM_WORKFLOW.md`, `DECISIONS.md`, `GLOSSARY.md`) fue tocado
+  por las ramas de las Fases 4-5, y se comprobó la numeración de notas
+  de `CONTEXT.md` (1-24, sin duplicados ni huecos).
+  - **Hallazgo real corregido:** la tabla "Documentos de sistema" de
+    `INDEX.md` seguía mostrando `CHANGELOG.md` como v2.5, tres
+    versiones por detrás de su cabecera real (v2.8) — arrastrado sin
+    corregirse a través de los cierres de las Fases 3, 4 y 5.
+    Corregido antes de fusionar.
+  - No se encontraron cambios cosméticos que aplicar — la instrucción
+    explícita del fundador fue corregir solo errores reales, no estilo.
+- **PR #5** (`feature/fase-4-catalog-data-layer` → `main`) aprobado y
+  fusionado.
+- **PR #6** (`feature/fase-5-layouts-navigation` → `main`, retargeteado
+  desde `feature/fase-4-catalog-data-layer` tras el merge del PR #5,
+  mismo patrón ya usado con el PR #3) aprobado y fusionado.
+- **Ramas eliminadas** (local y remoto, ya fusionadas):
+  `feature/fase-4-catalog-data-layer`, `feature/fase-5-layouts-navigation`.
+  Solo queda `main`.
+- **CONTEXT.md** — v2.8 → v2.9. Se elimina todo el lenguaje "sin
+  fusionar todavía" de los párrafos de cierre de las Fases 4 y 5; se
+  añade el párrafo de cierre y limpieza de ramas; se actualiza "Estado
+  general", "Próximo paso" y la nota 19.
+- **INDEX.md** — v2.7 → v2.8. Se corrige la versión de CHANGELOG.md en
+  la tabla "Documentos de sistema" (2.5 → 2.8); se actualiza la fila
+  de `DEVELOPMENT_ROADMAP.md` (Fases 1-5 fusionadas); se elimina el
+  lenguaje de ramas sin fusionar en "Notas" y se añade el párrafo de
+  cierre.
+- **CHANGELOG.md** — este mismo registro.
+
+**Nota de auditoría de cierre.** Verificado que `main` es la única
+rama del repositorio (local y remoto) tras la limpieza. Se repitieron
+`npm run lint`, `npm run format:check`, `npm run test`, `npx tsc
+--noEmit` y `npm run build` sobre `main` ya actualizado: los cinco sin
+errores (109/109 tests, build con 23 rutas). No se registra ninguna
+decisión nueva en `DECISIONS.md`: fusionar PRs ya aprobados y limpiar
+ramas es ejecución administrativa de decisiones ya tomadas, mismo
+criterio aplicado en el cierre equivalente de las Fases 2-3 (PR #2 y
+#3).
 
 ### 2026-07-21 (cierre de la Fase 5 técnica de DEVELOPMENT_ROADMAP.md — layouts y navegación)
 

@@ -1,7 +1,7 @@
 # INDEX.md
 
 > **Tipo de documento:** Sistema — Mapa maestro
-> **Versión:** 2.7
+> **Versión:** 2.8
 > **Fecha de creación:** 2026-07-18
 > **Última actualización:** 2026-07-21
 > **Estado:** Vivo
@@ -97,8 +97,8 @@ convención de carpeta plana ya establecida sin aportar valor.
 
 | Documento | Versión | Estado | Última actualización | Depende de |
 |---|---|---|---|---|
-| CONTEXT.md | 2.8 | Vivo | 2026-07-21 | — |
-| INDEX.md | 2.7 | Vivo | 2026-07-21 | CONTEXT.md |
+| CONTEXT.md | 2.9 | Vivo | 2026-07-21 | — |
+| INDEX.md | 2.8 | Vivo | 2026-07-21 | CONTEXT.md |
 | DECISIONS.md | 1.4 | Vivo | 2026-07-21 | — |
 | GLOSSARY.md | 0.9 | Vivo | 2026-07-20 | DECISIONS.md |
 | CHANGELOG.md | 2.8 | Vivo | 2026-07-21 | INDEX.md |
@@ -127,7 +127,7 @@ convención de carpeta plana ya establecida sin aportar valor.
 | Handoff técnico de transición | WEB_HANDOFF.md | 1.0 | Final | 2026-07-19 | Product Strategy (v1.0); Brand Bible (v1.0) |
 | Puerta de entrada técnica para Claude Code | CLAUDE_CODE.md | 1.1 | Final | 2026-07-20 | WEB_HANDOFF.md; Brand Bible (v1.0); Product Strategy (v1.0); 00_SYSTEM_WORKFLOW.md (v1.0, Approved) |
 | Arquitectura de frontend | FRONTEND_ARCHITECTURE.md | 1.0 | Final | 2026-07-20 | CLAUDE_CODE.md; WEB_HANDOFF.md; Product Strategy (v1.0) |
-| Plan de desarrollo por fases | DEVELOPMENT_ROADMAP.md | 1.7 | Final en estructura, vivo en su seguimiento de estado — Fases 1-5 Completas (Fase 3 fusionada vía PR #4; Fases 4 y 5 en ramas propias, sin fusionar) | 2026-07-21 | CLAUDE_CODE.md; FRONTEND_ARCHITECTURE.md; WEB_HANDOFF.md |
+| Plan de desarrollo por fases | DEVELOPMENT_ROADMAP.md | 1.7 | Final en estructura, vivo en su seguimiento de estado — Fases 1-5 Completas y fusionadas a `main` (PR #4, #5, #6) | 2026-07-21 | CLAUDE_CODE.md; FRONTEND_ARCHITECTURE.md; WEB_HANDOFF.md |
 
 ## Documentos de Fase 2 (Identidad de marca conceptual)
 
@@ -259,9 +259,7 @@ que sea imposible a nivel de tipos violar las reglas de producto ya
 aprobadas (activo/archivado; permanente/temporal). Se creó la capa
 `/data` con 10 SKUs de prueba ficticios y sus funciones de acceso
 tipadas, trabajados en `feature/fase-4-catalog-data-layer`. Ver el
-apartado "Estado" de la Fase 4 en `DEVELOPMENT_ROADMAP.md`. Esta rama
-está pendiente de PR y revisión del fundador — no se ha fusionado a
-`main`.
+apartado "Estado" de la Fase 4 en `DEVELOPMENT_ROADMAP.md`.
 
 Tras la aprobación explícita del fundador de la arquitectura propuesta
 para la **Fase 5 técnica (Layouts y navegación)**, se completó su
@@ -272,5 +270,12 @@ layout), y la estructura de rutas completa de
 `FRONTEND_ARCHITECTURE.md` §6 (`src/app/(site)/`, `src/app/(shop)/`),
 consumiendo exclusivamente la capa `/data` de la Fase 4 — ningún
 producto hardcodeado. Ver el apartado "Estado" de la Fase 5 en
-`DEVELOPMENT_ROADMAP.md`. Esta rama también está pendiente de PR y
-revisión del fundador.
+`DEVELOPMENT_ROADMAP.md`.
+
+**Cierre y limpieza (2026-07-21).** Tras una última auditoría completa
+(que corrigió un desajuste real de versión de CHANGELOG.md en la
+tabla de "Documentos de sistema" de este mismo documento), el
+fundador aprobó y se fusionaron a `main` el PR #5 (Fase 4) y el PR #6
+(Fase 5, retargeteado de `feature/fase-4-catalog-data-layer` a `main`
+tras el merge del PR #5). Ambas ramas de desarrollo se eliminaron
+(local y remoto) — el repositorio queda con una única rama, `main`.
