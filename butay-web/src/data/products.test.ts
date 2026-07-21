@@ -9,6 +9,7 @@ import {
   getSkusByCategory,
   getSkusByCollection,
   getSkusByStatus,
+  getSkusByVisibility,
 } from './products';
 
 describe('products', () => {
@@ -56,6 +57,14 @@ describe('products', () => {
   it('filters by status', () => {
     const active = getSkusByStatus('active');
     expect(active.every((sku) => sku.status === 'active')).toBe(true);
+  });
+
+  it('filters by message visibility', () => {
+    const featured = getSkusByVisibility('featured');
+    expect(featured.length).toBeGreaterThan(0);
+    expect(featured.every((sku) => sku.messageVisibility === 'featured')).toBe(
+      true,
+    );
   });
 
   it('finds a sku by slug', () => {
