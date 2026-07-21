@@ -1,7 +1,7 @@
 # INDEX.md
 
 > **Tipo de documento:** Sistema — Mapa maestro
-> **Versión:** 2.3
+> **Versión:** 2.4
 > **Fecha de creación:** 2026-07-18
 > **Última actualización:** 2026-07-21
 > **Estado:** Vivo
@@ -97,11 +97,11 @@ convención de carpeta plana ya establecida sin aportar valor.
 
 | Documento | Versión | Estado | Última actualización | Depende de |
 |---|---|---|---|---|
-| CONTEXT.md | 2.4 | Vivo | 2026-07-21 | — |
-| INDEX.md | 2.3 | Vivo | 2026-07-21 | CONTEXT.md |
+| CONTEXT.md | 2.5 | Vivo | 2026-07-21 | — |
+| INDEX.md | 2.4 | Vivo | 2026-07-21 | CONTEXT.md |
 | DECISIONS.md | 1.4 | Vivo | 2026-07-21 | — |
 | GLOSSARY.md | 0.9 | Vivo | 2026-07-20 | DECISIONS.md |
-| CHANGELOG.md | 2.4 | Vivo | 2026-07-21 | INDEX.md |
+| CHANGELOG.md | 2.5 | Vivo | 2026-07-21 | INDEX.md |
 | 00_SYSTEM_WORKFLOW.md | 1.0 | Approved / Congelado (Decisión 022) | 2026-07-20 | CONTEXT, INDEX, DECISIONS, GLOSSARY, CHANGELOG |
 
 ## Documentos de Fase 1 (Fundamentos estratégicos)

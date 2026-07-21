@@ -1,7 +1,7 @@
 # CHANGELOG.md
 
 > **Tipo de documento:** Sistema — Historial de cambios (append-only)
-> **Versión:** 2.4
+> **Versión:** 2.5
 > **Fecha de creación:** 2026-07-18
 > **Última actualización:** 2026-07-21
 > **Estado:** Vivo (solo se añade, nunca se reescribe)
@@ -53,6 +53,36 @@ por todo el historial. Si el archivo crece demasiado, se archivan por año
 ---
 
 ## Historial
+
+### 2026-07-21 (cierre de documentación — merge de PR #2 y PR #3, limpieza de ramas)
+
+- **PR #2** (`docs/brand-bible-v1.1` → `main`) fusionado — Brand Bible
+  y Product Strategy v1.1 (Decisión 026) ya en `main`.
+- **PR #3** (`docs/design-system-v1.0` → `main`, retargeteado desde
+  `docs/brand-bible-v1.1` tras el merge de PR #2) fusionado —
+  `04_IDENTIDAD_VISUAL_design_system.md` v0.1 (Decisión 027, `En
+  borrador`) ya en `main`.
+- **Ramas eliminadas** (local y remoto, ya fusionadas): `docs/brand-bible-v1.1`,
+  `docs/design-system-v1.0`, `feature/fase-2-foundations`. Solo queda
+  `main`.
+- **CONTEXT.md** — v2.4 → v2.5. Se eliminan todas las referencias a
+  ramas/PRs "sin fusionar" (ya no aplican); se consolidan y reescriben
+  las notas 19-23 para cualquier IA, incluida una aclaración explícita
+  de que fusionar el Design System a `main` **no equivale** a su
+  aprobación formal (Etapa 8 sigue pendiente); se actualiza "Próximo
+  paso" para reflejar el inicio inmediato de la Fase 3 técnica.
+- **INDEX.md** — v2.3 → v2.4. Versión de CONTEXT.md sincronizada.
+- **CHANGELOG.md** — este mismo registro.
+
+**Nota de auditoría de cierre.** Verificado por grep: sin referencias
+`.md` rotas nuevas; todas las versiones de cabecera coinciden con las
+tablas de `INDEX.md`; ninguna mención residual de rama o PR "sin
+fusionar" en documentos vivos (`CONTEXT.md`, `INDEX.md`,
+`DEVELOPMENT_ROADMAP.md`) — las menciones que quedan en `CHANGELOG.md`
+son registro histórico correcto de su momento y no se tocan
+(append-only). No se registra ninguna decisión nueva en `DECISIONS.md`:
+fusionar PRs ya aprobados y limpiar ramas es ejecución administrativa
+de decisiones ya tomadas (026, 027), no una decisión de fondo nueva.
 
 ### 2026-07-21 (revisión crítica del PR #3 — correcciones al Design System v0.1)
 

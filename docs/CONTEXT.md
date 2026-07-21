@@ -1,7 +1,7 @@
 # CONTEXT.md
 
 > **Tipo de documento:** Sistema — Memoria permanente
-> **Versión:** 2.4
+> **Versión:** 2.5
 > **Fecha de creación:** 2026-07-18
 > **Última actualización:** 2026-07-21
 > **Estado:** Vivo (se reescribe, no se acumula)
@@ -225,10 +225,14 @@ fotografía, dirección artística, aplicación en prenda, packaging,
 experiencia web) sin cerrar ningún valor concreto — color exacto,
 tipografía concreta, forma del logo, símbolo, monograma, referencia al
 origen visayo/filipino: todo queda explícitamente `PENDIENTE DE
-DEFINIR`, sin inventarse. **El documento queda en estado `En borrador`
-— la Fase 4 se abre, pero no se cierra**, pendiente de autoauditoría y
-aprobación explícita del fundador. Trabajado en la rama
-`docs/design-system-v1.0`.
+DEFINIR`, sin inventarse. Tras una auditoría crítica (PR #3) que
+corrigió una contradicción real con Product Strategy (fit/silueta
+presentado como resuelto sin estarlo), una cita mal atribuida y una
+afirmación presentada como confirmada sin serlo, el PR se fusionó a
+`main` el 2026-07-21. **El documento sigue en estado `En borrador`
+(v0.1) — la Fase 4 está abierta, pero no cerrada**: fusionar el PR no
+equivale a la aprobación formal del fundador (Etapa 8), que sigue
+pendiente.
 
 ## Aprobado
 
@@ -256,29 +260,26 @@ aprobación explícita del fundador. Trabajado en la rama
 ## En borrador / en curso
 
 - **`04_IDENTIDAD_VISUAL_design_system.md` (v0.1, En borrador,
-  Decisión 027)** — documento raíz de la Fase 4, pendiente de
-  autoauditoría y aprobación explícita del fundador. Rama
-  `docs/design-system-v1.0`, sin fusionar.
+  Decisión 027)** — documento raíz de la Fase 4, ya en `main` (PR #3
+  fusionado el 2026-07-21), pero pendiente de aprobación explícita del
+  fundador (Etapa 8) — fusionar a `main` no es una aprobación.
 
 ## Próximo paso
 
 Las Fases 1 y 2 de `DEVELOPMENT_ROADMAP.md` (Configuración del
 proyecto; Fundamentos visuales provisionales) están completas y
-cerradas. El PR #1 (`feature/fase-2-foundations`), que contenía el
-trabajo de la Fase 2, se fusionó a `main` el 2026-07-21 — `main` ya
-incluye los tokens de diseño y el envoltorio de iconografía. La Fase 3
-(Sistema de componentes base) no se abre de forma automática por
-haberse completado la Fase 2 — requiere instrucción explícita del
-fundador, igual que cualquier otra fase del proyecto.
+cerradas, ya en `main` (PR #1, #2 y #3 fusionados el 2026-07-21). El
+fundador dio instrucción explícita de iniciar la Fase 3 (Sistema de
+componentes base) inmediatamente — ver el apartado "Estado" de la
+Fase 3 en `DEVELOPMENT_ROADMAP.md` para el detalle del desarrollo en
+curso.
 
 La Fase 4 (Identidad Visual / Design System) del roadmap de marca/
-producto está **abierta pero no cerrada**: existe un documento raíz en
-borrador (v0.1) con dirección visual completa y varios puntos
-explícitamente `PENDIENTE DE DEFINIR` (símbolo del logo, monograma,
-referencia al origen del nombre, valores exactos de color/tipografía).
-El siguiente paso es una decisión del fundador: aprobar el documento
-tal cual (dejando esos vacíos para una iteración posterior) o resolver
-primero alguno de ellos antes de aprobar.
+producto sigue **abierta pero no cerrada**: el documento raíz (v0.1)
+está en `main`, pero sin aprobación formal del fundador. El fundador ha
+indicado explícitamente que la prioridad pasa a ser el desarrollo — no
+se retoma la documentación de marca/identidad salvo que surja una
+contradicción crítica que lo exija.
 
 ## Notas para cualquier IA que retome el proyecto
 
@@ -349,38 +350,31 @@ primero alguno de ellos antes de aprobar.
     retome el proyecto debe trabajar sobre esta ubicación.
 19. Las Fases 1 y 2 de `DEVELOPMENT_ROADMAP.md` (Configuración del
     proyecto; Fundamentos visuales provisionales) están **Completas**
-    desde el 2026-07-21 — la Fase 1 incluye el pipeline de despliegue
-    (GitHub → Vercel, producción en `https://butay.vercel.app/`); la
-    Fase 2, los tokens de diseño provisionales y el envoltorio de
-    iconografía. Ver el apartado "Estado" de cada fase en ese documento.
-    La Fase 3 (Sistema de componentes base) sigue sin abrirse: hace
-    falta instrucción explícita del fundador, no se abre solo por
-    haberse completado la Fase 2.
-20. El PR #1 (`github.com/luvvvadri/BUTAY/pull/1`, rama
-    `feature/fase-2-foundations`) se fusionó a `main` el 2026-07-21 —
-    `main` ya incluye los tokens de diseño y el envoltorio de
-    iconografía de la Fase 2. La rama remota ya no existe (GitHub la
-    eliminó al fusionar).
-21. El Brand Bible y el Product Strategy pasaron a **v1.1** el
-    2026-07-21 (Decisión 026), tras una entrevista de identidad de
-    marca — revisión formal, no una reescritura libre: nada de lo
-    marcado como permanente en el apartado 15 del Brand Bible cambió,
-    la Visión de Fase 1 sigue intacta, y no se creó ningún documento de
-    marca nuevo. El trabajo vive en la rama `docs/brand-bible-v1.1`
-    (creada originalmente desde `feature/fase-2-foundations`, para no
-    chocar con el PR #1 mientras seguía sin fusionar; el PR #1 se
-    fusionó después, así que esta rama ahora parte, en la práctica, de
-    `main`) — cualquier IA que retome el proyecto debe comprobar el
-    estado real de esa rama/PR antes de asumir que `main` ya incluye
-    esta revisión de marca.
+    — la Fase 1 incluye el pipeline de despliegue (GitHub → Vercel,
+    producción en `https://butay.vercel.app/`); la Fase 2, los tokens
+    de diseño provisionales y el envoltorio de iconografía. Ver el
+    apartado "Estado" de cada fase en ese documento.
+20. Los PR #1, #2 y #3 están **fusionados a `main`** desde el
+    2026-07-21 — no queda ninguna rama de trabajo pendiente de
+    fusionar; las tres ramas (`feature/fase-2-foundations`,
+    `docs/brand-bible-v1.1`, `docs/design-system-v1.0`) se eliminaron
+    tras el merge. Cualquier IA que retome el proyecto puede asumir
+    que `main` ya incluye todo lo descrito en las notas 21-22.
+21. El Brand Bible y el Product Strategy pasaron a **v1.1** (Decisión
+    026), tras una entrevista de identidad de marca — revisión formal,
+    no una reescritura libre: nada de lo marcado como permanente en el
+    apartado 15 del Brand Bible cambió, la Visión de Fase 1 sigue
+    intacta, y no se creó ningún documento de marca nuevo.
 22. La Fase 4 (Identidad Visual / Design System) está **abierta pero
-    no cerrada** desde el 2026-07-21 (Decisión 027):
-    `04_IDENTIDAD_VISUAL_design_system.md` (v0.1, `En borrador`) fija
-    dirección visual completa a partir de dos entrevistas, pero deja
-    explícitamente `PENDIENTE DE DEFINIR` el símbolo del logo, el
-    monograma, la referencia al origen del nombre, y los valores
-    concretos de color/tipografía/fotografía — ninguna IA debe
-    inventarlos ni tratarlos como resueltos. El trabajo vive en la rama
-    `docs/design-system-v1.0` (creada desde `docs/brand-bible-v1.1`,
-    ya que el PR #2 seguía sin fusionar) — comprobar el estado real de
-    ambas ramas/PRs antes de asumir qué hay ya en `main`.
+    no cerrada** (Decisión 027): `04_IDENTIDAD_VISUAL_design_system.md`
+    (v0.1, `En borrador`) ya está en `main`, pero deja explícitamente
+    `PENDIENTE DE DEFINIR` el símbolo del logo, el monograma, la
+    referencia al origen del nombre, y los valores concretos de
+    color/tipografía/fotografía — ninguna IA debe inventarlos ni
+    tratarlos como resueltos. **Estar en `main` no equivale a
+    aprobación del fundador** (Etapa 8 del workflow sigue pendiente).
+23. Desde el 2026-07-21, el foco del proyecto pasa al **desarrollo**
+    (Fase 3 de `DEVELOPMENT_ROADMAP.md`, Sistema de componentes base) —
+    por instrucción explícita del fundador, no se retoma documentación
+    de marca/identidad salvo que surja una contradicción crítica que lo
+    exija.
