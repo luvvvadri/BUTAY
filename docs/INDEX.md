@@ -1,7 +1,7 @@
 # INDEX.md
 
 > **Tipo de documento:** Sistema — Mapa maestro
-> **Versión:** 1.7
+> **Versión:** 1.8
 > **Fecha de creación:** 2026-07-18
 > **Última actualización:** 2026-07-21
 > **Estado:** Vivo
@@ -199,5 +199,8 @@ El 2026-07-20 se completó la entrega técnica ("Developer Handoff") para
 Claude Code: `CLAUDE_CODE.md`, `FRONTEND_ARCHITECTURE.md` y
 `DEVELOPMENT_ROADMAP.md` (Decisión 021), además de una auditoría
 completa de toda la documentación existente (ver nota de auditoría en
-CONTEXT.md). El desarrollo web todavía no ha comenzado — su inicio
-requiere confirmación explícita del fundador.
+CONTEXT.md). El desarrollo web **ya ha comenzado**: la Fase 1 de
+`DEVELOPMENT_ROADMAP.md` (Configuración del proyecto) está completa —
+repositorio, scaffold inicial y despliegue en producción funcionando
+(ver la tabla "Documentos técnicos de desarrollo" arriba y
+`DEVELOPMENT_ROADMAP.md` para el detalle).

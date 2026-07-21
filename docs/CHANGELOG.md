@@ -1,7 +1,7 @@
 # CHANGELOG.md
 
 > **Tipo de documento:** Sistema — Historial de cambios (append-only)
-> **Versión:** 1.8
+> **Versión:** 1.9
 > **Fecha de creación:** 2026-07-18
 > **Última actualización:** 2026-07-21
 > **Estado:** Vivo (solo se añade, nunca se reescribe)
@@ -53,6 +53,26 @@ por todo el historial. Si el archivo crece demasiado, se archivan por año
 ---
 
 ## Historial
+
+### 2026-07-21 (corrección de coherencia — INDEX.md desincronizado tras el cierre de la Fase 1)
+
+- **INDEX.md** — v1.7 → v1.8. La sección "Notas" seguía afirmando "El
+  desarrollo web todavía no ha comenzado — su inicio requiere
+  confirmación explícita del fundador", pese a que la propia tabla
+  "Documentos técnicos de desarrollo" del mismo documento ya mostraba
+  `DEVELOPMENT_ROADMAP.md` como "Fase 1 Completa". Corregida para
+  reflejar que el desarrollo ya ha comenzado y la Fase 1 está completa
+  (repositorio, scaffold y despliegue en producción funcionando).
+  Corrección de sincronización documental, no decisión de fondo — no
+  genera entrada en DECISIONS.md.
+- **CHANGELOG.md** — este mismo registro.
+
+**Nota de auditoría.** Se revisaron `INDEX.md` y `CONTEXT.md` en
+conjunto buscando cualquier otra referencia obsoleta a que el
+desarrollo web no hubiera comenzado: no se encontraron más. La única
+mención similar restante (`INDEX.md`, "La Fase 4 no se ha iniciado")
+es correcta — se refiere a la Fase 4 de Identidad Visual del roadmap
+de marca/producto, que en efecto sigue sin abrirse.
 
 ### 2026-07-21 (corrección de coherencia — CONTEXT.md desincronizado tras el cierre de la Fase 1)
 
