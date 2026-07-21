@@ -1,7 +1,7 @@
 # CHANGELOG.md
 
 > **Tipo de documento:** Sistema — Historial de cambios (append-only)
-> **Versión:** 2.1
+> **Versión:** 2.2
 > **Fecha de creación:** 2026-07-18
 > **Última actualización:** 2026-07-21
 > **Estado:** Vivo (solo se añade, nunca se reescribe)
@@ -53,6 +53,31 @@ por todo el historial. Si el archivo crece demasiado, se archivan por año
 ---
 
 ## Historial
+
+### 2026-07-21 (corrección de coherencia — PR #1 se fusionó a `main` durante la sesión)
+
+- **CONTEXT.md** — v2.1 → v2.2. El PR #1 (`feature/fase-2-foundations`)
+  se fusionó a `main` externamente mientras se trabajaba en la revisión
+  del Brand Bible. Se corrigen cuatro referencias que, escritas
+  momentos antes en esta misma sesión, ya afirmaban "sin fusionar" —
+  ahora dicen correctamente que se fusionó el 2026-07-21 y que `main`
+  incluye los tokens y el envoltorio de iconografía.
+- **DEVELOPMENT_ROADMAP.md** — v1.3 → v1.4. Se corrige el apartado
+  "Estado" de la Fase 2 para reflejar que el PR #1 ya está fusionado.
+- **INDEX.md** — v2.0 → v2.1. Se sincronizan las versiones de
+  CONTEXT.md y DEVELOPMENT_ROADMAP.md.
+- **CHANGELOG.md** — este mismo registro.
+
+**Nota de auditoría.** Hallazgo detectado durante la propia sesión, no
+en una auditoría posterior: al comprobar el estado real del repositorio
+antes de abrir el PR de la revisión del Brand Bible, se detectó que la
+rama `feature/fase-2-foundations` ya no existía en el remoto — el PR #1
+se había fusionado y GitHub eliminó la rama automáticamente. Como el
+merge fue un merge commit normal (no squash), el historial de
+`docs/brand-bible-v1.1` sigue siendo válido sin necesidad de rebase. No
+se modifican las entradas anteriores del CHANGELOG que describían el PR
+#1 como "sin fusionar" en su momento — son correctas como registro
+histórico del estado en el instante en que se escribieron.
 
 ### 2026-07-21 (revisión formal del Brand Bible v1.0 → v1.1 — entrevista de identidad de marca)
 

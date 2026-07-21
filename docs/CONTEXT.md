@@ -1,7 +1,7 @@
 # CONTEXT.md
 
 > **Tipo de documento:** Sistema — Memoria permanente
-> **Versión:** 2.1
+> **Versión:** 2.2
 > **Fecha de creación:** 2026-07-18
 > **Última actualización:** 2026-07-21
 > **Estado:** Vivo (se reescribe, no se acumula)
@@ -172,8 +172,8 @@ cumplen. Ver el apartado "Estado" de la Fase 1 en
 `DEVELOPMENT_ROADMAP.md` para el detalle completo.
 
 **Fase 2 de `DEVELOPMENT_ROADMAP.md` completa (2026-07-21).** Trabajada
-en la rama `feature/fase-2-foundations` (PR #1, sin merge todavía),
-siguiendo el mismo criterio de cierre que la Fase 1. Entregables:
+en la rama `feature/fase-2-foundations` (PR #1, fusionado a `main` el
+2026-07-21), siguiendo el mismo criterio de cierre que la Fase 1. Entregables:
 token de acento provisional y tipografía Geist centralizados en
 `src/styles/tokens.css` (escala de grises reutiliza directamente la
 paleta `neutral` de Tailwind); envoltorio propio de iconografía
@@ -243,10 +243,11 @@ técnico en estado `En borrador` o `Release Candidate`.
 
 Las Fases 1 y 2 de `DEVELOPMENT_ROADMAP.md` (Configuración del
 proyecto; Fundamentos visuales provisionales) están completas y
-cerradas. El PR #1 (`feature/fase-2-foundations`), que contiene el
-trabajo de la Fase 2, sigue sin fusionarse a `main` — el merge es una
-decisión pendiente del fundador. La Fase 3 (Sistema de componentes
-base) no se abre de forma automática por haberse completado la Fase 2
+cerradas. El PR #1 (`feature/fase-2-foundations`), que contenía el
+trabajo de la Fase 2, se fusionó a `main` el 2026-07-21 — `main` ya
+incluye los tokens de diseño y el envoltorio de iconografía. La Fase 3
+(Sistema de componentes base) no se abre de forma automática por
+haberse completado la Fase 2
 — requiere instrucción explícita del fundador, igual que cualquier
 otra fase del proyecto. La Fase 4 (Identidad Visual / Design System)
 del roadmap de marca/producto sigue sin abrirse, en paralelo, también a
@@ -328,18 +329,20 @@ la espera de instrucción explícita del fundador.
     La Fase 3 (Sistema de componentes base) sigue sin abrirse: hace
     falta instrucción explícita del fundador, no se abre solo por
     haberse completado la Fase 2.
-20. El trabajo de la Fase 2 vive en la rama `feature/fase-2-foundations`
-    y el PR #1 (`github.com/luvvvadri/BUTAY/pull/1`), **todavía sin
-    fusionar a `main`** — cualquier IA que retome el proyecto debe
-    comprobar el estado real de ese PR antes de asumir que el código de
-    `main` ya incluye los tokens y el envoltorio de iconografía.
+20. El PR #1 (`github.com/luvvvadri/BUTAY/pull/1`, rama
+    `feature/fase-2-foundations`) se fusionó a `main` el 2026-07-21 —
+    `main` ya incluye los tokens de diseño y el envoltorio de
+    iconografía de la Fase 2. La rama remota ya no existe (GitHub la
+    eliminó al fusionar).
 21. El Brand Bible y el Product Strategy pasaron a **v1.1** el
     2026-07-21 (Decisión 026), tras una entrevista de identidad de
     marca — revisión formal, no una reescritura libre: nada de lo
     marcado como permanente en el apartado 15 del Brand Bible cambió,
     la Visión de Fase 1 sigue intacta, y no se creó ningún documento de
     marca nuevo. El trabajo vive en la rama `docs/brand-bible-v1.1`
-    (creada desde `feature/fase-2-foundations`, no desde `main`, para
-    no chocar con el PR #1 todavía sin fusionar) — cualquier IA que
-    retome el proyecto debe comprobar el estado real de esa rama/PR
-    antes de asumir que `main` ya incluye esta revisión.
+    (creada originalmente desde `feature/fase-2-foundations`, para no
+    chocar con el PR #1 mientras seguía sin fusionar; el PR #1 se
+    fusionó después, así que esta rama ahora parte, en la práctica, de
+    `main`) — cualquier IA que retome el proyecto debe comprobar el
+    estado real de esa rama/PR antes de asumir que `main` ya incluye
+    esta revisión de marca.

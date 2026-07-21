@@ -1,7 +1,7 @@
 # DEVELOPMENT_ROADMAP.md
 
 > **Tipo de documento:** Plan técnico de desarrollo
-> **Versión:** 1.3
+> **Versión:** 1.4
 > **Fecha de creación:** 2026-07-20
 > **Última actualización:** 2026-07-21
 > **Estado:** Final (vivo en su seguimiento — el estado de cada fase se actualiza a medida que avanza el desarrollo)
@@ -128,8 +128,9 @@ tokens/envoltorio; el conjunto cumple contraste mínimo de
 accesibilidad (`CLAUDE_CODE.md`, apartado 15) aunque sea provisional.
 
 **Estado (actualizado 2026-07-21).** **Completa.** Todos los
-entregables están cumplidos y verificados, en `feature/fase-2-foundations`
-(PR #1):
+entregables están cumplidos y verificados. Trabajado en
+`feature/fase-2-foundations` (PR #1), fusionado a `main` el
+2026-07-21:
 - Tokens de color: `src/styles/tokens.css` define un acento provisional
   (`#4f46e5`, contraste ~6.3:1 sobre blanco, cumple WCAG AA) y un par
   semántico fondo/texto; la escala de grises reutiliza directamente la

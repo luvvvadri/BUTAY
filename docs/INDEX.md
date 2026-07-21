@@ -1,7 +1,7 @@
 # INDEX.md
 
 > **Tipo de documento:** Sistema — Mapa maestro
-> **Versión:** 2.0
+> **Versión:** 2.1
 > **Fecha de creación:** 2026-07-18
 > **Última actualización:** 2026-07-21
 > **Estado:** Vivo
@@ -97,11 +97,11 @@ convención de carpeta plana ya establecida sin aportar valor.
 
 | Documento | Versión | Estado | Última actualización | Depende de |
 |---|---|---|---|---|
-| CONTEXT.md | 2.1 | Vivo | 2026-07-21 | — |
-| INDEX.md | 2.0 | Vivo | 2026-07-21 | CONTEXT.md |
+| CONTEXT.md | 2.2 | Vivo | 2026-07-21 | — |
+| INDEX.md | 2.1 | Vivo | 2026-07-21 | CONTEXT.md |
 | DECISIONS.md | 1.3 | Vivo | 2026-07-21 | — |
 | GLOSSARY.md | 0.9 | Vivo | 2026-07-20 | DECISIONS.md |
-| CHANGELOG.md | 2.1 | Vivo | 2026-07-21 | INDEX.md |
+| CHANGELOG.md | 2.2 | Vivo | 2026-07-21 | INDEX.md |
 | 00_SYSTEM_WORKFLOW.md | 1.0 | Approved / Congelado (Decisión 022) | 2026-07-20 | CONTEXT, INDEX, DECISIONS, GLOSSARY, CHANGELOG |
 
 ## Documentos de Fase 1 (Fundamentos estratégicos)
@@ -127,7 +127,7 @@ convención de carpeta plana ya establecida sin aportar valor.
 | Handoff técnico de transición | WEB_HANDOFF.md | 1.0 | Final | 2026-07-19 | Product Strategy (v1.0); Brand Bible (v1.0) |
 | Puerta de entrada técnica para Claude Code | CLAUDE_CODE.md | 1.1 | Final | 2026-07-20 | WEB_HANDOFF.md; Brand Bible (v1.0); Product Strategy (v1.0); 00_SYSTEM_WORKFLOW.md (v1.0, Approved) |
 | Arquitectura de frontend | FRONTEND_ARCHITECTURE.md | 1.0 | Final | 2026-07-20 | CLAUDE_CODE.md; WEB_HANDOFF.md; Product Strategy (v1.0) |
-| Plan de desarrollo por fases | DEVELOPMENT_ROADMAP.md | 1.3 | Final en estructura, vivo en su seguimiento de estado — Fases 1 y 2 Completas | 2026-07-21 | CLAUDE_CODE.md; FRONTEND_ARCHITECTURE.md; WEB_HANDOFF.md |
+| Plan de desarrollo por fases | DEVELOPMENT_ROADMAP.md | 1.4 | Final en estructura, vivo en su seguimiento de estado — Fases 1 y 2 Completas (PR #1 fusionado) | 2026-07-21 | CLAUDE_CODE.md; FRONTEND_ARCHITECTURE.md; WEB_HANDOFF.md |
 
 ## Documentos de Fase 2 (Identidad de marca conceptual)
 
