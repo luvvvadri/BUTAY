@@ -1,7 +1,7 @@
 # CHANGELOG.md
 
 > **Tipo de documento:** Sistema — Historial de cambios (append-only)
-> **Versión:** 2.0
+> **Versión:** 2.1
 > **Fecha de creación:** 2026-07-18
 > **Última actualización:** 2026-07-21
 > **Estado:** Vivo (solo se añade, nunca se reescribe)
@@ -53,6 +53,60 @@ por todo el historial. Si el archivo crece demasiado, se archivan por año
 ---
 
 ## Historial
+
+### 2026-07-21 (revisión formal del Brand Bible v1.0 → v1.1 — entrevista de identidad de marca)
+
+- **DECISIONS.md** — v1.2 → v1.3. Se añade la Decisión 026: revisión
+  formal del Brand Bible (v1.0 → v1.1) y nota informativa en Product
+  Strategy (v1.0 → v1.1), a partir de una entrevista de identidad de
+  marca. Reapertura y cierre puntual de la Fase 2 de marca en el mismo
+  movimiento.
+- **`02_MARCA_brand_bible.md`** — v1.0 → v1.1. Se enriquece, sin
+  sustituir nada de lo permanente (apartado 15): esencia de marca
+  añadida al apartado 4 (Manifiesto); segundo candidato de tagline
+  provisional ("Made to express", junto a "Wear what you mean", sin
+  elegir entre ambos); aspiración narrativa a diez años añadida como
+  expresión emocional de la Visión de Fase 1 (que no se modifica);
+  matiz de personalidad en el apartado 6, vinculado explícitamente a
+  los cinco rasgos ya fijados; nota de diferenciación/reacción del
+  cliente en el apartado 5; aclaración en el apartado 11 de que los
+  nuevos "territorios creativos" de la entrevista son temas concretos
+  dentro de los cuatro pilares narrativos ya fijos (salud mental y
+  minimalismo siguen vigentes sin cambio). Bloque de cierre estándar
+  actualizado. *(Ref. Decisión 026)*
+- **`03_PRODUCTO_product_strategy.md`** — v1.0 → v1.1. Nota
+  informativa en el apartado 4 registrando preferencias de estilo
+  (casual, minimalista, oversize, streetwear) mencionadas en la misma
+  entrevista — la filosofía de fit/silueta/tallaje sigue
+  `PENDIENTE DE DEFINIR`, sin resolverse. Bloque de cierre estándar
+  actualizado. *(Ref. Decisión 026)*
+- **CONTEXT.md** — v2.0 → v2.1. Se añade el párrafo de la revisión en
+  "Estado general"; se actualizan las entradas de Brand Bible/Product
+  Strategy en "Aprobado" y la nota 9; se añade la nota 21 para
+  cualquier IA, señalando que el trabajo vive en la rama
+  `docs/brand-bible-v1.1` (sin fusionar).
+- **INDEX.md** — v1.9 → v2.0. Se actualizan las filas de Brand Bible y
+  Product Strategy (versión, decisiones, fecha) en las tablas de Fase 2
+  y Fase 3, y en la tabla de roadmap; se añade nota en "Notas"
+  documentando la reapertura/cierre puntual de la Fase 2 de marca; se
+  sincroniza la versión de DECISIONS.md.
+- **CHANGELOG.md** — este mismo registro.
+
+**Nota de auditoría de cierre.** Se verificó que ningún elemento
+marcado como permanente en el apartado 15 del Brand Bible (nombre,
+principio no negociable, arquetipo del hermano mayor, cinco valores,
+rechazo a la ostentación) cambió. Se verificó que la Visión de Fase 1
+(`01_ESTRATEGIA_vision_mision_valores.md`) no se tocó — la nueva frase
+aspiracional vive dentro del Brand Bible como expresión narrativa, no
+como sustitución. No se creó `BRAND_IDENTITY.md` ni ningún documento
+de marca nuevo: el Brand Bible sigue siendo la única fuente de verdad,
+coherente con el patrón de consolidación ya aplicado en Decisiones 011,
+018 y 021. No se tocó ningún elemento de identidad visual (logo,
+color, tipografía) ni de Product Strategy más allá de la nota
+informativa autorizada explícitamente. Se revisaron ambos documentos
+en busca de referencias residuales a "v1.0" que debieran haberse
+actualizado: no se encontró ninguna. La Fase 2 de marca queda **cerrada
+de nuevo**, tras esta revisión puntual.
 
 ### 2026-07-21 (cierre oficial de la Fase 2 de DEVELOPMENT_ROADMAP.md)
 

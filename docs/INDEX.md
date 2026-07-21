@@ -1,7 +1,7 @@
 # INDEX.md
 
 > **Tipo de documento:** Sistema — Mapa maestro
-> **Versión:** 1.9
+> **Versión:** 2.0
 > **Fecha de creación:** 2026-07-18
 > **Última actualización:** 2026-07-21
 > **Estado:** Vivo
@@ -97,11 +97,11 @@ convención de carpeta plana ya establecida sin aportar valor.
 
 | Documento | Versión | Estado | Última actualización | Depende de |
 |---|---|---|---|---|
-| CONTEXT.md | 2.0 | Vivo | 2026-07-21 | — |
-| INDEX.md | 1.9 | Vivo | 2026-07-21 | CONTEXT.md |
-| DECISIONS.md | 1.2 | Vivo | 2026-07-20 | — |
+| CONTEXT.md | 2.1 | Vivo | 2026-07-21 | — |
+| INDEX.md | 2.0 | Vivo | 2026-07-21 | CONTEXT.md |
+| DECISIONS.md | 1.3 | Vivo | 2026-07-21 | — |
 | GLOSSARY.md | 0.9 | Vivo | 2026-07-20 | DECISIONS.md |
-| CHANGELOG.md | 2.0 | Vivo | 2026-07-21 | INDEX.md |
+| CHANGELOG.md | 2.1 | Vivo | 2026-07-21 | INDEX.md |
 | 00_SYSTEM_WORKFLOW.md | 1.0 | Approved / Congelado (Decisión 022) | 2026-07-20 | CONTEXT, INDEX, DECISIONS, GLOSSARY, CHANGELOG |
 
 ## Documentos de Fase 1 (Fundamentos estratégicos)
@@ -117,7 +117,7 @@ convención de carpeta plana ya establecida sin aportar valor.
 
 | Documento | Archivo | Versión | Estado | Última actualización | Depende de |
 |---|---|---|---|---|---|
-| Product Strategy (consolida Especificación del catálogo + Materiales y proveedores + Fichas técnicas del roadmap original; Product DNA, arquitectura de catálogo, colecciones, drops, ciclo de vida, calidad, precios, escalabilidad, evolución) | 03_PRODUCTO_product_strategy.md | 1.0 | Approved / Congelado (Decisión 020) | 2026-07-19 | Brand Bible (v1.0); los cuatro documentos de Fase 1 |
+| Product Strategy (consolida Especificación del catálogo + Materiales y proveedores + Fichas técnicas del roadmap original; Product DNA, arquitectura de catálogo, colecciones, drops, ciclo de vida, calidad, precios, escalabilidad, evolución) | 03_PRODUCTO_product_strategy.md | 1.1 | Approved / Congelado (Decisión 020; nota informativa Decisión 026) | 2026-07-21 | Brand Bible (v1.1); los cuatro documentos de Fase 1 |
 | Informe de cierre de Fase 3 | 03_PRODUCTO_informe_cierre_fase3.md | 1.0 | Final | 2026-07-19 | Product Strategy (v1.0) |
 
 ## Documentos técnicos de desarrollo (para Claude Code)
@@ -133,7 +133,7 @@ convención de carpeta plana ya establecida sin aportar valor.
 
 | Documento | Archivo | Versión | Estado | Última actualización | Depende de |
 |---|---|---|---|---|---|
-| Brand Bible (consolida Personalidad/tono de voz + Territorio narrativo; incorpora el naming ya resuelto como contexto) | 02_MARCA_brand_bible.md | 1.0 | Approved / Congelado (Decisión 016) | 2026-07-19 | Los cuatro documentos de Fase 1 |
+| Brand Bible (consolida Personalidad/tono de voz + Territorio narrativo; incorpora el naming ya resuelto como contexto) | 02_MARCA_brand_bible.md | 1.1 | Approved / Congelado (Decisión 016; revisado por Decisión 026) | 2026-07-21 | Los cuatro documentos de Fase 1 |
 | Informe de cierre de Fase 2 | 02_MARCA_informe_cierre_fase2.md | 1.0 | Final | 2026-07-19 | Brand Bible (v1.0) |
 
 Este documento fue el primero en aplicar el **bloque de cierre
@@ -152,8 +152,8 @@ proyecto. *(Ref. Decisión 013)*
 | 1 | Análisis de competencia | Aprobado |
 | 1 | Posicionamiento de marca | Aprobado |
 | 2 — Identidad de marca (conceptual) | Naming | Aprobado (Decisión 009) |
-| 2 | Brand Bible (personalidad, tono de voz y territorio narrativo) | Aprobado (v1.0, Decisión 016) — Fase 2 cerrada |
-| 3 — Product Strategy | Product Strategy (Product DNA, catálogo, colecciones, drops, ciclo de vida, calidad, precios, escalabilidad, evolución) | Aprobado (v1.0, Decisión 020) — Fase 3 cerrada |
+| 2 | Brand Bible (personalidad, tono de voz y territorio narrativo) | Aprobado (v1.1, Decisiones 016, 026) — Fase 2 cerrada |
+| 3 — Product Strategy | Product Strategy (Product DNA, catálogo, colecciones, drops, ciclo de vida, calidad, precios, escalabilidad, evolución) | Aprobado (v1.1, Decisiones 020, 026) — Fase 3 cerrada |
 | 4 — Identidad Visual (Design System) | Manual de marca | Pendiente |
 | 4 | Paleta de color | Pendiente |
 | 4 | Sistema tipográfico | Pendiente |
@@ -204,3 +204,13 @@ CONTEXT.md). El desarrollo web **ya ha comenzado**: la Fase 1 de
 repositorio, scaffold inicial y despliegue en producción funcionando
 (ver la tabla "Documentos técnicos de desarrollo" arriba y
 `DEVELOPMENT_ROADMAP.md` para el detalle).
+
+El 2026-07-21 se reabrió puntualmente la Fase 2 (marca) para una
+revisión formal del Brand Bible, tras una entrevista de identidad de
+marca: pasa a v1.1 (Decisión 026), enriqueciendo esencia, manifiesto,
+personalidad y territorio narrativo sin sustituir nada de lo marcado
+como permanente en su apartado 15, y se vuelve a cerrar en el mismo
+movimiento. Product Strategy pasa a v1.1 (misma decisión) solo con una
+nota informativa sobre preferencias de estilo — fit/silueta/tallaje
+sigue `PENDIENTE DE DEFINIR`. No se creó ningún documento nuevo de
+marca: el Brand Bible sigue siendo la única fuente de verdad.

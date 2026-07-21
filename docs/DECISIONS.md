@@ -1,9 +1,9 @@
 # DECISIONS.md
 
 > **Tipo de documento:** Sistema — Registro de decisiones (append-only)
-> **Versión:** 1.2
+> **Versión:** 1.3
 > **Fecha de creación:** 2026-07-18
-> **Última actualización:** 2026-07-20
+> **Última actualización:** 2026-07-21
 > **Estado:** Vivo (solo se añade, nunca se reescribe)
 > **Depende de:** Ninguno
 
@@ -462,4 +462,40 @@ desarrollo. Planteada la disyuntiva, el fundador confirmó el traslado.
 Los 18 documentos de `docs/` se copiaron y se verificaron con hash
 SHA-256 antes de eliminar el origen, sin pérdida ni alteración de
 contenido.
+**Estado:** Activa.
+
+### Decisión 026 — 2026-07-21
+**Decisión:** Se revisa formalmente el Brand Bible — Butay
+(`02_MARCA_brand_bible.md`), que pasa de v1.0 a **v1.1**, incorporando
+la esencia, manifiesto, personalidad y territorio narrativo recogidos
+en la entrevista de identidad de marca — como enriquecimiento de lo ya
+aprobado, no como sustitución de ningún elemento marcado como
+permanente en su apartado 15 (nombre, principio no negociable,
+arquetipo, cinco valores, rechazo a la ostentación). Se añade un
+segundo candidato de tagline provisional ("Made to express", junto al
+ya existente "Wear what you mean"), sin elegir entre ambos. Para esta
+revisión puntual se reabre y se vuelve a cerrar, en el mismo
+movimiento, la Fase 2 del roadmap de marca/producto (Identidad de
+marca conceptual). Se añade también, en Product Strategy — Butay
+(`03_PRODUCTO_product_strategy.md`, v1.0 → v1.1), una nota informativa
+sobre preferencias de estilo (casual, minimalista, oversize,
+streetwear) mencionadas en la misma entrevista, sin resolver la
+filosofía de fit/silueta/tallaje, que sigue `PENDIENTE DE DEFINIR`.
+**Alternativas consideradas:** Crear un documento nuevo y paralelo
+(`BRAND_IDENTITY.md`) como fuente principal de identidad de marca;
+sustituir directamente la Visión de Fase 1 y los cuatro pilares
+narrativos permanentes por el nuevo lenguaje de la entrevista, sin
+distinguir qué era refuerzo y qué habría sido sustitución de fondo.
+**Razón:** El fundador confirmó, tras revisar un índice de cambios
+propuesto (Etapas 1-3 del workflow), que la información de la
+entrevista debía integrarse en el Brand Bible ya existente — coherente
+con el principio de fuente única de verdad (GLOSSARY.md) y con el
+patrón de consolidación ya aplicado en el resto del proyecto
+(Decisiones 011, 018, 021) —, y que ningún elemento permanente del
+apartado 15 debía sustituirse salvo que fuera estrictamente necesario.
+El análisis detallado mostró que la mayor parte de la información
+nueva encaja como enriquecimiento (personalidad, territorio narrativo,
+tagline) y no como contradicción real, salvo la Visión, que se
+mantiene intacta en Fase 1 y se incorpora como expresión narrativa
+adicional dentro del Brand Bible.
 **Estado:** Activa.

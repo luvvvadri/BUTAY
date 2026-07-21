@@ -1,13 +1,13 @@
 # Brand Bible — Butay
 
 > **Tipo de documento:** Fase 2 — Identidad de marca conceptual (documento raíz)
-> **Versión:** 1.0
+> **Versión:** 1.1
 > **Fecha de creación:** 2026-07-19
-> **Última actualización:** 2026-07-19
+> **Última actualización:** 2026-07-21
 > **Estado:** Approved (equivalente a Congelado — ver GLOSSARY.md)
 > **Depende de:** Visión, Misión y Valores (v1.0); Mercado y Público Objetivo (v1.0); Análisis de Competencia (v1.0); Posicionamiento de Marca (v1.0); DECISIONS.md; GLOSSARY.md
 > **Arquitectura:** índice v4, aprobado el 2026-07-19
-> **Aprobación:** Decisión 016 — documento oficial de Butay a partir de esta versión
+> **Aprobación:** Decisión 016 — documento oficial de Butay a partir de esta versión; Decisión 026 — revisión formal v1.0 → v1.1 (enriquecimiento de esencia, manifiesto, personalidad y territorio narrativo a partir de la entrevista de identidad de marca, sin sustituir nada de lo permanente del apartado 15)
 
 ---
 
@@ -142,6 +142,14 @@ esta historia sin inventar nada adicional sobre ella.
 
 ## 4. Manifiesto de marca
 
+**Esencia** *(incorporada en la revisión v1.1, entrevista de identidad
+de marca, Decisión 026).* Butay no vende ropa: vende expresión. Existe
+porque el arte de pensar y no saber hablar también existe — porque hay
+pensamientos, emociones y experiencias que solo encuentran forma
+cuando alguien más los dice primero. Esto no sustituye el Propósito ya
+fijado en Visión, Misión y Valores (v1.0) — lo aterriza en el lenguaje
+más directo y emocional con el que se presentó en la entrevista.
+
 Hay un momento concreto que este documento existe para proteger: alguien
 encuentra una prenda de Butay, lee la frase, y siente que por un segundo
 alguien más lo entendió antes de conocerlo. Ese instante —no la tela, no
@@ -175,13 +183,26 @@ Este manifiesto condensa el propósito (ropa que transmite sentimiento y
 pensamiento), la misión (sentirse entendido), el arquetipo (hermano
 mayor: presente, no exhibicionista) y el principio no negociable
 (intimidad sobre estatus). "Wear what you mean" funciona además como
-posible tagline independiente, más corto que el manifiesto completo. Su
-uso concreto —home de la web, interior del packaging, campaña de
-lanzamiento— se decide en Fase 6 y Fase 7, no aquí.
+posible tagline independiente, más corto que el manifiesto completo.
+Desde la revisión v1.1 (Decisión 026), existe un segundo candidato
+provisional surgido de la entrevista de identidad de marca: **"Made to
+express."** Ninguno de los dos es definitivo — el tagline real, su uso
+concreto (home de la web, interior del packaging, campaña de
+lanzamiento) y la elección entre ambos candidatos se deciden en Fase 6
+y Fase 7, no aquí.
+
+**Aspiración narrativa a diez años** *(Decisión 026 — no sustituye la
+Visión de Fase 1, Visión Misión y Valores v1.0, que sigue intacta).* La
+entrevista de identidad de marca resume en una frase cómo se quiere
+sentir Butay dentro de una década: *"Butay es esa marca que entiende
+cosas que nadie sabe explicar."* Es una expresión emocional de la misma
+Visión ya aprobada — una marca reconocida, creciendo sin diluir su
+mensaje íntimo —, no una visión nueva ni paralela.
 
 **Síntesis:** "We don't dress to be seen. We dress to be understood." es
 el texto de referencia para cualquier pieza que necesite condensar la
-marca en una frase; "Wear what you mean" es su versión corta. Es un
+marca en una frase; "Wear what you mean" y "Made to express" son sus
+dos candidatos de versión corta, ninguno elegido todavía. Es un
 borrador: puede pulirse, pero no debe contradecirse.
 
 ---
@@ -210,6 +231,14 @@ Este arquetipo es el filtro que debe pasar cualquier pieza de
 comunicación: si suena a alguien presumiendo, o a alguien dando una
 lección desde una posición superior, no es la voz de Butay.
 
+**Lo que realmente vende Butay** *(Decisión 026).* No camisetas ni
+sudaderas — identidad, expresión personal y conexión emocional; cada
+prenda convierte un pensamiento interno en un objeto físico. La
+reacción que busca no es "qué diseño más bonito", sino *"por fin
+alguien lo dijo"* o *"me representa."* Esto no redefine la marca: es la
+forma más directa de nombrar lo que este apartado, el apartado 12
+(Filosofía de producto) y el Posicionamiento de Marca ya establecían.
+
 **Síntesis:** antes de publicar cualquier copy, pregúntate si lo diría
 un hermano mayor de confianza — no un vendedor, no un gurú, no una
 autoridad. Si no, reescríbelo.
@@ -234,6 +263,15 @@ Estos cinco rasgos deben convivir en la misma pieza de comunicación
 siempre que sea posible: una frase puede ser ambiciosa y amable a la
 vez, o graciosa y emocionalmente inteligente a la vez. Ninguno anula a
 los demás.
+
+**Matiz de la entrevista de identidad de marca (Decisión 026).** La
+descripción de Butay como "amigo cercano, persona segura de sí misma y
+mentor que inspira" no añade rasgos nuevos — se corresponde con los
+cinco ya fijados: amigo cercano ↔ Amable; persona segura de sí misma ↔
+Carismático; mentor que inspira ↔ Ambicioso + Emocionalmente
+inteligente; divertida cuando corresponde / seria cuando importa ↔
+Gracioso, serio cuando corresponde. Se registra como refuerzo narrativo
+de esta tabla, no como una personalidad alternativa.
 
 **Síntesis:** si una pieza de copy solo demuestra uno de estos cinco
 rasgos y contradice otro (por ejemplo, es graciosa pero sarcástica, o
@@ -377,6 +415,19 @@ Estos cuatro pilares son la base conceptual para el calendario de
 contenido, que se desarrollará en la Fase 7 (Marketing). Este documento
 no define publicaciones concretas — define qué territorio pertenece a
 Butay y cuál no.
+
+**Territorios creativos de la entrevista de identidad de marca
+(Decisión 026).** Desamor, ambición, miedos, sueños, crecimiento
+personal, historias personales y reflexiones humanas no son pilares
+nuevos — son temas concretos dentro de los cuatro ya fijados arriba
+(principalmente Amor y Pensamiento/reflexión), coherente con el
+apartado 15 ("los cuatro pilares son fijos, las publicaciones
+específicas no"). Salud mental y minimalismo siguen vigentes sin
+cambio, aunque la entrevista no los mencionara explícitamente. El
+estilo de escritura registrado en la entrevista (70% directo, 30%
+abstracto) es una guía táctica de redacción, no un pilar nuevo — se
+documenta aquí como referencia para la Fase 7 (calendario de
+contenido).
 
 **Referencias culturales.** Butay no inventa un registro emocional
 nuevo: lo comparte con lo que ya escucha y consume su público — el R&B
@@ -602,12 +653,14 @@ este Brand Bible como fuente):
 - Fase 7 — Marketing / Lanzamiento (calendario de contenido, estrategia
   de redes): hereda el apartado 11 (territorio narrativo) y el 14.
 
-**Decisiones relacionadas:** 005, 006, 008, 009, 010, 011, 012, 013, 014
-(ver DECISIONS.md para el detalle completo de cada una).
+**Decisiones relacionadas:** 005, 006, 008, 009, 010, 011, 012, 013, 014,
+026 (ver DECISIONS.md para el detalle completo de cada una).
 
-**Estado del documento:** Approved / Congelado (v1.0) — Decisión 016.
-Es fuente definitiva para toda la documentación y comunicación futura de
-Butay.
+**Estado del documento:** Approved / Congelado (v1.1) — Decisión 016
+(v1.0), revisado formalmente por Decisión 026 (v1.1). Sigue siendo la
+fuente definitiva para toda la documentación y comunicación futura de
+Butay — nada de lo permanente en el apartado 15 cambió en esta
+revisión.
 
 **Próxima fase recomendada:** Fase 3 — Product Strategy. Con la
 aprobación de este documento se cierra formalmente la Fase 2 (ver

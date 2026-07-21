@@ -1,7 +1,7 @@
 # CONTEXT.md
 
 > **Tipo de documento:** Sistema — Memoria permanente
-> **Versión:** 2.0
+> **Versión:** 2.1
 > **Fecha de creación:** 2026-07-18
 > **Última actualización:** 2026-07-21
 > **Estado:** Vivo (se reescribe, no se acumula)
@@ -191,6 +191,26 @@ queda oficialmente cerrada** — todos sus entregables y criterios de
 finalización se cumplen. Ver el apartado "Estado" de la Fase 2 en
 `DEVELOPMENT_ROADMAP.md` para el detalle completo.
 
+**Revisión formal del Brand Bible — v1.0 → v1.1 (2026-07-21, Decisión
+026).** A partir de una entrevista de identidad de marca, se reabrió
+puntualmente la Fase 2 de marca (Identidad de marca conceptual) para
+revisar el Brand Bible siguiendo el protocolo completo de
+`00_SYSTEM_WORKFLOW.md` (Comprensión → Arquitectura → Aprobación del
+índice → Redacción). El resultado enriquece esencia, manifiesto,
+personalidad y territorio narrativo — sin sustituir nada de lo marcado
+como permanente en su apartado 15 (nombre, principio no negociable,
+arquetipo, cinco valores, rechazo a la ostentación) y sin tocar la
+Visión ya fijada en Fase 1, que sigue intacta. Se añade "Made to
+express" como segundo candidato de tagline provisional, junto a "Wear
+what you mean" — ninguno elegido todavía. `Product Strategy` pasa a
+v1.1 en el mismo movimiento, solo con una nota informativa sobre
+preferencias de estilo; la filosofía de fit/silueta/tallaje sigue
+`PENDIENTE DE DEFINIR`. **No se creó ningún documento nuevo de
+marca** — el Brand Bible sigue siendo la única fuente de verdad. La
+Fase 2 de marca se vuelve a cerrar en el mismo movimiento. No se tocó
+logo, color, tipografía ni ninguna decisión de la Fase 4 (Identidad
+Visual), que sigue sin abrirse.
+
 ## Aprobado
 
 - Arquitectura del proyecto Butay (v1.0)
@@ -204,9 +224,9 @@ finalización se cumplen. Ver el apartado "Estado" de la Fase 2 en
 - Mercado y Público Objetivo (v1.0, Decisión 010)
 - Análisis de Competencia (v1.0, Decisión 010)
 - Posicionamiento de Marca (v1.0, Decisión 010)
-- **Brand Bible — Butay (v1.0, `Approved`, Decisión 016)**
+- **Brand Bible — Butay (v1.1, `Approved`, Decisiones 016, 026)**
 - Informe de cierre de Fase 2 (v1.0, Final)
-- **Product Strategy — Butay (v1.0, `Approved`, Decisión 020)**
+- **Product Strategy — Butay (v1.1, `Approved`, Decisiones 020, 026)**
 - Informe de cierre de Fase 3 (v1.0, Final)
 - **WEB_HANDOFF.md (v1.0, Final)**
 - **CLAUDE_CODE.md (v1.1, Final)**
@@ -253,10 +273,10 @@ la espera de instrucción explícita del fundador.
    el bloque de cierre estándar de cinco campos *(Decisión 013)*.
 8. La voz de marca de cara al cliente se expresa en inglés; la
    documentación interna sigue en español *(Decisión 014)*.
-9. El Brand Bible (v1.0, `Approved`) y el Product Strategy (v1.0,
-   `Approved`) son fuente definitiva desde el 2026-07-19 *(Decisiones
-   016, 020)* — pueden citarse y usarse para producir copy o
-   especificaciones reales.
+9. El Brand Bible (v1.1, `Approved`) y el Product Strategy (v1.1,
+   `Approved`) son fuente definitiva desde el 2026-07-19, revisados el
+   2026-07-21 *(Decisiones 016, 020, 026)* — pueden citarse y usarse
+   para producir copy o especificaciones reales.
 10. Ninguna fase se inicia automáticamente por haberse cerrado la
     anterior — requiere instrucción explícita del fundador. La Fase 4
     sigue sin abrirse tras el cierre de la Fase 3.
@@ -313,3 +333,13 @@ la espera de instrucción explícita del fundador.
     fusionar a `main`** — cualquier IA que retome el proyecto debe
     comprobar el estado real de ese PR antes de asumir que el código de
     `main` ya incluye los tokens y el envoltorio de iconografía.
+21. El Brand Bible y el Product Strategy pasaron a **v1.1** el
+    2026-07-21 (Decisión 026), tras una entrevista de identidad de
+    marca — revisión formal, no una reescritura libre: nada de lo
+    marcado como permanente en el apartado 15 del Brand Bible cambió,
+    la Visión de Fase 1 sigue intacta, y no se creó ningún documento de
+    marca nuevo. El trabajo vive en la rama `docs/brand-bible-v1.1`
+    (creada desde `feature/fase-2-foundations`, no desde `main`, para
+    no chocar con el PR #1 todavía sin fusionar) — cualquier IA que
+    retome el proyecto debe comprobar el estado real de esa rama/PR
+    antes de asumir que `main` ya incluye esta revisión.
