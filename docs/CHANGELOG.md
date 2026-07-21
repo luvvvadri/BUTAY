@@ -3,7 +3,7 @@
 > **Tipo de documento:** Sistema — Historial de cambios (append-only)
 > **Versión:** 2.9
 > **Fecha de creación:** 2026-07-18
-> **Última actualización:** 2026-07-21
+> **Última actualización:** 2026-07-22
 > **Estado:** Vivo (solo se añade, nunca se reescribe)
 > **Depende de:** INDEX.md (todo cambio aquí debe reflejarse en el estado
 > de INDEX.md)
@@ -53,6 +53,102 @@ por todo el historial. Si el archivo crece demasiado, se archivan por año
 ---
 
 ## Historial
+
+### 2026-07-22 (Fase 6 técnica de DEVELOPMENT_ROADMAP.md — páginas de catálogo, con base de las Fases 7-8)
+
+- **Rama `feature/fase-6-catalog-pages`** (creada desde `main`; sin
+  fusionar todavía). Por instrucción explícita del fundador de
+  construir "la primera versión completamente navegable de Butay"
+  usando datos mock y contenido provisional, sin detenerse entre
+  páginas ni pedir aprobación intermedia, se ejecutó en bloques:
+  1. `getSkusByVisibility` — nueva función de acceso en `/data`,
+     reutiliza el atributo de visibilidad del Product DNA para
+     seleccionar productos destacados, en vez de una regla arbitraria.
+  2. Componentes de dominio nuevos y reutilizables
+     (`src/components/product/`): `ProductCard`, `ProductGrid`,
+     `CollectionCard`, `VariantSelector`, `CategoryFilters`, `Gallery`.
+     Consolidan el patrón `Card`+`Link` que la Fase 5 había duplicado
+     en cuatro páginas (catálogo, categoría, colección, archivo).
+     `SectionHeader` (nivel 1, agnóstico) añadido en `components/ui/`.
+  3. Componentes de contenido/editoriales (`src/components/content/`):
+     `Hero`, `CTASection`, `ValuesList`, `FeaturedProducts`,
+     `FeaturedCollections`. El CTA de `Hero`/`CTASection` es un enlace
+     de texto en negrita, no un `<button>` anidado dentro de un
+     `<a>` (HTML inválido) — coherente además con la dirección
+     editorial "librería" del Design System §13.
+  4. **Home** (`/`) reconstruida por completo: Hero, introducción,
+     `ValuesList` (los cinco valores ya aprobados — Decisión 010 —,
+     con descriptores explícitamente de prueba), `FeaturedCollections`,
+     `FeaturedProducts`, `CTASection` de cierre.
+  5. **Manifiesto** (`/manifesto`) reconstruido con copy editorial
+     completo, deliberadamente distinto del borrador real de
+     `WEB_HANDOFF.md` §2 (sigue sin aprobación del fundador).
+  6. **Catálogo y categoría**: `CategoryFilters` (enlaza a las rutas ya
+     aprobadas `/catalog` y `/catalog/[category]`, no un filtro
+     cliente inventado) + `ProductGrid`. `NavLink` gana un modo
+     `exact` (opcional, retrocompatible) para que "All" no se quede
+     activo dentro de una categoría concreta.
+  7. **Colección**: `ProductGrid` sustituye el patrón inline; badge de
+     tipo y sección de drop-si-existe sin cambios de comportamiento.
+  8. **Ficha de producto** reconstruida por completo: `Gallery`
+     (placeholders etiquetados), `VariantSelector` (interactivo, sin
+     carrito ni checkout), badges de categoría/colección/archivado/
+     destacado, texto explícito de estado y de visibilidad del
+     mensaje, CTA deliberadamente deshabilitado.
+  9. **Archivo**: `ProductGrid` sustituye el patrón inline.
+  Tests de la Fase 5 actualizados donde `ProductCard` cambió el
+  nombre accesible de los enlaces de producto (el badge queda dentro
+  del propio enlace): consultas de texto exacto pasaron a expresiones
+  regulares; el mock de `next/navigation` en el test de categoría
+  ganó `usePathname` para `CategoryFilters`.
+- **DEVELOPMENT_ROADMAP.md** — v1.7 → v1.8. La Fase 6 (Páginas de
+  catálogo) pasa a **Completa** en la tabla "Estado de avance" y gana
+  su apartado "Estado". Las Fases 7 y 8 permanecen `Pendiente` en la
+  tabla, con una nota explícita en cada una documentando qué se
+  construyó ya y qué falta para cerrarlas formalmente — ninguna de las
+  dos se marca cerrada sin cumplir sus propios criterios de
+  finalización. Se actualiza el bloque de cierre estándar.
+- **CONTEXT.md** — v2.9 → v3.0. Se añade el párrafo de cierre de la
+  Fase 6 en "Estado general", incluida la nota de alcance sobre las
+  Fases 7 y 8; se actualiza "Aprobado", "Próximo paso" y la nota 19;
+  se reescribe la nota 23 y se añaden las notas 25-26 documentando por
+  qué las Fases 7 y 8 no se cierran todavía.
+- **INDEX.md** — v2.8 → v2.9. Se actualiza la fila de
+  `DEVELOPMENT_ROADMAP.md` (v1.8, Fases 1-6 Completas); se sincroniza
+  la versión de CONTEXT.md y CHANGELOG.md; se añade el párrafo de
+  cierre de la Fase 6 en "Notas".
+- **CHANGELOG.md** — este mismo registro.
+
+**Nota de auditoría de cierre de fase.** Se ejecutaron `npm run lint`,
+`npm run format:check`, `npm run test`, `npx tsc --noEmit` y `npm run
+build` sobre `butay-web/` en el estado final de
+`feature/fase-6-catalog-pages`: los cinco sin errores (150/150 tests,
+41 nuevos; 23 rutas generadas). Verificación manual adicional en
+navegador (servidor de desarrollo, `.claude/launch.json` creado para
+ello): las siete páginas (home, manifiesto, catálogo, categoría,
+colección, producto, archivo) renderizan con datos reales de `/data`,
+sin errores de consola ni de red; navegación completa por teclado,
+foco visible, y el drawer móvil (apertura, cierre por Escape, cierre
+al navegar) verificados; responsive verificado en 375px (nav en
+drawer), 768px y 1280px (nav horizontal) — el breakpoint `md` de
+Tailwind cambia correctamente de uno a otro. Se verificó
+específicamente que ningún componente nuevo introduce contenido de
+marca definitivo: `ValuesList` usa solo los nombres ya aprobados de
+los cinco valores (Decisión 010); el resto del copy de Home/Manifiesto
+está documentado en el propio código como explícitamente provisional;
+el manifiesto real de `WEB_HANDOFF.md` §2 no aparece en ningún archivo
+nuevo. Se verificaron por grep las versiones de cabecera de
+`DEVELOPMENT_ROADMAP.md`, `CONTEXT.md` e `INDEX.md` contra la tabla de
+`INDEX.md`: coinciden. No se registra ninguna decisión nueva en
+`DECISIONS.md`: la extensión de `NavLink` con un modo `exact` es una
+ampliación retrocompatible de un componente ya existente, no una
+decisión de arquitectura nueva; la Fase 6 ejecuta directamente lo ya
+especificado en `FRONTEND_ARCHITECTURE.md` y Product Strategy. La Fase
+6 técnica queda **Completa**; las Fases 7 y 8 quedan con base
+sustancial construida pero explícitamente sin cerrar, a la espera de
+las decisiones señaladas en sus propias notas de `DEVELOPMENT_ROADMAP.md`.
+Pendiente de creación de PR y revisión del fundador — no se fusiona a
+`main` en este movimiento.
 
 ### 2026-07-21 (cierre de documentación — merge de PR #5 y PR #6, limpieza de ramas)
 

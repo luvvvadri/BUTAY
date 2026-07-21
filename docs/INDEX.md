@@ -1,9 +1,9 @@
 # INDEX.md
 
 > **Tipo de documento:** Sistema — Mapa maestro
-> **Versión:** 2.8
+> **Versión:** 2.9
 > **Fecha de creación:** 2026-07-18
-> **Última actualización:** 2026-07-21
+> **Última actualización:** 2026-07-22
 > **Estado:** Vivo
 > **Depende de:** CONTEXT.md (debe leerse después de este)
 
@@ -97,11 +97,11 @@ convención de carpeta plana ya establecida sin aportar valor.
 
 | Documento | Versión | Estado | Última actualización | Depende de |
 |---|---|---|---|---|
-| CONTEXT.md | 2.9 | Vivo | 2026-07-21 | — |
-| INDEX.md | 2.8 | Vivo | 2026-07-21 | CONTEXT.md |
+| CONTEXT.md | 3.0 | Vivo | 2026-07-22 | — |
+| INDEX.md | 2.9 | Vivo | 2026-07-22 | CONTEXT.md |
 | DECISIONS.md | 1.4 | Vivo | 2026-07-21 | — |
 | GLOSSARY.md | 0.9 | Vivo | 2026-07-20 | DECISIONS.md |
-| CHANGELOG.md | 2.8 | Vivo | 2026-07-21 | INDEX.md |
+| CHANGELOG.md | 2.9 | Vivo | 2026-07-22 | INDEX.md |
 | 00_SYSTEM_WORKFLOW.md | 1.0 | Approved / Congelado (Decisión 022) | 2026-07-20 | CONTEXT, INDEX, DECISIONS, GLOSSARY, CHANGELOG |
 
 ## Documentos de Fase 1 (Fundamentos estratégicos)
@@ -127,7 +127,7 @@ convención de carpeta plana ya establecida sin aportar valor.
 | Handoff técnico de transición | WEB_HANDOFF.md | 1.0 | Final | 2026-07-19 | Product Strategy (v1.0); Brand Bible (v1.0) |
 | Puerta de entrada técnica para Claude Code | CLAUDE_CODE.md | 1.1 | Final | 2026-07-20 | WEB_HANDOFF.md; Brand Bible (v1.0); Product Strategy (v1.0); 00_SYSTEM_WORKFLOW.md (v1.0, Approved) |
 | Arquitectura de frontend | FRONTEND_ARCHITECTURE.md | 1.0 | Final | 2026-07-20 | CLAUDE_CODE.md; WEB_HANDOFF.md; Product Strategy (v1.0) |
-| Plan de desarrollo por fases | DEVELOPMENT_ROADMAP.md | 1.7 | Final en estructura, vivo en su seguimiento de estado — Fases 1-5 Completas y fusionadas a `main` (PR #4, #5, #6) | 2026-07-21 | CLAUDE_CODE.md; FRONTEND_ARCHITECTURE.md; WEB_HANDOFF.md |
+| Plan de desarrollo por fases | DEVELOPMENT_ROADMAP.md | 1.8 | Final en estructura, vivo en su seguimiento de estado — Fases 1-6 Completas (Fases 1-5 fusionadas a `main`; Fase 6 en rama propia); Fases 7-8 con base construida, no cerradas | 2026-07-22 | CLAUDE_CODE.md; FRONTEND_ARCHITECTURE.md; WEB_HANDOFF.md |
 
 ## Documentos de Fase 2 (Identidad de marca conceptual)
 
@@ -279,3 +279,17 @@ fundador aprobó y se fusionaron a `main` el PR #5 (Fase 4) y el PR #6
 (Fase 5, retargeteado de `feature/fase-4-catalog-data-layer` a `main`
 tras el merge del PR #5). Ambas ramas de desarrollo se eliminaron
 (local y remoto) — el repositorio queda con una única rama, `main`.
+
+**Fase 6 técnica completa (2026-07-22) — Páginas de catálogo.** Por
+instrucción explícita del fundador de construir "la primera versión
+completamente navegable de Butay", se completó la Fase 6 junto con
+partes sustanciales de las Fases 7 y 8 en `feature/fase-6-catalog-pages`.
+Catálogo/categoría/colección quedan formalmente completos. La ficha de
+producto (Fase 7) y Home/Manifiesto (Fase 8) se reconstruyeron por
+completo pero **no se marcan cerradas** — la Fase 7 porque el modelo
+de datos no tiene campo de mensaje/frase real de producto; la Fase 8
+porque su copy es explícitamente de prueba, no contenido real del
+Brand Bible vía `/content`. Ver el apartado "Estado" de la Fase 6 en
+`DEVELOPMENT_ROADMAP.md` y sus notas en las Fases 7 y 8 para el
+detalle completo. La rama está pendiente de PR y revisión del
+fundador — no se ha fusionado a `main`.
