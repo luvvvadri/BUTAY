@@ -1,7 +1,7 @@
 # DEVELOPMENT_ROADMAP.md
 
 > **Tipo de documento:** Plan técnico de desarrollo
-> **Versión:** 1.6
+> **Versión:** 1.7
 > **Fecha de creación:** 2026-07-20
 > **Última actualización:** 2026-07-21
 > **Estado:** Final (vivo en su seguimiento — el estado de cada fase se actualiza a medida que avanza el desarrollo)
@@ -47,7 +47,7 @@ orden se construye la web.
 | 2 — Fundamentos visuales provisionales | Completa |
 | 3 — Sistema de componentes base | Completa |
 | 4 — Modelo de datos y capa de catálogo | Completa |
-| 5 — Layouts y navegación | Pendiente |
+| 5 — Layouts y navegación | Completa |
 | 6 — Páginas de catálogo | Pendiente |
 | 7 — Ficha de producto | Pendiente |
 | 8 — Contenido editorial de marca | Pendiente |
@@ -296,6 +296,70 @@ las páginas internas estén vacías o con contenido de prueba).
 teclado; las rutas siguen la jerarquía de catálogo definida, no una
 estructura de menú arbitraria.
 
+**Estado (actualizado 2026-07-21).** **Completa.** Trabajado en
+`feature/fase-5-layouts-navigation`. Entregables:
+- **Layout raíz funcional**: `Header` (wordmark de texto — sin logo
+  definitivo, Fase 4 de marca sigue en borrador —, navegación),
+  `AnnouncementBar` (slot estructural, inactivo por defecto, sin
+  contenido aprobado) y `Footer`, envolviendo `{children}` en
+  `src/app/layout.tsx`.
+- **Componentes nuevos de nivel 1** (`src/components/ui/`): `Drawer`
+  (mismo patrón de `Modal` — Radix Dialog, foco, Escape — anclado a un
+  lateral), `Breadcrumb` (agnóstico de catálogo, recibe
+  `{label, href}[]`), `EmptyState`. Icono `menu` añadido al registro de
+  `Icon`.
+- **Componentes nuevos de layout** (`src/components/layout/`): `Header`,
+  `Footer`, `Navigation` (única fuente de enlaces, renderizada de forma
+  responsive — nav horizontal en escritorio, `Drawer` en móvil; sin
+  entrada "Collections" porque no existe una ruta índice aprobada para
+  ella, solo `/collections/[collection]`), `NavLink` (compone `Link`
+  con `usePathname()` para `aria-current` y estado activo),
+  `AnnouncementBar`.
+- **Estructura de rutas** según `FRONTEND_ARCHITECTURE.md` §6, usando
+  route groups: `(site)` (`/`, `/manifesto`, sin Breadcrumb) y `(shop)`
+  (`/catalog`, `/catalog/[category]`, `/collections/[collection]`,
+  `/product/[sku]`, `/archive`, con Breadcrumb). Los ítems de
+  Breadcrumb se construyen en `src/lib/breadcrumb.ts`, que traduce
+  datos de la capa `/data` (Fase 4) a la forma genérica que el
+  componente espera — el componente en sí nunca lee `/data`.
+- **Estados**: `loading.tsx`/`error.tsx`/`not-found.tsx` raíz,
+  `loading.tsx` de catálogo con skeletons, `EmptyState` reutilizado en
+  catálogo/categoría/colección/archivo, `notFound()` en categoría y
+  colección para slugs inexistentes. Los productos archivados **nunca**
+  devuelven 404 en `/product/[sku]` — siguen consultables con una
+  insignia "Archived" (Product Strategy §7).
+- **SEO — solo andamiaje**: `robots.ts` y `sitemap.ts`, generados
+  íntegramente desde `/data` (categorías, colecciones, productos
+  activos); sin copy ni optimización real (Fase 10). `metadata` con
+  plantilla de título (`%s — Butay`) en el layout raíz.
+- **Integración con la Fase 4**: todas las páginas de `(shop)` consumen
+  exclusivamente las funciones de acceso ya existentes
+  (`getSkus`/`getSkusByCategory`/`getSkusByCollection`/`getSkusByStatus`/
+  `getSkuBySlug`, análogas de categorías/colecciones/drops) — ningún
+  producto hardcodeado.
+- **Interpretación de alcance documentada**: no existe una ruta
+  `/drops` dedicada — no está en `FRONTEND_ARCHITECTURE.md` §6 y un
+  Drop es un nivel opcional dentro de una Colección (Product Strategy
+  §6), no un nivel de navegación propio. Un Drop activo se muestra
+  como sección dentro de `/collections/[collection]`.
+- **Fuera de alcance deliberadamente** (pertenece a la Fase 6 —
+  "Páginas de catálogo" — y a la Fase 7 — "Ficha de producto"): ningún
+  componente de dominio nuevo (`components/product`), ninguna tarjeta
+  de producto dedicada ni diseño visual pulido — las páginas de
+  `(shop)` usan directamente los primitivos ya existentes de la Fase 3
+  (`Card`, `Grid`, `Link`, `Typography`) para demostrar que rutas y
+  datos funcionan, sin adelantar trabajo de esas fases.
+- 34 archivos de test, 109 tests en total (65 nuevos desde el cierre de
+  la Fase 4), incluidos los de navegación por teclado (apertura/cierre
+  del `Drawer`, estado activo de `NavLink`), integridad referencial de
+  `Breadcrumb`, y comportamiento de `notFound()`.
+
+`npm run lint`, `npm run format:check`, `npm run test` (109/109), `npx
+tsc --noEmit` y `npm run build` se ejecutan sin errores — 23 rutas
+generadas correctamente, incluidas las estáticas por
+`generateStaticParams` para categorías, colecciones y productos. Se
+cumplen todos los criterios de finalización de esta fase.
+
 ## Fase 6 — Páginas de catálogo
 
 **Objetivo.** Construir las páginas de catálogo completo, catálogo por
@@ -464,10 +528,10 @@ plan de ejecución de los dos anteriores.
 seguimiento de estado de cada fase (tabla "Estado de avance"), que se
 actualiza a medida que el desarrollo avanza.
 
-**Próxima fase recomendada:** Fase 5 (Layouts y navegación). Las Fases
-1 (Configuración del proyecto), 2 (Fundamentos visuales
-provisionales), 3 (Sistema de componentes base) y 4 (Modelo de datos y
-capa de catálogo) están **Completas** — ver sus apartados "Estado"
-respectivos. Conforme a la Regla de uso 1 de este documento, cumplir
-la Fase 4 no abre automáticamente la Fase 5: requiere instrucción
-explícita del fundador.
+**Próxima fase recomendada:** Fase 6 (Páginas de catálogo). Las Fases 1
+(Configuración del proyecto), 2 (Fundamentos visuales provisionales),
+3 (Sistema de componentes base), 4 (Modelo de datos y capa de
+catálogo) y 5 (Layouts y navegación) están **Completas** — ver sus
+apartados "Estado" respectivos. Conforme a la Regla de uso 1 de este
+documento, cumplir la Fase 5 no abre automáticamente la Fase 6:
+requiere instrucción explícita del fundador.
