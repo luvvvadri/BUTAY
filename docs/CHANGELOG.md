@@ -1,7 +1,7 @@
 # CHANGELOG.md
 
 > **Tipo de documento:** Sistema — Historial de cambios (append-only)
-> **Versión:** 1.9
+> **Versión:** 2.0
 > **Fecha de creación:** 2026-07-18
 > **Última actualización:** 2026-07-21
 > **Estado:** Vivo (solo se añade, nunca se reescribe)
@@ -53,6 +53,57 @@ por todo el historial. Si el archivo crece demasiado, se archivan por año
 ---
 
 ## Historial
+
+### 2026-07-21 (cierre oficial de la Fase 2 de DEVELOPMENT_ROADMAP.md)
+
+- **`feature/fase-2-foundations` / PR #1** — rama de trabajo de la Fase
+  2, sin fusionar a `main` todavía. Commits: tokens de diseño
+  provisionales (color de acento + tipografía Geist formalizada,
+  corrigiendo además un bug donde `body` nunca aplicaba la fuente ya
+  cargada); envoltorio de iconografía (`src/components/ui/icon.tsx`);
+  y, tras revisión de PR, dos correcciones: unificación de la escala de
+  grises a `neutral` en `src/app/page.tsx` (antes usaba `zinc`,
+  inconsistente con la convención documentada en `tokens.css`), y
+  rediseño del envoltorio de iconos a un registro interno por nombre
+  para desacoplar por completo los puntos de uso de `lucide-react`.
+- **DEVELOPMENT_ROADMAP.md** — v1.2 → v1.3. La Fase 2 (Fundamentos
+  visuales provisionales) pasa a estado **Completa** en la tabla
+  "Estado de avance" y en su apartado "Estado"; se actualiza el bloque
+  de cierre estándar (próxima fase recomendada: Fase 3, sin abrirse
+  todavía).
+- **CONTEXT.md** — v1.9 → v2.0. Se añade el párrafo de cierre de la
+  Fase 2 en "Estado general"; se actualiza "Aprobado", "Próximo paso" y
+  las notas para cualquier IA (incluida una nota nueva señalando que el
+  trabajo de la Fase 2 vive en un PR todavía sin fusionar).
+- **DECISIONS.md** — sin cambios. Igual que en el cierre de la Fase 1,
+  no corresponde ninguna decisión nueva: los tokens y el envoltorio de
+  iconos ejecutan recomendaciones ya fijadas
+  (`CLAUDE_CODE.md`/`FRONTEND_ARCHITECTURE.md`), sin alternativas de
+  fondo evaluadas en este cierre.
+- **INDEX.md** — v1.8 → v1.9. Se actualizan las versiones de CONTEXT.md
+  y CHANGELOG.md en la tabla "Documentos de sistema" — incluida la
+  propia versión de INDEX.md, que había quedado desincronizada en dos
+  ediciones sucesivas anteriores — y la versión/estado de
+  `DEVELOPMENT_ROADMAP.md` en la tabla "Documentos técnicos de
+  desarrollo" (Fases 1 y 2 Completas).
+- **CHANGELOG.md** — este mismo registro.
+
+**Nota de auditoría de cierre de fase.** Se repitieron `npm run lint`,
+`npm run format:check` y `npm run build` sobre `butay-web/` en el
+estado final de `feature/fase-2-foundations`: los tres sin errores. Se
+buscaron referencias obsoletas a "Fase 2" pendiente en `CONTEXT.md`,
+`INDEX.md` y `DEVELOPMENT_ROADMAP.md`: no se encontró ninguna — las
+únicas menciones restantes a "Fase 2" corresponden a la Fase 2 de
+marca/producto (Identidad de marca conceptual), un concepto distinto
+ya cerrado desde la Decisión 016. Se detectó y corrigió, en el mismo
+movimiento, que la propia tabla "Documentos de sistema" de `INDEX.md`
+no reflejaba las versiones reales de `CONTEXT.md`, `CHANGELOG.md` ni de
+sí mismo — arrastrado de las dos correcciones de coherencia anteriores,
+donde se bumpeó la cabecera de cada documento sin actualizar la fila
+correspondiente en `INDEX.md`. Con todos los entregables y criterios de
+finalización de la Fase 2 cumplidos y verificados, la fase se marca
+**Completa**. El merge del PR #1 sigue pendiente de decisión del
+fundador.
 
 ### 2026-07-21 (corrección de coherencia — INDEX.md desincronizado tras el cierre de la Fase 1)
 

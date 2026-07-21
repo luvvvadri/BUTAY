@@ -1,0 +1,43 @@
+/**
+ * Provisional design tokens — DEVELOPMENT_ROADMAP.md Fase 2 (Fundamentos
+ * visuales provisionales). Placeholder until Fase 4 (Identidad Visual /
+ * Design System) is approved — see FRONTEND_ARCHITECTURE.md §15.
+ *
+ * Grayscale intentionally reuses Tailwind's built-in `neutral` palette
+ * directly in markup (bg-neutral-50, text-neutral-900, etc.) instead of
+ * being redefined here — avoids a redundant custom scale that duplicates
+ * what the framework already provides (FRONTEND_ARCHITECTURE.md §17).
+ * Only the semantic background/foreground pair and the single accent
+ * color are centralized as tokens.
+ */
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+
+  /* Provisional accent — arbitrary placeholder, not a brand color.
+     Contrast vs. --accent-foreground (white): ~6.3:1, passes WCAG AA
+     (and near-AAA) for normal text (CLAUDE_CODE.md §15). */
+  --accent: #4f46e5;
+  --accent-foreground: #ffffff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  /* Provisional typography — free variable font loaded performantly via
+     next/font (layout.tsx), easy to swap without touching components
+     when Fase 4 defines the brand typeface (FRONTEND_ARCHITECTURE.md §13). */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}

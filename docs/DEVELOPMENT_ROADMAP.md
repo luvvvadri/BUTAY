@@ -1,7 +1,7 @@
 # DEVELOPMENT_ROADMAP.md
 
 > **Tipo de documento:** Plan técnico de desarrollo
-> **Versión:** 1.2
+> **Versión:** 1.3
 > **Fecha de creación:** 2026-07-20
 > **Última actualización:** 2026-07-21
 > **Estado:** Final (vivo en su seguimiento — el estado de cada fase se actualiza a medida que avanza el desarrollo)
@@ -44,7 +44,7 @@ orden se construye la web.
 | Fase | Estado |
 |---|---|
 | 1 — Configuración del proyecto | Completa |
-| 2 — Fundamentos visuales provisionales | Pendiente |
+| 2 — Fundamentos visuales provisionales | Completa |
 | 3 — Sistema de componentes base | Pendiente |
 | 4 — Modelo de datos y capa de catálogo | Pendiente |
 | 5 — Layouts y navegación | Pendiente |
@@ -126,6 +126,31 @@ iconografía.
 directamente desde una librería externa sin pasar por esta capa de
 tokens/envoltorio; el conjunto cumple contraste mínimo de
 accesibilidad (`CLAUDE_CODE.md`, apartado 15) aunque sea provisional.
+
+**Estado (actualizado 2026-07-21).** **Completa.** Todos los
+entregables están cumplidos y verificados, en `feature/fase-2-foundations`
+(PR #1):
+- Tokens de color: `src/styles/tokens.css` define un acento provisional
+  (`#4f46e5`, contraste ~6.3:1 sobre blanco, cumple WCAG AA) y un par
+  semántico fondo/texto; la escala de grises reutiliza directamente la
+  paleta `neutral` nativa de Tailwind (sin redefinirla) — aplicada de
+  forma consistente en todo el proyecto tras la revisión del PR.
+- Tipografía: fuente variable Geist (ya cargada vía `next/font` desde la
+  Fase 1) formalizada como provisional; se corrigió además un bug real
+  donde `body` nunca llegaba a aplicarla (font-family quedaba fija en
+  Arial/Helvetica).
+- Envoltorio de iconografía: `src/components/ui/icon.tsx` consume
+  iconos por nombre (`<Icon name="arrow-right" />`) a través de un
+  registro interno — ningún otro archivo del proyecto importa
+  `lucide-react` directamente, tras rediseñarlo tras la revisión del
+  PR para que la Fase 4 pueda sustituir el set completo tocando un solo
+  archivo.
+- Ningún valor visual definitivo de marca: todos los tokens están
+  explícitamente comentados como provisionales en el propio código.
+
+`npm run lint`, `npm run format:check` y `npm run build` se ejecutan
+sin errores. Se cumplen todos los criterios de finalización de esta
+fase.
 
 ## Fase 3 — Sistema de componentes base
 
@@ -357,9 +382,9 @@ plan de ejecución de los dos anteriores.
 seguimiento de estado de cada fase (tabla "Estado de avance"), que se
 actualiza a medida que el desarrollo avanza.
 
-**Próxima fase recomendada:** Fase 2 (Fundamentos visuales
-provisionales). La Fase 1 (Configuración del proyecto) está
-**Completa** desde el 2026-07-21 — ver apartado "Estado" de la Fase 1.
-Conforme a la Regla de uso 1 de este documento, cumplir la Fase 1 no
-abre automáticamente la Fase 2: requiere instrucción explícita del
-fundador.
+**Próxima fase recomendada:** Fase 3 (Sistema de componentes base). Las
+Fases 1 (Configuración del proyecto) y 2 (Fundamentos visuales
+provisionales) están **Completas** desde el 2026-07-21 — ver sus
+apartados "Estado" respectivos. Conforme a la Regla de uso 1 de este
+documento, cumplir la Fase 2 no abre automáticamente la Fase 3:
+requiere instrucción explícita del fundador.
