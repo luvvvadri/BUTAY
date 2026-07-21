@@ -1,7 +1,7 @@
 # CHANGELOG.md
 
 > **Tipo de documento:** Sistema — Historial de cambios (append-only)
-> **Versión:** 2.2
+> **Versión:** 2.3
 > **Fecha de creación:** 2026-07-18
 > **Última actualización:** 2026-07-21
 > **Estado:** Vivo (solo se añade, nunca se reescribe)
@@ -53,6 +53,50 @@ por todo el historial. Si el archivo crece demasiado, se archivan por año
 ---
 
 ## Historial
+
+### 2026-07-21 (apertura formal de la Fase 4 — Identidad Visual / Design System)
+
+- **DECISIONS.md** — v1.3 → v1.4. Se añade la Decisión 027: apertura
+  formal de la Fase 4 del roadmap de marca/producto y redacción de su
+  documento raíz, `04_IDENTIDAD_VISUAL_design_system.md` (v0.1, `En
+  borrador`), siguiendo el índice aprobado tras dos entrevistas de
+  identidad visual (dirección general y logo).
+- **`04_IDENTIDAD_VISUAL_design_system.md`** — creado (v0.1, `En
+  borrador`). 18 apartados (0-17): personalidad visual, territorio
+  emocional, referencias y qué evitar, logo (rol/dirección/aplicación),
+  sistema de color, sistema tipográfico, dirección fotográfica,
+  dirección artística, aplicación visual del mensaje en la prenda,
+  packaging, experiencia visual de la web, qué nunca debe parecer,
+  evolución (permanente/flexible), puentes hacia la Fase 6 y hacia
+  Product Strategy, bloque de cierre estándar. Consolida en un único
+  documento raíz lo que el roadmap original preveía como tres piezas
+  separadas. Ningún valor concreto (hex, tipografía, forma de logo)
+  fijado — todos marcados `PENDIENTE DE DEFINIR` explícitamente. *(Ref.
+  Decisión 027)*
+- **INDEX.md** — v2.1 → v2.2. Se añade la tabla "Documentos de Fase 4";
+  se colapsan las tres filas previstas del roadmap ("Manual de marca",
+  "Paleta de color", "Sistema tipográfico") en una sola; se añade nota
+  de apertura de fase; se sincronizan las versiones de CONTEXT.md,
+  DECISIONS.md y CHANGELOG.md en la tabla de documentos de sistema.
+- **CONTEXT.md** — v2.2 → v2.3. Se añade el párrafo de apertura de la
+  Fase 4 en "Estado general"; se corrige la versión de
+  `DEVELOPMENT_ROADMAP.md` en "Aprobado" (v1.3 → v1.4, desincronizada
+  desde la sesión anterior); "En borrador / en curso" deja de estar
+  vacío por primera vez desde el cierre de la Fase 3; se actualiza
+  "Próximo paso" y se añade la nota 22 para cualquier IA.
+- **CHANGELOG.md** — este mismo registro.
+
+**Nota de auditoría de apertura de fase.** Se verificó que el documento
+nuevo no fija ningún valor visual definitivo (sin colores hex, sin
+tipografías concretas, sin forma de logo) y que cada punto sin resolver
+de la entrevista queda marcado `PENDIENTE DE DEFINIR` de forma
+explícita, nunca inferido. Se revisaron `Brand Bible` y `Product
+Strategy` para confirmar que el nuevo documento no contradice nada de
+lo permanente en ninguno de los dos. Se detectó y corrigió, de paso,
+una versión desincronizada de `DEVELOPMENT_ROADMAP.md` en `CONTEXT.md`
+que arrastraba desde la sesión de cierre de la Fase 2 técnica. La Fase
+4 queda **abierta, no cerrada** — sin informe de cierre ni estado
+`Approved`, pendiente de autoauditoría y aprobación explícita.
 
 ### 2026-07-21 (corrección de coherencia — PR #1 se fusionó a `main` durante la sesión)
 

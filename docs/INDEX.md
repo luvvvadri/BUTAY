@@ -1,7 +1,7 @@
 # INDEX.md
 
 > **Tipo de documento:** Sistema — Mapa maestro
-> **Versión:** 2.1
+> **Versión:** 2.2
 > **Fecha de creación:** 2026-07-18
 > **Última actualización:** 2026-07-21
 > **Estado:** Vivo
@@ -97,11 +97,11 @@ convención de carpeta plana ya establecida sin aportar valor.
 
 | Documento | Versión | Estado | Última actualización | Depende de |
 |---|---|---|---|---|
-| CONTEXT.md | 2.2 | Vivo | 2026-07-21 | — |
-| INDEX.md | 2.1 | Vivo | 2026-07-21 | CONTEXT.md |
-| DECISIONS.md | 1.3 | Vivo | 2026-07-21 | — |
+| CONTEXT.md | 2.3 | Vivo | 2026-07-21 | — |
+| INDEX.md | 2.2 | Vivo | 2026-07-21 | CONTEXT.md |
+| DECISIONS.md | 1.4 | Vivo | 2026-07-21 | — |
 | GLOSSARY.md | 0.9 | Vivo | 2026-07-20 | DECISIONS.md |
-| CHANGELOG.md | 2.2 | Vivo | 2026-07-21 | INDEX.md |
+| CHANGELOG.md | 2.3 | Vivo | 2026-07-21 | INDEX.md |
 | 00_SYSTEM_WORKFLOW.md | 1.0 | Approved / Congelado (Decisión 022) | 2026-07-20 | CONTEXT, INDEX, DECISIONS, GLOSSARY, CHANGELOG |
 
 ## Documentos de Fase 1 (Fundamentos estratégicos)
@@ -142,6 +142,16 @@ relacionadas, Estado del documento, Próxima fase recomendada), obligatorio
 desde el Brand Bible en adelante para todos los documentos raíz del
 proyecto. *(Ref. Decisión 013)*
 
+## Documentos de Fase 4 (Identidad Visual / Design System)
+
+| Documento | Archivo | Versión | Estado | Última actualización | Depende de |
+|---|---|---|---|---|---|
+| Design System (consolida Manual de marca + Paleta de color + Sistema tipográfico del roadmap original; personalidad visual, logo, color, tipografía, fotografía, dirección artística, aplicación en prenda, packaging, experiencia web) | 04_IDENTIDAD_VISUAL_design_system.md | 0.1 | En borrador — pendiente de autoauditoría y aprobación (Decisión 027) | 2026-07-21 | Brand Bible (v1.1); Product Strategy (v1.1); FRONTEND_ARCHITECTURE.md (v1.0) |
+
+Consolidación aplicada siguiendo el mismo patrón que el Brand Bible
+(Decisión 011) y Product Strategy (Decisión 018): un único documento
+raíz en vez de tres piezas separadas. *(Ref. Decisión 027)*
+
 ## Documentos por fase (roadmap)
 
 | Fase | Documento raíz previsto | Estado |
@@ -154,9 +164,7 @@ proyecto. *(Ref. Decisión 013)*
 | 2 — Identidad de marca (conceptual) | Naming | Aprobado (Decisión 009) |
 | 2 | Brand Bible (personalidad, tono de voz y territorio narrativo) | Aprobado (v1.1, Decisiones 016, 026) — Fase 2 cerrada |
 | 3 — Product Strategy | Product Strategy (Product DNA, catálogo, colecciones, drops, ciclo de vida, calidad, precios, escalabilidad, evolución) | Aprobado (v1.1, Decisiones 020, 026) — Fase 3 cerrada |
-| 4 — Identidad Visual (Design System) | Manual de marca | Pendiente |
-| 4 | Paleta de color | Pendiente |
-| 4 | Sistema tipográfico | Pendiente |
+| 4 — Identidad Visual (Design System) | Design System (personalidad visual, logo, color, tipografía, fotografía, dirección artística, prenda, packaging, web) | En borrador (v0.1, Decisión 027) — Fase 4 abierta, sin cerrar |
 | 5 — Operaciones | Pricing y costes | Pendiente |
 | 5 | Stock y logística | Pendiente |
 | 5 | Legal y fiscal | Pendiente |
@@ -214,3 +222,18 @@ movimiento. Product Strategy pasa a v1.1 (misma decisión) solo con una
 nota informativa sobre preferencias de estilo — fit/silueta/tallaje
 sigue `PENDIENTE DE DEFINIR`. No se creó ningún documento nuevo de
 marca: el Brand Bible sigue siendo la única fuente de verdad.
+
+El mismo día, 2026-07-21, se abrió formalmente la **Fase 4 (Identidad
+Visual / Design System)**, tras dos entrevistas de identidad visual
+(dirección general y logo) y el protocolo completo de
+`00_SYSTEM_WORKFLOW.md` (Comprensión → Arquitectura → Aprobación del
+índice → Redacción). Se creó `04_IDENTIDAD_VISUAL_design_system.md`
+(v0.1, `En borrador`, Decisión 027), consolidando en un único documento
+raíz las tres filas que el roadmap original preveía por separado
+("Manual de marca", "Paleta de color", "Sistema tipográfico") — mismo
+patrón que Brand Bible y Product Strategy. El documento fija dirección
+visual completa sin cerrar valores concretos (color, tipografía, forma
+del logo), marcados explícitamente `PENDIENTE DE DEFINIR`. La Fase 4
+queda **abierta, sin cerrar**: no tiene informe de cierre ni está
+`Approved`/Congelado — sigue pendiente de autoauditoría y aprobación
+explícita del fundador.
