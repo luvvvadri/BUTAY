@@ -1,7 +1,7 @@
 # CONTEXT.md
 
 > **Tipo de documento:** Sistema — Memoria permanente
-> **Versión:** 2.5
+> **Versión:** 2.6
 > **Fecha de creación:** 2026-07-18
 > **Última actualización:** 2026-07-21
 > **Estado:** Vivo (se reescribe, no se acumula)
@@ -71,10 +71,13 @@ mantiene siempre corto (objetivo: legible en menos de dos minutos).
 
 ## Estado general
 
-**Fase actual:** Fase 2 y Fase 3 cerradas y aprobadas. La Fase 4
-(Identidad Visual / Design System) **está abierta, con un documento
-raíz en borrador (v0.1) pendiente de aprobación** — ver más abajo. El
-proyecto
+**Fase actual:** Fase 2 y Fase 3 (marca/producto) cerradas y aprobadas.
+La Fase 4 (Identidad Visual / Design System) **está abierta, con un
+documento raíz en borrador (v0.1) pendiente de aprobación** — ver más
+abajo. En el track técnico de `DEVELOPMENT_ROADMAP.md`, las Fases 1, 2
+y 3 (Configuración del proyecto; Fundamentos visuales provisionales;
+Sistema de componentes base) están **completas**; el PR de la Fase 3
+técnica está pendiente de creación/revisión. El proyecto
 completó el 2026-07-20 su entrega técnica ("Developer Handoff") para
 Claude Code: `WEB_HANDOFF.md`, `CLAUDE_CODE.md`,
 `FRONTEND_ARCHITECTURE.md` y `DEVELOPMENT_ROADMAP.md` (Decisión 021),
@@ -234,6 +237,32 @@ afirmación presentada como confirmada sin serlo, el PR se fusionó a
 equivale a la aprobación formal del fundador (Etapa 8), que sigue
 pendiente.
 
+**Fase 3 de `DEVELOPMENT_ROADMAP.md` completa (2026-07-21).** Por
+instrucción explícita del fundador de minimizar interacciones y avanzar
+con la máxima autonomía posible, se inició y completó la Fase 3
+(Sistema de componentes base) inmediatamente después del cierre
+documental anterior, sin volver a la documentación de marca/identidad.
+Trabajada en `feature/fase-3-component-system` (sin fusionar todavía).
+Se creó la infraestructura de testing del proyecto (previamente
+inexistente): Vitest + React Testing Library. Se construyeron, en
+`src/components/ui/`, los cinco componentes base nombrados
+explícitamente en `FRONTEND_ARCHITECTURE.md` §4.1 (botón, input,
+badge, modal, tarjeta genérica) más los primitivos de layout y
+tipografía (`Container`, `Stack`, `Grid`, `Section`, `Typography`) y
+las utilidades compartidas `lib/cn.ts` y `lib/spacing.ts`. `Modal`
+envuelve `@radix-ui/react-dialog`, siguiendo la recomendación explícita
+de `CLAUDE_CODE.md` §5. Ningún componente depende de datos de catálogo
+ni de contenido de marca específico; ninguno implementa mecánicas
+prohibidas (countdowns, stock limitado, gamificación). 44 tests pasan,
+incluidas dos pruebas de composición que usan los componentes juntos en
+un layout realista, no solo aislados. `npm run lint`, `npm run
+format:check`, `npm run test` y `npm run build` se ejecutan sin
+errores. **La Fase 3 queda oficialmente cerrada** — todos sus
+entregables y criterios de finalización se cumplen. Ver el apartado
+"Estado" de la Fase 3 en `DEVELOPMENT_ROADMAP.md` para el detalle
+completo. El PR correspondiente está pendiente de creación/revisión —
+no se ha fusionado a `main`.
+
 ## Aprobado
 
 - Arquitectura del proyecto Butay (v1.0)
@@ -254,7 +283,7 @@ pendiente.
 - **WEB_HANDOFF.md (v1.0, Final)**
 - **CLAUDE_CODE.md (v1.1, Final)**
 - **FRONTEND_ARCHITECTURE.md (v1.0, Final)**
-- **DEVELOPMENT_ROADMAP.md (v1.4, Final en estructura, vivo en su seguimiento de estado — Fases 1 y 2 Completas)**
+- **DEVELOPMENT_ROADMAP.md (v1.5, Final en estructura, vivo en su seguimiento de estado — Fases 1, 2 y 3 Completas)**
 - **00_SYSTEM_WORKFLOW.md (v1.0, `Approved`, Decisión 022)**
 
 ## En borrador / en curso
@@ -266,13 +295,14 @@ pendiente.
 
 ## Próximo paso
 
-Las Fases 1 y 2 de `DEVELOPMENT_ROADMAP.md` (Configuración del
-proyecto; Fundamentos visuales provisionales) están completas y
-cerradas, ya en `main` (PR #1, #2 y #3 fusionados el 2026-07-21). El
-fundador dio instrucción explícita de iniciar la Fase 3 (Sistema de
-componentes base) inmediatamente — ver el apartado "Estado" de la
-Fase 3 en `DEVELOPMENT_ROADMAP.md` para el detalle del desarrollo en
-curso.
+Las Fases 1, 2 y 3 de `DEVELOPMENT_ROADMAP.md` (Configuración del
+proyecto; Fundamentos visuales provisionales; Sistema de componentes
+base) están completas. La Fase 3 se trabajó en
+`feature/fase-3-component-system`, pendiente de PR y revisión del
+fundador — no se ha fusionado a `main` todavía. El siguiente paso es
+crear ese PR y esperar la revisión del fundador antes de considerar la
+apertura de la Fase 4 técnica (Modelo de datos y capa de catálogo),
+que requiere instrucción explícita, igual que el resto de fases.
 
 La Fase 4 (Identidad Visual / Design System) del roadmap de marca/
 producto sigue **abierta pero no cerrada**: el documento raíz (v0.1)
@@ -348,12 +378,17 @@ contradicción crítica que lo exija.
     *(Decisión 025)*. La raíz contiene `docs/` (esta carpeta) y
     `butay-web/` (código fuente de la web, Next.js). Cualquier IA que
     retome el proyecto debe trabajar sobre esta ubicación.
-19. Las Fases 1 y 2 de `DEVELOPMENT_ROADMAP.md` (Configuración del
-    proyecto; Fundamentos visuales provisionales) están **Completas**
-    — la Fase 1 incluye el pipeline de despliegue (GitHub → Vercel,
-    producción en `https://butay.vercel.app/`); la Fase 2, los tokens
-    de diseño provisionales y el envoltorio de iconografía. Ver el
-    apartado "Estado" de cada fase en ese documento.
+19. Las Fases 1, 2 y 3 de `DEVELOPMENT_ROADMAP.md` (Configuración del
+    proyecto; Fundamentos visuales provisionales; Sistema de
+    componentes base) están **Completas** — la Fase 1 incluye el
+    pipeline de despliegue (GitHub → Vercel, producción en
+    `https://butay.vercel.app/`); la Fase 2, los tokens de diseño
+    provisionales y el envoltorio de iconografía; la Fase 3, los
+    componentes base de `src/components/ui/` (botón, input, badge,
+    modal, tarjeta, layout, tipografía) y la infraestructura de
+    testing (Vitest). Ver el apartado "Estado" de cada fase en ese
+    documento. La Fase 3 vive en `feature/fase-3-component-system`,
+    sin fusionar a `main` todavía.
 20. Los PR #1, #2 y #3 están **fusionados a `main`** desde el
     2026-07-21 — no queda ninguna rama de trabajo pendiente de
     fusionar; las tres ramas (`feature/fase-2-foundations`,
@@ -373,8 +408,10 @@ contradicción crítica que lo exija.
     color/tipografía/fotografía — ninguna IA debe inventarlos ni
     tratarlos como resueltos. **Estar en `main` no equivale a
     aprobación del fundador** (Etapa 8 del workflow sigue pendiente).
-23. Desde el 2026-07-21, el foco del proyecto pasa al **desarrollo**
-    (Fase 3 de `DEVELOPMENT_ROADMAP.md`, Sistema de componentes base) —
-    por instrucción explícita del fundador, no se retoma documentación
-    de marca/identidad salvo que surja una contradicción crítica que lo
-    exija.
+23. Desde el 2026-07-21, el foco del proyecto es el **desarrollo**
+    técnico — por instrucción explícita del fundador, no se retoma
+    documentación de marca/identidad salvo que surja una contradicción
+    crítica que lo exija. La Fase 3 técnica (Sistema de componentes
+    base) ya está completa; el siguiente movimiento de desarrollo
+    (Fase 4 técnica, Modelo de datos y capa de catálogo) requiere
+    instrucción explícita del fundador, igual que el resto de fases.

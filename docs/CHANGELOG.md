@@ -1,7 +1,7 @@
 # CHANGELOG.md
 
 > **Tipo de documento:** Sistema — Historial de cambios (append-only)
-> **Versión:** 2.5
+> **Versión:** 2.6
 > **Fecha de creación:** 2026-07-18
 > **Última actualización:** 2026-07-21
 > **Estado:** Vivo (solo se añade, nunca se reescribe)
@@ -53,6 +53,77 @@ por todo el historial. Si el archivo crece demasiado, se archivan por año
 ---
 
 ## Historial
+
+### 2026-07-21 (cierre de la Fase 3 técnica de DEVELOPMENT_ROADMAP.md — sistema de componentes base)
+
+- **Rama `feature/fase-3-component-system`** (creada desde `main` tras
+  el cierre documental anterior; sin fusionar todavía). Por instrucción
+  explícita del fundador de minimizar interacciones y priorizar el
+  desarrollo, se ejecutó de forma autónoma toda la Fase 3 de
+  `DEVELOPMENT_ROADMAP.md` en un único movimiento, en bloques pequeños
+  y revertibles:
+  1. Infraestructura de testing (previamente inexistente): Vitest +
+     `@vitejs/plugin-react` + jsdom + React Testing Library + jest-dom
+     + user-event; `npm run test` / `test:watch`.
+  2. Primitivos de layout: `Container`, `Stack`, `Grid`, `Section` (más
+     una prueba de composición conjunta).
+  3. `Typography` — mapa variante→etiqueta HTML con `as` independiente
+     para no romper el orden de encabezados por accesibilidad.
+  4. `Button` y `Link` — variantes, tamaños, estado disabled, foco
+     visible; `Link` distingue enlaces internos (`next/link`) de
+     externos (`rel="noopener noreferrer"`).
+  5. `Badge` y `Card`, más una segunda prueba de composición que usa
+     los nueve componentes de contenido/interacción juntos en un
+     layout realista, con interacción real de teclado y clic.
+  6. `Input` (asociación de label vía `useId()`, estado de error con
+     `aria-invalid`/`aria-describedby`) y `Modal` (envuelve
+     `@radix-ui/react-dialog` — foco, Escape, retorno de foco, ARIA —
+     en vez de reimplementar accesibilidad de diálogo a mano, según la
+     recomendación explícita de `CLAUDE_CODE.md` §5).
+  Resultado: los cinco componentes base nombrados explícitamente en
+  `FRONTEND_ARCHITECTURE.md` §4.1 (botón, input, badge, modal, tarjeta
+  genérica), más los primitivos de layout y tipografía, y las
+  utilidades compartidas `lib/cn.ts` y `lib/spacing.ts`. 44 tests en 14
+  archivos, todos pasando. Ningún componente depende de datos de
+  catálogo ni de contenido de marca específico; ninguno implementa
+  mecánicas prohibidas (`WEB_HANDOFF.md` §12).
+- **DEVELOPMENT_ROADMAP.md** — v1.4 → v1.5. La Fase 3 (Sistema de
+  componentes base) pasa a estado **Completa** en la tabla "Estado de
+  avance" y se le añade un apartado "Estado", con el mismo nivel de
+  detalle que las Fases 1 y 2; se actualiza el bloque de cierre
+  estándar (próxima fase recomendada: Fase 4 técnica — Modelo de datos
+  y capa de catálogo, sin abrirse todavía).
+- **CONTEXT.md** — v2.5 → v2.6. Se añade el párrafo de cierre de la
+  Fase 3 técnica en "Estado general"; se corrige la frase de apertura
+  de "Estado general" para reflejar ambos tracks (marca/producto vs.
+  técnico) sin conflarlos; se actualiza "Aprobado" (versión de
+  `DEVELOPMENT_ROADMAP.md`), "Próximo paso" y las notas 19 y 23 para
+  cualquier IA.
+- **INDEX.md** — v2.4 → v2.5. Se actualiza la fila de
+  `DEVELOPMENT_ROADMAP.md` en "Documentos técnicos de desarrollo"
+  (v1.5, Fases 1, 2 y 3 Completas); se sincroniza la versión de
+  CONTEXT.md; se añade nota sobre el cierre de la Fase 3 técnica,
+  distinguiéndola explícitamente de la Fase 3 de marca/producto
+  (Product Strategy) conforme a la Decisión 012.
+- **CHANGELOG.md** — este mismo registro.
+
+**Nota de auditoría de cierre de fase.** Se ejecutaron `npm run lint`,
+`npm run format:check`, `npm run test` y `npm run build` sobre
+`butay-web/` en el estado final de `feature/fase-3-component-system`:
+los cuatro sin errores (44/44 tests). Se verificaron los criterios de
+finalización de la Fase 3: cada componente base se usó en al menos un
+caso de prueba real no aislado (las dos pruebas de composición); ningún
+componente depende de datos de catálogo ni de contenido de marca
+específico (verificado por inspección — todos reciben contenido por
+props). Se comprobó que Vitest y Radix UI, las dos herramientas nuevas
+introducidas, ya estaban explícitamente sancionadas en `CLAUDE_CODE.md`
+(§21 y §5 respectivamente), por lo que no constituyen una decisión de
+arquitectura no documentada — no se registra ninguna entrada nueva en
+`DECISIONS.md`. Se verificaron por grep las versiones de cabecera de
+`DEVELOPMENT_ROADMAP.md`, `CONTEXT.md` e `INDEX.md` contra la tabla de
+`INDEX.md`: coinciden. La Fase 3 técnica queda **Completa**, pendiente
+de creación de PR y revisión del fundador — no se fusiona a `main` en
+este movimiento.
 
 ### 2026-07-21 (cierre de documentación — merge de PR #2 y PR #3, limpieza de ramas)
 

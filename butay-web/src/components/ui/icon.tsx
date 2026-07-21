@@ -1,4 +1,4 @@
-import { ArrowRight, type LucideIcon } from 'lucide-react';
+import { ArrowRight, X, type LucideIcon } from 'lucide-react';
 
 /**
  * Icon wrapper — FRONTEND_ARCHITECTURE.md §14.
@@ -9,9 +9,8 @@ import { ArrowRight, type LucideIcon } from 'lucide-react';
  * swapping it for a different set in Fase 4 (Identidad Visual / Design
  * System) touches this one file, not every call site.
  *
- * Only one entry exists today ("arrow-right") — enough to prove the
- * registry works end-to-end. New names are added here as real usages
- * need them, never speculatively.
+ * Entries are added only as real usages need them, never
+ * speculatively — "close" was added for the Modal's dismiss button.
  *
  * Defaults to `aria-hidden` (decorative) unless `label` is provided, in
  * which case it renders as a labeled graphic for assistive technology —
@@ -20,6 +19,7 @@ import { ArrowRight, type LucideIcon } from 'lucide-react';
 
 const icons = {
   'arrow-right': ArrowRight,
+  close: X,
 } satisfies Record<string, LucideIcon>;
 
 export type IconName = keyof typeof icons;
