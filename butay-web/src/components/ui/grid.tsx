@@ -1,4 +1,4 @@
-import type { ElementType, ReactNode } from 'react';
+import type { ElementType, HTMLAttributes, ReactNode } from 'react';
 import { cn } from '@/lib/cn';
 import { gapClass, type Spacing } from '@/lib/spacing';
 
@@ -13,7 +13,7 @@ const columnsClass: Record<GridColumns, string> = {
   6: 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6',
 };
 
-interface GridProps {
+interface GridProps extends Omit<HTMLAttributes<HTMLElement>, 'className'> {
   as?: ElementType;
   columns?: GridColumns;
   gap?: Spacing;
@@ -28,10 +28,12 @@ export function Grid({
   gap = 'md',
   className,
   children,
+  ...props
 }: GridProps) {
   return (
     <Component
       className={cn('grid', columnsClass[columns], gapClass[gap], className)}
+      {...props}
     >
       {children}
     </Component>

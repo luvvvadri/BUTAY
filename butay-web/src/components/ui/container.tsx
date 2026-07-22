@@ -1,4 +1,4 @@
-import type { ElementType, ReactNode } from 'react';
+import type { ElementType, HTMLAttributes, ReactNode } from 'react';
 import { cn } from '@/lib/cn';
 
 type ContainerSize = 'sm' | 'md' | 'lg' | 'full';
@@ -10,7 +10,10 @@ const maxWidthClass: Record<ContainerSize, string> = {
   full: 'max-w-none',
 };
 
-interface ContainerProps {
+interface ContainerProps extends Omit<
+  HTMLAttributes<HTMLElement>,
+  'className'
+> {
   /** HTML element to render. Defaults to a plain wrapper `div`. */
   as?: ElementType;
   /** Max-width step. Defaults to `lg`. */
@@ -25,6 +28,7 @@ export function Container({
   size = 'lg',
   className,
   children,
+  ...props
 }: ContainerProps) {
   return (
     <Component
@@ -33,6 +37,7 @@ export function Container({
         maxWidthClass[size],
         className,
       )}
+      {...props}
     >
       {children}
     </Component>

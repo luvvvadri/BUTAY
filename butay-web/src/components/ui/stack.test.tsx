@@ -25,4 +25,15 @@ describe('Stack', () => {
     expect(el.className).toMatch(/items-center/);
     expect(el.className).toMatch(/justify-between/);
   });
+
+  it('forwards arbitrary HTML attributes like aria-label to the rendered element', () => {
+    render(
+      <Stack as="nav" aria-label="Filter by category">
+        content
+      </Stack>,
+    );
+    expect(
+      screen.getByRole('navigation', { name: 'Filter by category' }),
+    ).toBeInTheDocument();
+  });
 });
