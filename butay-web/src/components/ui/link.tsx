@@ -1,21 +1,14 @@
 import type { AnchorHTMLAttributes, ReactNode } from 'react';
 import NextLink from 'next/link';
 import { cn } from '@/lib/cn';
-
-type LinkTone = 'default' | 'muted' | 'accent';
-
-const toneClass: Record<LinkTone, string> = {
-  default: 'text-foreground',
-  muted: 'text-neutral-600 dark:text-neutral-400',
-  accent: 'text-accent',
-};
+import { toneClass, type Tone } from '@/lib/tone';
 
 interface LinkProps extends Omit<
   AnchorHTMLAttributes<HTMLAnchorElement>,
   'className'
 > {
   href: string;
-  tone?: LinkTone;
+  tone?: Tone;
   /** Underline on hover only (default) or always visible. */
   underline?: 'hover' | 'always';
   className?: string;

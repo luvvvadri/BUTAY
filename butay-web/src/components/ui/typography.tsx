@@ -1,5 +1,6 @@
 import type { ElementType, ReactNode } from 'react';
 import { cn } from '@/lib/cn';
+import { toneClass, type Tone } from '@/lib/tone';
 
 /**
  * Semantic text presets. Uses the provisional font tokens from
@@ -17,8 +18,6 @@ type TypographyVariant =
   | 'body'
   | 'bodySmall'
   | 'caption';
-
-type TypographyTone = 'default' | 'muted' | 'accent';
 
 const variantClass: Record<TypographyVariant, string> = {
   display: 'text-5xl font-semibold leading-tight tracking-tight',
@@ -45,15 +44,9 @@ const defaultTag: Record<TypographyVariant, ElementType> = {
   caption: 'span',
 };
 
-const toneClass: Record<TypographyTone, string> = {
-  default: 'text-foreground',
-  muted: 'text-neutral-600 dark:text-neutral-400',
-  accent: 'text-accent',
-};
-
 interface TypographyProps {
   variant?: TypographyVariant;
-  tone?: TypographyTone;
+  tone?: Tone;
   /** Overrides the element rendered — use to keep correct heading order (a11y) independent of visual size. */
   as?: ElementType;
   className?: string;
