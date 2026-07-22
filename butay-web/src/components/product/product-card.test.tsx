@@ -37,4 +37,11 @@ describe('ProductCard', () => {
     expect(screen.queryByText('Archived')).not.toBeInTheDocument();
     expect(screen.queryByText('Featured')).not.toBeInTheDocument();
   });
+
+  it('renders its name as an h3 (no heading-level skip in grid listings)', () => {
+    render(<ProductCard sku={baseSku} />);
+    expect(
+      screen.getByRole('heading', { level: 3, name: 'Quiet Mornings' }),
+    ).toBeInTheDocument();
+  });
 });

@@ -24,7 +24,9 @@ export function ValuesList() {
       <Grid columns={3} gap="lg" className="mt-8">
         {values.map((value) => (
           <div key={value.name}>
-            <Typography variant="h4">{value.name}</Typography>
+            <Typography variant="h4" as="h3">
+              {value.name}
+            </Typography>
             <Typography tone="muted" className="mt-1">
               {value.description}
             </Typography>

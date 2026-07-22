@@ -18,7 +18,9 @@ export function CollectionCard({ collection }: CollectionCardProps) {
     >
       <Card as="article">
         <div className="flex items-center justify-between gap-2">
-          <Typography variant="h4">{collection.name}</Typography>
+          <Typography variant="h4" as="h3">
+            {collection.name}
+          </Typography>
           <Badge
             variant={collection.type === 'permanent' ? 'accent' : 'outline'}
           >

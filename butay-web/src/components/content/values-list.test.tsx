@@ -15,4 +15,14 @@ describe('ValuesList', () => {
       expect(screen.getByRole('heading', { name })).toBeInTheDocument();
     }
   });
+
+  it('nests value names as h3 under the h2 section title (no heading-level skip)', () => {
+    render(<ValuesList />);
+    expect(
+      screen.getByRole('heading', { level: 2, name: 'What Butay stands for' }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { level: 3, name: 'Minimalism' }),
+    ).toBeInTheDocument();
+  });
 });

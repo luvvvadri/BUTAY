@@ -31,7 +31,9 @@ export function ProductCard({ sku }: ProductCardProps) {
           className="aspect-square bg-neutral-100"
         />
         <div className="flex items-center justify-between gap-2 p-4">
-          <Typography variant="h4">{sku.name}</Typography>
+          <Typography variant="h4" as="h3">
+            {sku.name}
+          </Typography>
           {badge}
         </div>
       </Card>

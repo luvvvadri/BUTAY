@@ -39,4 +39,19 @@ describe('CollectionCard', () => {
     );
     expect(screen.getByText('Temporary')).toBeInTheDocument();
   });
+
+  it('renders its name as an h3 (no heading-level skip in grid listings)', () => {
+    render(
+      <CollectionCard
+        collection={{
+          slug: 'core',
+          name: 'Core Collection',
+          type: 'permanent',
+        }}
+      />,
+    );
+    expect(
+      screen.getByRole('heading', { level: 3, name: 'Core Collection' }),
+    ).toBeInTheDocument();
+  });
 });
