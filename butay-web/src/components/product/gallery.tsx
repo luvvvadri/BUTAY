@@ -20,7 +20,7 @@ export function Gallery({ productName, count = 3 }: GalleryProps) {
         className="aspect-square rounded-md bg-neutral-100"
       />
       {thumbnails > 0 && (
-        <div className="grid grid-cols-3 gap-2">
+        <div className="grid grid-cols-2 gap-2">
           {Array.from({ length: thumbnails }).map((_, index) => (
             <div
               key={index}

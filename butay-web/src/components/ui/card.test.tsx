@@ -15,8 +15,15 @@ describe('Card', () => {
 
   it('adds focus and hover affordance only when interactive', () => {
     render(<Card interactive>content</Card>);
-    expect(screen.getByText('content').className).toMatch(
-      /focus-visible:ring-2/,
+    const className = screen.getByText('content').className;
+    expect(className).toMatch(/focus-visible:ring-2/);
+    expect(className).toMatch(/hover:shadow-md/);
+  });
+
+  it('has no hover/focus affordance when not interactive', () => {
+    render(<Card>content</Card>);
+    expect(screen.getByText('content').className).not.toMatch(
+      /hover:shadow-md/,
     );
   });
 
