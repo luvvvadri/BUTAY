@@ -6,8 +6,13 @@ import { Stack } from '@/components/ui/stack';
 import { Typography } from '@/components/ui/typography';
 import { getSkusByStatus } from '@/data/products';
 
+const description = 'Browse the full Butay catalog.';
+
 export const metadata: Metadata = {
   title: 'Catalog',
+  description,
+  alternates: { canonical: '/catalog' },
+  openGraph: { title: 'Catalog — Butay', description },
 };
 
 export default function CatalogPage() {

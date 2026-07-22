@@ -23,7 +23,14 @@ export async function generateMetadata({
 }: CategoryPageProps): Promise<Metadata> {
   const { category: categorySlug } = await params;
   const category = getCategoryBySlug(categorySlug);
-  return { title: category?.name ?? categorySlug };
+  const name = category?.name ?? categorySlug;
+  const description = `Browse ${name} at Butay.`;
+  return {
+    title: name,
+    description,
+    alternates: { canonical: `/catalog/${categorySlug}` },
+    openGraph: { title: `${name} — Butay`, description },
+  };
 }
 
 export default async function CategoryPage({ params }: CategoryPageProps) {

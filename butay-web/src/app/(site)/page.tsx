@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { CTASection } from '@/components/content/cta-section';
 import { FeaturedCollections } from '@/components/content/featured-collections';
 import { FeaturedProducts } from '@/components/content/featured-products';
@@ -5,6 +6,10 @@ import { Hero } from '@/components/content/hero';
 import { ValuesList } from '@/components/content/values-list';
 import { Section } from '@/components/ui/section';
 import { Typography } from '@/components/ui/typography';
+
+export const metadata: Metadata = {
+  alternates: { canonical: '/' },
+};
 
 /**
  * Editorial home composition (Hero, intro, values, featured

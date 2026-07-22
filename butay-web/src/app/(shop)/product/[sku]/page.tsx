@@ -27,7 +27,19 @@ export async function generateMetadata({
 }: ProductPageProps): Promise<Metadata> {
   const { sku: skuSlug } = await params;
   const sku = getSkuBySlug(skuSlug);
-  return { title: sku?.name ?? skuSlug };
+  if (!sku) {
+    return { title: skuSlug };
+  }
+  const category = getCategoryBySlug(sku.categorySlug);
+  const description = category
+    ? `${sku.name} — ${category.name} at Butay.`
+    : `${sku.name} — Butay.`;
+  return {
+    title: sku.name,
+    description,
+    alternates: { canonical: `/product/${sku.slug}` },
+    openGraph: { title: `${sku.name} — Butay`, description },
+  };
 }
 
 /**

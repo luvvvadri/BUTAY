@@ -8,7 +8,7 @@ const { notFound } = vi.hoisted(() => ({
 }));
 vi.mock('next/navigation', () => ({ notFound }));
 
-const { default: ProductPage } = await import('./page');
+const { default: ProductPage, generateMetadata } = await import('./page');
 
 describe('ProductPage', () => {
   it('renders the product name, breadcrumb, category and collection', async () => {
@@ -79,5 +79,22 @@ describe('ProductPage', () => {
       ProductPage({ params: Promise.resolve({ sku: 'nonexistent' }) }),
     ).rejects.toThrow('NEXT_NOT_FOUND');
     expect(notFound).toHaveBeenCalled();
+  });
+
+  it('generates title, description and canonical from real product data', async () => {
+    const metadata = await generateMetadata({
+      params: Promise.resolve({ sku: 'still-here' }),
+    });
+    expect(metadata.title).toBe('Still Here');
+    expect(metadata.description).toBe('Still Here — T-Shirts at Butay.');
+    expect(metadata.alternates?.canonical).toBe('/product/still-here');
+  });
+
+  it('falls back to the slug for metadata when no sku matches', async () => {
+    const metadata = await generateMetadata({
+      params: Promise.resolve({ sku: 'nonexistent' }),
+    });
+    expect(metadata.title).toBe('nonexistent');
+    expect(metadata.description).toBeUndefined();
   });
 });

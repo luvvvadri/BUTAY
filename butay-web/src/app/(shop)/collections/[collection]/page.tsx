@@ -26,7 +26,14 @@ export async function generateMetadata({
 }: CollectionPageProps): Promise<Metadata> {
   const { collection: collectionSlug } = await params;
   const collection = getCollectionBySlug(collectionSlug);
-  return { title: collection?.name ?? collectionSlug };
+  const name = collection?.name ?? collectionSlug;
+  const description = `${name} — a Butay collection.`;
+  return {
+    title: name,
+    description,
+    alternates: { canonical: `/collections/${collectionSlug}` },
+    openGraph: { title: `${name} — Butay`, description },
+  };
 }
 
 export default async function CollectionPage({ params }: CollectionPageProps) {

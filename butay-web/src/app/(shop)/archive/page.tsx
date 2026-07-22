@@ -4,8 +4,13 @@ import { Section } from '@/components/ui/section';
 import { Typography } from '@/components/ui/typography';
 import { getSkusByStatus } from '@/data/products';
 
+const description = 'Retired Butay products, kept here rather than deleted.';
+
 export const metadata: Metadata = {
   title: 'Archive',
+  description,
+  alternates: { canonical: '/archive' },
+  openGraph: { title: 'Archive — Butay', description },
 };
 
 /** Retired products, kept consultable — never deleted (Product Strategy §7). */

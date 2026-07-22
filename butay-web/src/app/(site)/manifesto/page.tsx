@@ -3,8 +3,13 @@ import { Section } from '@/components/ui/section';
 import { Stack } from '@/components/ui/stack';
 import { Typography } from '@/components/ui/typography';
 
+const description = "Butay's editorial page.";
+
 export const metadata: Metadata = {
   title: 'Manifesto',
+  description,
+  alternates: { canonical: '/manifesto' },
+  openGraph: { title: 'Manifesto — Butay', description },
 };
 
 /**

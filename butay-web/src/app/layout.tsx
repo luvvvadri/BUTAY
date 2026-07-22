@@ -16,12 +16,28 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
+const SITE_URL = 'https://butay.vercel.app';
+
+/**
+ * Structural SEO scaffolding only (Fase 7 audit) — description/OG copy
+ * is deliberately minimal and factual, not brand voice. Real SEO copy
+ * is Fase 10. No og:image: no approved brand imagery exists yet
+ * (Design System §9, PENDIENTE DE DEFINIR).
+ */
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     template: '%s — Butay',
     default: 'Butay',
   },
-  description: 'Butay — project setup in progress.',
+  description: 'Butay — clothing catalog.',
+  openGraph: {
+    siteName: 'Butay',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+  },
 };
 
 export default function RootLayout({
