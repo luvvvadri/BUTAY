@@ -1,7 +1,7 @@
 # DEVELOPMENT_ROADMAP.md
 
 > **Tipo de documento:** Plan técnico de desarrollo
-> **Versión:** 1.8
+> **Versión:** 1.9
 > **Fecha de creación:** 2026-07-20
 > **Última actualización:** 2026-07-22
 > **Estado:** Final (vivo en su seguimiento — el estado de cada fase se actualiza a medida que avanza el desarrollo)
@@ -454,6 +454,52 @@ visible y drawer móvil (apertura, cierre por Escape, cierre al
 navegar) verificados; responsive verificado en 375px (drawer),
 768px y 1280px (nav horizontal) — el breakpoint `md` de Tailwind
 cambia correctamente de uno a otro.
+
+**Auditoría y refinamiento (2026-07-22).** Por instrucción explícita
+del fundador, se realizó una auditoría completa de arquitectura,
+responsive (320/375/390/768/1024/1280/1440), accesibilidad, SEO y
+rendimiento sobre todo lo construido en las Fases 3-6, corrigiendo los
+problemas reales encontrados directamente (sin esperar aprobación,
+per instrucción) y mejorando la composición visual con los tokens
+provisionales existentes — sin tocar logo, tipografía ni color.
+Hallazgos reales corregidos:
+- **`Container`/`Section`/`Grid`/`Stack` descartaban en silencio
+  cualquier prop no declarada explícitamente** (a diferencia de
+  `Card`/`Button`/`Link`/`Input`, que sí reenvían `...props`).
+  TypeScript no lo detectaba porque `@types/react` permite atributos
+  `aria-*` en cualquier elemento JSX sin importar el tipo de props del
+  componente. En la práctica, el `aria-label="Filter by category"`
+  de `CategoryFilters` nunca llegaba al DOM — el landmark de
+  navegación de filtros no tenía nombre accesible. Corregido en los
+  cuatro primitivos, con test de regresión en cada uno.
+- **`ProductCard`, `CollectionCard` y los ítems de `ValuesList`
+  saltaban de h2/h1 a h4**, sin pasar por h3, en cada página que los
+  usa. Corregido vía el prop `as` de `Typography` (mismo tamaño
+  visual, nivel semántico correcto).
+- Añadido un enlace "Skip to content" (WCAG 2.4.1), ausente hasta
+  ahora — cada página obligaba a tabular por todo el header antes de
+  llegar al contenido.
+- Añadidas `description`, `canonical` (`alternates.canonical`) y
+  etiquetas OpenGraph/Twitter en las siete rutas — antes solo existía
+  `title`. Sin contenido definitivo: descripciones mínimas y factuales,
+  derivadas de datos reales, no de voz de marca.
+- Eliminada una entrada `arrow-right` sin uso en el registro de
+  `Icon`, y el tipo `Tone`/`toneClass` duplicado idéntico entre `Link`
+  y `Typography`, consolidado en `src/lib/tone.ts`.
+- Composición visual: escala responsiva para `Typography`
+  `variant="display"`; hover consistente en tarjetas (`Card`
+  `interactive`, ya existente pero sin usar, mas `hover:shadow-md`
+  añadido); `Gallery` rediseñada a imagen principal + miniaturas; la
+  ficha de producto cambia su punto de quiebre de dos columnas de
+  `sm` a `md` (640px resultaba angosto); la página de colección ahora
+  muestra su `description` (ya existía en los datos, no se mostraba).
+- 10 tests nuevos de regresión para los hallazgos anteriores (160 en
+  total en el proyecto).
+
+No se registra ninguna decisión nueva en `DECISIONS.md`: todos los
+cambios son correcciones de errores reales o mejoras de composición
+usando infraestructura ya aprobada, no decisiones de arquitectura o de
+marca nuevas.
 
 ## Fase 7 — Ficha de producto
 

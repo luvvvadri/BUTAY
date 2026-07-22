@@ -1,7 +1,7 @@
 # CONTEXT.md
 
 > **Tipo de documento:** Sistema — Memoria permanente
-> **Versión:** 3.0
+> **Versión:** 3.1
 > **Fecha de creación:** 2026-07-18
 > **Última actualización:** 2026-07-22
 > **Estado:** Vivo (se reescribe, no se acumula)
@@ -365,6 +365,27 @@ en `DEVELOPMENT_ROADMAP.md` para el detalle completo, incluidas las
 notas de alcance de las Fases 7 y 8. El PR correspondiente está
 pendiente de creación/revisión — no se ha fusionado a `main`.
 
+**Auditoría y refinamiento de la experiencia (2026-07-22).** Por
+instrucción explícita del fundador, se auditó y refinó todo lo
+construido en las Fases 3-6 (arquitectura, responsive, accesibilidad,
+SEO, rendimiento) y se mejoró la composición visual usando únicamente
+los tokens provisionales existentes — sin tocar logo, tipografía ni
+color. Hallazgo más relevante: `Container`/`Section`/`Grid`/`Stack`
+descartaban en silencio cualquier prop no declarada explícitamente
+(a diferencia del resto de primitivos), lo que dejaba el landmark de
+`CategoryFilters` sin nombre accesible en el DOM real pese a que
+TypeScript no marcaba ningún error — corregido en los cuatro
+componentes, con test de regresión en cada uno. También corregidos:
+saltos de nivel de encabezado (h2/h1 → h4 directo) en `ProductCard`/
+`CollectionCard`/`ValuesList`; ausencia de enlace "Skip to content"
+(WCAG 2.4.1); ausencia de `description`/`canonical`/OpenGraph en las
+siete rutas (solo tenían `title`); un tipo `Tone` duplicado
+idénticamente entre `Link` y `Typography`; un icono sin uso en el
+registro de `Icon`. 10 tests nuevos de regresión (160 en total). Ver
+el apartado "Estado" de la Fase 6 en `DEVELOPMENT_ROADMAP.md` para el
+detalle completo de la auditoría. Mismo PR pendiente que la Fase 6 —
+no se ha fusionado a `main`.
+
 ## Aprobado
 
 - Arquitectura del proyecto Butay (v1.0)
@@ -385,7 +406,7 @@ pendiente de creación/revisión — no se ha fusionado a `main`.
 - **WEB_HANDOFF.md (v1.0, Final)**
 - **CLAUDE_CODE.md (v1.1, Final)**
 - **FRONTEND_ARCHITECTURE.md (v1.0, Final)**
-- **DEVELOPMENT_ROADMAP.md (v1.8, Final en estructura, vivo en su seguimiento de estado — Fases 1-6 Completas; Fases 7 y 8 con base sustancial construida, no cerradas)**
+- **DEVELOPMENT_ROADMAP.md (v1.9, Final en estructura, vivo en su seguimiento de estado — Fases 1-6 Completas, Fase 6 auditada y refinada; Fases 7 y 8 con base sustancial construida, no cerradas)**
 - **00_SYSTEM_WORKFLOW.md (v1.0, `Approved`, Decisión 022)**
 
 ## En borrador / en curso

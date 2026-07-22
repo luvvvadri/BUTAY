@@ -1,7 +1,7 @@
 # CHANGELOG.md
 
 > **Tipo de documento:** Sistema — Historial de cambios (append-only)
-> **Versión:** 2.9
+> **Versión:** 3.0
 > **Fecha de creación:** 2026-07-18
 > **Última actualización:** 2026-07-22
 > **Estado:** Vivo (solo se añade, nunca se reescribe)
@@ -53,6 +53,85 @@ por todo el historial. Si el archivo crece demasiado, se archivan por año
 ---
 
 ## Historial
+
+### 2026-07-22 (auditoría completa y refinamiento de experiencia sobre la Fase 6)
+
+- **Misma rama `feature/fase-6-catalog-pages`** (sin fusionar
+  todavía). Por instrucción explícita del fundador de auditar el PR
+  #7 mientras se mejoraba el proyecto, sin esperar aprobación para
+  corregir lo que se encontrara, se ejecutó una auditoría completa
+  (arquitectura, responsive, accesibilidad, SEO, rendimiento) sobre
+  todo lo construido en las Fases 3-6, seguida de un refinamiento
+  visual con los tokens provisionales existentes.
+  - **Arquitectura.** `Container`/`Section`/`Grid`/`Stack` descartaban
+    en silencio cualquier prop no declarada explícitamente en su
+    interfaz — a diferencia de `Card`/`Button`/`Link`/`Input`, que ya
+    reenviaban `...props`. TypeScript no lo detectaba porque
+    `@types/react` permite atributos `aria-*` en cualquier elemento
+    JSX sin importar el tipo de props declarado por el componente. En
+    la práctica, `CategoryFilters` pasaba `aria-label="Filter by
+    category"` a un `<Stack as="nav">` y ese atributo nunca llegaba al
+    DOM — verificado directamente en navegador. Corregido en los
+    cuatro primitivos (extienden `Omit<HTMLAttributes<HTMLElement>,
+    'className'>` y reenvían `...props`), con test de regresión en
+    cada uno. `catalog/loading.tsx` simplificado de paso, ya no
+    necesita un `<div>` extra para llevar `role`/`aria-label`.
+  - Tipo `Tone`/`toneClass` duplicado idénticamente entre `Link` y
+    `Typography`, consolidado en `src/lib/tone.ts`.
+  - Entrada `arrow-right` sin uso en el registro de `Icon` (violaba la
+    política ya documentada en el propio archivo), eliminada.
+  - **Responsive** verificado en 320/375/390/700/768/1024/1280/1440px
+    en las siete páginas — sin overflow horizontal en ningún caso. El
+    único hallazgo real: el split a dos columnas de la ficha de
+    producto usaba el breakpoint `sm` (640px) del primitivo `Grid`
+    compartido, dejando ~294px por columna entre 640-767px — corregido
+    con un breakpoint `md` (768px) específico para esa página.
+  - **Accesibilidad.** `ProductCard`/`CollectionCard`/`ValuesList`
+    saltaban de h2 o h1 directamente a h4 en cada página que los usa
+    — corregido vía el prop `as` de `Typography` (mismo tamaño visual,
+    nivel semántico correcto: h3). Añadido un enlace "Skip to content"
+    (WCAG 2.4.1), ausente hasta ahora — cada página obligaba a tabular
+    por todo el header antes de llegar al contenido.
+  - **SEO.** Las siete rutas solo tenían `title`. Añadidas
+    `description`, `alternates.canonical` y OpenGraph/Twitter en
+    todas, derivadas de datos reales (nombres de categoría/colección/
+    producto) — nunca copy de marca inventado. La descripción raíz
+    ("Butay — project setup in progress.") seguía siendo la de la
+    Fase 1, ya obsoleta — reemplazada por una frase mínima y factual.
+  - **Rendimiento.** Revisados los límites Server/Client Component,
+    memoización existente y ausencia de fetching de datos en
+    componentes cliente: ya correctos por construcción desde las
+    Fases 3, 5 y 6 — no se encontró ninguna optimización real que
+    aplicar, y no se añadió ninguna especulativa.
+  - **Composición visual** (sin tocar logo, tipografía ni color):
+    `Typography` `variant="display"` pasa a escala responsiva
+    (`text-4xl` → `text-6xl`); `Card` `interactive` (ya existente, sin
+    usar hasta ahora) se aplica a `ProductCard`/`CollectionCard` con
+    `hover:shadow-md` añadido; `ProductCard` gana un scale-on-hover
+    sutil en la imagen; `Gallery` rediseñada a imagen principal +
+    fila de miniaturas; la página de colección ahora muestra su
+    `description` (ya existía en los datos, no se mostraba en la
+    ficha de colección); `Link` gana `transition-colors`.
+  - 10 tests nuevos de regresión para los hallazgos anteriores (160 en
+    total).
+- **DEVELOPMENT_ROADMAP.md** — v1.8 → v1.9. Se añade el apartado de
+  auditoría y refinamiento al cierre de la Fase 6.
+- **CONTEXT.md** — v3.0 → v3.1. Se añade el párrafo de auditoría en
+  "Estado general"; se actualiza la versión de `DEVELOPMENT_ROADMAP.md`
+  en "Aprobado".
+- **INDEX.md** — v2.9 → v3.0. Se actualiza la fila de
+  `DEVELOPMENT_ROADMAP.md`; se sincroniza la versión de CONTEXT.md; se
+  añade nota de auditoría.
+- **CHANGELOG.md** — este mismo registro.
+
+**Nota de auditoría de cierre.** Se ejecutaron `npm run lint`, `npm
+run format:check`, `npm run test`, `npx tsc --noEmit` y `npm run
+build`: los cinco sin errores (160/160 tests, 23 rutas). Verificación
+manual en navegador confirmando en vivo tanto el bug de `aria-label`
+(antes y después de la corrección) como el resto de hallazgos. No se
+registra ninguna decisión nueva en `DECISIONS.md`: todos los cambios
+son correcciones de errores reales o mejoras de composición sobre
+infraestructura ya aprobada.
 
 ### 2026-07-22 (Fase 6 técnica de DEVELOPMENT_ROADMAP.md — páginas de catálogo, con base de las Fases 7-8)
 
