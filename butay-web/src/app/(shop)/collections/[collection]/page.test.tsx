@@ -23,6 +23,9 @@ describe('CollectionPage', () => {
     expect(
       screen.getByRole('navigation', { name: 'Breadcrumb' }),
     ).toBeInTheDocument();
+    expect(
+      screen.getByText('Always-available anchor of the catalog.'),
+    ).toBeInTheDocument();
   });
 
   it('marks a temporary collection as temporary and shows its drop', async () => {

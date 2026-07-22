@@ -20,7 +20,8 @@ type TypographyVariant =
   | 'caption';
 
 const variantClass: Record<TypographyVariant, string> = {
-  display: 'text-5xl font-semibold leading-tight tracking-tight',
+  display:
+    'text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight tracking-tight',
   h1: 'text-4xl font-semibold leading-tight tracking-tight',
   h2: 'text-3xl font-semibold leading-snug',
   h3: 'text-2xl font-semibold leading-snug',

@@ -21,7 +21,7 @@ export const metadata: Metadata = {
  */
 export default function ManifestoPage() {
   return (
-    <Section>
+    <Section spacing="xl">
       <Stack gap="lg" className="max-w-2xl">
         <Typography variant="display" as="h1">
           Manifesto

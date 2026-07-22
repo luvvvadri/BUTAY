@@ -23,12 +23,16 @@ export function ProductCard({ sku }: ProductCardProps) {
     ) : null;
 
   return (
-    <Link href={`/product/${sku.slug}`} className="block" underline="hover">
-      <Card as="article" padding="none" className="overflow-hidden">
+    <Link
+      href={`/product/${sku.slug}`}
+      className="group block"
+      underline="hover"
+    >
+      <Card as="article" interactive padding="none" className="overflow-hidden">
         <div
           role="img"
           aria-label={`Placeholder image for ${sku.name}`}
-          className="aspect-square bg-neutral-100"
+          className="aspect-square scale-100 bg-neutral-100 transition-transform duration-300 group-hover:scale-105"
         />
         <div className="flex items-center justify-between gap-2 p-4">
           <Typography variant="h4" as="h3">

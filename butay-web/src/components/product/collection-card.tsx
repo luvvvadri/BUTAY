@@ -16,7 +16,7 @@ export function CollectionCard({ collection }: CollectionCardProps) {
       className="block"
       underline="hover"
     >
-      <Card as="article">
+      <Card as="article" interactive>
         <div className="flex items-center justify-between gap-2">
           <Typography variant="h4" as="h3">
             {collection.name}

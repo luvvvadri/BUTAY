@@ -31,7 +31,7 @@ export function Link({
   ...props
 }: LinkProps) {
   const classes = cn(
-    'underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded-sm',
+    'underline-offset-4 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded-sm',
     underline === 'always' ? 'underline' : 'hover:underline',
     toneClass[tone],
     className,

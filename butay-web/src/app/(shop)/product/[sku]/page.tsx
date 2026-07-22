@@ -5,7 +5,6 @@ import { VariantSelector } from '@/components/product/variant-selector';
 import { Badge } from '@/components/ui/badge';
 import { Breadcrumb } from '@/components/ui/breadcrumb';
 import { Button } from '@/components/ui/button';
-import { Grid } from '@/components/ui/grid';
 import { Section } from '@/components/ui/section';
 import { Stack } from '@/components/ui/stack';
 import { Typography } from '@/components/ui/typography';
@@ -64,7 +63,15 @@ export default async function ProductPage({ params }: ProductPageProps) {
     <Section>
       <Breadcrumb items={productBreadcrumb(sku)} />
 
-      <Grid columns={2} gap="xl" className="mt-8">
+      {/*
+        Deliberately not the shared Grid primitive: its column presets
+        only offer an `sm` (640px) split, which felt cramped for a
+        gallery+details layout on a wide phone/small tablet (found
+        during the Fase 7 responsive audit). This needs an `md` (768px)
+        split instead — a one-off layout need, not worth adding a new
+        Grid preset for a single usage.
+      */}
+      <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12">
         <Gallery productName={sku.name} />
 
         <Stack gap="lg">
@@ -96,7 +103,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             Add to bag — coming soon
           </Button>
         </Stack>
-      </Grid>
+      </div>
     </Section>
   );
 }

@@ -55,17 +55,24 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
   return (
     <Section>
       <Breadcrumb items={collectionBreadcrumb(collectionSlug)} />
-      <Stack direction="row" align="center" gap="sm" className="mt-4">
-        <Typography variant="h1">{collection.name}</Typography>
-        <Badge variant={collection.type === 'permanent' ? 'accent' : 'outline'}>
-          {collection.type === 'permanent' ? 'Always available' : 'Temporary'}
-        </Badge>
+      <Stack gap="md" className="mt-4 max-w-2xl">
+        <Stack direction="row" align="center" gap="sm" wrap>
+          <Typography variant="display" as="h1">
+            {collection.name}
+          </Typography>
+          <Badge
+            variant={collection.type === 'permanent' ? 'accent' : 'outline'}
+          >
+            {collection.type === 'permanent' ? 'Always available' : 'Temporary'}
+          </Badge>
+        </Stack>
+        {collection.description && (
+          <Typography variant="bodyLarge" tone="muted">
+            {collection.description}
+          </Typography>
+        )}
+        {drop && <Typography tone="muted">Part of {drop.name}.</Typography>}
       </Stack>
-      {drop && (
-        <Typography tone="muted" className="mt-2">
-          Part of {drop.name}.
-        </Typography>
-      )}
       <ProductGrid
         skus={skus}
         emptyTitle="No products in this collection yet"
