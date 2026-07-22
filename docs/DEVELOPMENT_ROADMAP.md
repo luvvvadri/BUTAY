@@ -1,9 +1,9 @@
 # DEVELOPMENT_ROADMAP.md
 
 > **Tipo de documento:** Plan técnico de desarrollo
-> **Versión:** 1.7
+> **Versión:** 1.9
 > **Fecha de creación:** 2026-07-20
-> **Última actualización:** 2026-07-21
+> **Última actualización:** 2026-07-22
 > **Estado:** Final (vivo en su seguimiento — el estado de cada fase se actualiza a medida que avanza el desarrollo)
 > **Depende de:** CLAUDE_CODE.md; FRONTEND_ARCHITECTURE.md; WEB_HANDOFF.md
 
@@ -48,9 +48,9 @@ orden se construye la web.
 | 3 — Sistema de componentes base | Completa |
 | 4 — Modelo de datos y capa de catálogo | Completa |
 | 5 — Layouts y navegación | Completa |
-| 6 — Páginas de catálogo | Pendiente |
-| 7 — Ficha de producto | Pendiente |
-| 8 — Contenido editorial de marca | Pendiente |
+| 6 — Páginas de catálogo | Completa |
+| 7 — Ficha de producto | Pendiente (base sustancial ya construida — ver nota) |
+| 8 — Contenido editorial de marca | Pendiente (estructura ya construida con copy de prueba — ver nota) |
 | 9 — Internacionalización | Pendiente |
 | 10 — SEO y rendimiento | Pendiente |
 | 11 — Accesibilidad | Pendiente |
@@ -379,6 +379,128 @@ temporal.
 servidor (SSG/ISR); cada una tiene metadatos SEO propios generados a
 partir de los datos reales.
 
+**Estado (actualizado 2026-07-22).** **Completa.** Trabajado en
+`feature/fase-6-catalog-pages`. Por instrucción explícita del
+fundador de construir "la primera versión completamente navegable de
+Butay" en un único movimiento autónomo, esta fase se ejecutó junto con
+partes sustanciales de las Fases 7 y (parcialmente) 8 — ver notas de
+alcance más abajo. Entregables de la Fase 6 propiamente dicha:
+- **Página de catálogo completo** (`/catalog`) y **por categoría**
+  (`/catalog/[category]`), con una barra de filtros
+  (`CategoryFilters`) que enlaza a las rutas ya aprobadas — no un
+  filtro cliente inventado.
+- **Página por colección** (`/collections/[collection]`),
+  distinguiendo visualmente permanente/temporal con `Badge`, y
+  mostrando su drop solo cuando existe realmente (nunca inventado).
+- Las tres páginas usan `generateStaticParams` (SSG) y
+  `generateMetadata` con título derivado de datos reales — cumple el
+  criterio de finalización literalmente.
+- **Componentes nuevos reutilizables**: `ProductCard`/`ProductGrid`
+  (consolidan el patrón `Card`+`Link` que Fase 5 había duplicado en
+  cuatro páginas), `CollectionCard`, `CategoryFilters`,
+  `SectionHeader` (nivel 1). Ninguno de un solo uso.
+- Todas las páginas consumen exclusivamente las funciones de acceso ya
+  existentes de `/data` — cero productos hardcodeados.
+
+**Nota de alcance — trabajo adicional realizado en el mismo
+movimiento (Fases 7 y 8, por instrucción explícita del fundador):**
+- **Ficha de producto** (`/product/[sku]`) reconstruida por completo:
+  `Gallery` (imágenes placeholder etiquetadas — sin fotografía real
+  todavía), `VariantSelector` (selector de talla/color, interactivo,
+  sin carrito ni checkout), badges de categoría/colección/archivado/
+  destacado, texto explícito de estado y de nivel de visibilidad del
+  mensaje, y un CTA deliberadamente deshabilitado. Los productos
+  archivados siguen siendo consultables, nunca devuelven error.
+  **Hueco real identificado, no resuelto:** el modelo de datos de la
+  Fase 4 (`Sku`) no incluye un campo de texto para el mensaje/frase
+  real de la prenda — solo su nivel de visibilidad
+  (`messageVisibility`). La ficha de producto muestra el *nivel*
+  ("Message visibility: featured"), no una *frase* real, porque
+  inventar una frase de producto sería inventar copy de marca. Fase 7
+  no se marca `Completa` en la tabla de avance por este motivo — su
+  entregable "presentación del mensaje/frase del producto" está
+  parcialmente cumplido.
+- **Home** (`/`) y **Manifiesto** (`/manifesto`) reconstruidas con
+  estructura editorial completa (`Hero`, introducción, `ValuesList`,
+  `FeaturedCollections`, `FeaturedProducts`, `CTASection`) usando
+  **contenido explícitamente provisional**, documentado como tal en
+  cada archivo — nunca el manifiesto real (`WEB_HANDOFF.md` §2, sigue
+  sin aprobación del fundador) ni copy de marca definitivo. Fase 8 no
+  se marca `Completa`: su criterio de finalización exige que "todo el
+  copy usado provenga literalmente del Brand Bible... a través de la
+  capa `/content`" — aquí el copy es intencionadamente de prueba, no
+  fuente de marca aprobada, y no pasa por una capa `/content`
+  versionada de contenido real. Se deja como cimentación estructural
+  para cuando la Fase 8 se aborde con contenido real.
+- `ValuesList` usa los cinco nombres de valores ya aprobados (Visión,
+  Misión y Valores v1.0, Decisión 010) — solo los nombres; los
+  descriptores de una línea son copy de prueba, documentados como
+  tales.
+
+**Componentes nuevos totales**: `SectionHeader`, `ProductCard`,
+`ProductGrid`, `CollectionCard`, `VariantSelector`, `CategoryFilters`,
+`Gallery` (dominio), `Hero`, `CTASection`, `ValuesList`,
+`FeaturedProducts`, `FeaturedCollections` (contenido). `NavLink` ganó
+un modo `exact` (opcional, retrocompatible) para que la barra de
+filtros de categoría no mantenga "All" activo en una categoría
+concreta.
+
+41 tests nuevos (150 en total en el proyecto). `npm run lint`, `npm
+run format:check`, `npm run test`, `npx tsc --noEmit` y `npm run
+build` se ejecutan sin errores — 23 rutas generadas. Verificación
+manual en navegador (servidor de desarrollo): las siete páginas
+renderizan con datos reales de `/data`; navegación por teclado, focus
+visible y drawer móvil (apertura, cierre por Escape, cierre al
+navegar) verificados; responsive verificado en 375px (drawer),
+768px y 1280px (nav horizontal) — el breakpoint `md` de Tailwind
+cambia correctamente de uno a otro.
+
+**Auditoría y refinamiento (2026-07-22).** Por instrucción explícita
+del fundador, se realizó una auditoría completa de arquitectura,
+responsive (320/375/390/768/1024/1280/1440), accesibilidad, SEO y
+rendimiento sobre todo lo construido en las Fases 3-6, corrigiendo los
+problemas reales encontrados directamente (sin esperar aprobación,
+per instrucción) y mejorando la composición visual con los tokens
+provisionales existentes — sin tocar logo, tipografía ni color.
+Hallazgos reales corregidos:
+- **`Container`/`Section`/`Grid`/`Stack` descartaban en silencio
+  cualquier prop no declarada explícitamente** (a diferencia de
+  `Card`/`Button`/`Link`/`Input`, que sí reenvían `...props`).
+  TypeScript no lo detectaba porque `@types/react` permite atributos
+  `aria-*` en cualquier elemento JSX sin importar el tipo de props del
+  componente. En la práctica, el `aria-label="Filter by category"`
+  de `CategoryFilters` nunca llegaba al DOM — el landmark de
+  navegación de filtros no tenía nombre accesible. Corregido en los
+  cuatro primitivos, con test de regresión en cada uno.
+- **`ProductCard`, `CollectionCard` y los ítems de `ValuesList`
+  saltaban de h2/h1 a h4**, sin pasar por h3, en cada página que los
+  usa. Corregido vía el prop `as` de `Typography` (mismo tamaño
+  visual, nivel semántico correcto).
+- Añadido un enlace "Skip to content" (WCAG 2.4.1), ausente hasta
+  ahora — cada página obligaba a tabular por todo el header antes de
+  llegar al contenido.
+- Añadidas `description`, `canonical` (`alternates.canonical`) y
+  etiquetas OpenGraph/Twitter en las siete rutas — antes solo existía
+  `title`. Sin contenido definitivo: descripciones mínimas y factuales,
+  derivadas de datos reales, no de voz de marca.
+- Eliminada una entrada `arrow-right` sin uso en el registro de
+  `Icon`, y el tipo `Tone`/`toneClass` duplicado idéntico entre `Link`
+  y `Typography`, consolidado en `src/lib/tone.ts`.
+- Composición visual: escala responsiva para `Typography`
+  `variant="display"`; hover consistente en tarjetas (`Card`
+  `interactive`, ya existente pero sin usar, mas `hover:shadow-md`
+  añadido); `Gallery` rediseñada a imagen principal + miniaturas; la
+  ficha de producto cambia su punto de quiebre de dos columnas de
+  `sm` a `md` (640px resultaba angosto); la página de colección ahora
+  muestra su `description` (ya existía en los datos, no se mostraba).
+- 10 tests nuevos de regresión para los hallazgos anteriores (160 en
+  total en el proyecto).
+
+No se registra ninguna decisión nueva en `DECISIONS.md`: todos los
+cambios son correcciones de errores reales o mejoras de composición
+usando infraestructura ya aprobada, no decisiones de arquitectura o de
+marca nuevas.
+
 ## Fase 7 — Ficha de producto
 
 **Objetivo.** Construir la página de producto individual, incluyendo
@@ -399,6 +521,17 @@ accesible y consultable, nunca devuelve error; los tres niveles de
 visibilidad de mensaje son accesibles también para tecnología de
 asistencia (`CLAUDE_CODE.md`, apartado 15).
 
+**Nota (2026-07-22).** Gran parte de esta fase ya se construyó como
+parte del cierre de la Fase 6 (ver su apartado "Estado"): selector de
+variante, estado archivado/activo reflejado visualmente (nunca 404).
+**No se marca `Completa`** porque el entregable "presentación del
+mensaje/frase del producto" solo está cumplido a nivel de *visibilidad*
+(`messageVisibility`), no de *frase real* — el tipo `Sku` (Fase 4) no
+tiene un campo de texto para el mensaje de la prenda, y no se ha
+inventado uno para no generar copy de marca. Completar esta fase
+formalmente requiere, como mínimo, decidir si el modelo de datos debe
+ampliarse con ese campo.
+
 ## Fase 8 — Contenido editorial de marca
 
 **Objetivo.** Construir la home y cualquier página editorial (por
@@ -418,6 +551,15 @@ marca u otro contenido ya aprobado.
 dentro de un componente de presentación; todo el copy usado proviene
 literalmente del Brand Bible o de una fuente de contenido versionada
 equivalente.
+
+**Nota (2026-07-22).** La estructura completa de Home y Manifiesto ya
+existe (ver "Estado" de la Fase 6): `Hero`, `ValuesList`,
+`FeaturedCollections`, `FeaturedProducts`, `CTASection`, y la página
+editorial de manifiesto. **No se marca `Completa`**: todo el copy
+usado es explícitamente de prueba (documentado como tal en cada
+archivo), no proviene del Brand Bible a través de una capa `/content`
+versionada — esta fase, cuando se aborde formalmente, es sustituir ese
+copy por contenido real, no construir la estructura desde cero.
 
 ## Fase 9 — Internacionalización
 
@@ -528,10 +670,11 @@ plan de ejecución de los dos anteriores.
 seguimiento de estado de cada fase (tabla "Estado de avance"), que se
 actualiza a medida que el desarrollo avanza.
 
-**Próxima fase recomendada:** Fase 6 (Páginas de catálogo). Las Fases 1
-(Configuración del proyecto), 2 (Fundamentos visuales provisionales),
-3 (Sistema de componentes base), 4 (Modelo de datos y capa de
-catálogo) y 5 (Layouts y navegación) están **Completas** — ver sus
-apartados "Estado" respectivos. Conforme a la Regla de uso 1 de este
-documento, cumplir la Fase 5 no abre automáticamente la Fase 6:
-requiere instrucción explícita del fundador.
+**Próxima fase recomendada:** Fase 7 (Ficha de producto) para cerrar
+formalmente su entregable pendiente (mensaje/frase real del
+producto), o Fase 8 (Contenido editorial de marca) para sustituir el
+copy de prueba de Home/Manifiesto por contenido real del Brand Bible.
+Las Fases 1-6 están **Completas** — ver sus apartados "Estado"
+respectivos. Conforme a la Regla de uso 1 de este documento, ninguna
+fase se abre automáticamente: requiere instrucción explícita del
+fundador.

@@ -8,10 +8,10 @@ const { notFound } = vi.hoisted(() => ({
 }));
 vi.mock('next/navigation', () => ({ notFound }));
 
-const { default: ProductPage } = await import('./page');
+const { default: ProductPage, generateMetadata } = await import('./page');
 
 describe('ProductPage', () => {
-  it('renders the product name, breadcrumb, and its variants', async () => {
+  it('renders the product name, breadcrumb, category and collection', async () => {
     render(
       await ProductPage({ params: Promise.resolve({ sku: 'still-here' }) }),
     );
@@ -22,7 +22,37 @@ describe('ProductPage', () => {
     expect(
       screen.getByRole('navigation', { name: 'Breadcrumb' }),
     ).toBeInTheDocument();
-    expect(screen.getByText(/S — white/)).toBeInTheDocument();
+    expect(screen.getAllByText('T-Shirts').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Core Collection').length).toBeGreaterThan(0);
+  });
+
+  it('renders a placeholder gallery and a variant selector for its size/color options', async () => {
+    render(
+      await ProductPage({ params: Promise.resolve({ sku: 'still-here' }) }),
+    );
+
+    expect(screen.getAllByRole('img').length).toBeGreaterThan(0);
+    expect(screen.getByRole('button', { name: 'S' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'white' })).toBeInTheDocument();
+  });
+
+  it('shows status and message visibility as text', async () => {
+    render(
+      await ProductPage({ params: Promise.resolve({ sku: 'still-here' }) }),
+    );
+
+    expect(screen.getByText('Status: active')).toBeInTheDocument();
+    expect(
+      screen.getByText('Message visibility: featured'),
+    ).toBeInTheDocument();
+  });
+
+  it('renders a disabled CTA — no cart, no checkout', async () => {
+    render(
+      await ProductPage({ params: Promise.resolve({ sku: 'still-here' }) }),
+    );
+
+    expect(screen.getByRole('button', { name: /Add to bag/ })).toBeDisabled();
   });
 
   it('does not show an Archived badge for an active product', async () => {
@@ -41,6 +71,7 @@ describe('ProductPage', () => {
       screen.getByRole('heading', { name: 'First Draft' }),
     ).toBeInTheDocument();
     expect(screen.getByText('Archived')).toBeInTheDocument();
+    expect(screen.getByText('Status: archived')).toBeInTheDocument();
   });
 
   it('calls notFound for a slug with no matching sku', async () => {
@@ -48,5 +79,22 @@ describe('ProductPage', () => {
       ProductPage({ params: Promise.resolve({ sku: 'nonexistent' }) }),
     ).rejects.toThrow('NEXT_NOT_FOUND');
     expect(notFound).toHaveBeenCalled();
+  });
+
+  it('generates title, description and canonical from real product data', async () => {
+    const metadata = await generateMetadata({
+      params: Promise.resolve({ sku: 'still-here' }),
+    });
+    expect(metadata.title).toBe('Still Here');
+    expect(metadata.description).toBe('Still Here — T-Shirts at Butay.');
+    expect(metadata.alternates?.canonical).toBe('/product/still-here');
+  });
+
+  it('falls back to the slug for metadata when no sku matches', async () => {
+    const metadata = await generateMetadata({
+      params: Promise.resolve({ sku: 'nonexistent' }),
+    });
+    expect(metadata.title).toBe('nonexistent');
+    expect(metadata.description).toBeUndefined();
   });
 });

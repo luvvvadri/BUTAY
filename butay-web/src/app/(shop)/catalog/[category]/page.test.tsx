@@ -6,7 +6,10 @@ const { notFound } = vi.hoisted(() => ({
     throw new Error('NEXT_NOT_FOUND');
   }),
 }));
-vi.mock('next/navigation', () => ({ notFound }));
+vi.mock('next/navigation', () => ({
+  notFound,
+  usePathname: () => '/catalog/hoodies',
+}));
 
 const { default: CategoryPage } = await import('./page');
 
@@ -22,9 +25,22 @@ describe('CategoryPage', () => {
     expect(
       screen.getByRole('navigation', { name: 'Breadcrumb' }),
     ).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'Soft Weight' })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: /Soft Weight/ })).toHaveAttribute(
       'href',
       '/product/soft-weight',
+    );
+  });
+
+  it('shows the category filter bar with this category marked current', async () => {
+    render(
+      await CategoryPage({ params: Promise.resolve({ category: 'hoodies' }) }),
+    );
+    expect(screen.getByRole('link', { name: 'Hoodies' })).toHaveAttribute(
+      'aria-current',
+      'page',
+    );
+    expect(screen.getByRole('link', { name: 'All' })).not.toHaveAttribute(
+      'aria-current',
     );
   });
 
@@ -33,7 +49,7 @@ describe('CategoryPage', () => {
       await CategoryPage({ params: Promise.resolve({ category: 'hoodies' }) }),
     );
     expect(
-      screen.queryByRole('link', { name: 'Still Here' }),
+      screen.queryByRole('link', { name: /Still Here/ }),
     ).not.toBeInTheDocument();
   });
 

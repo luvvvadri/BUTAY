@@ -19,4 +19,15 @@ describe('Container', () => {
     render(<Container as="section">content</Container>);
     expect(screen.getByText('content').tagName).toBe('SECTION');
   });
+
+  it('forwards arbitrary HTML attributes like aria-label to the rendered element', () => {
+    render(
+      <Container as="nav" aria-label="Site">
+        content
+      </Container>,
+    );
+    expect(
+      screen.getByRole('navigation', { name: 'Site' }),
+    ).toBeInTheDocument();
+  });
 });

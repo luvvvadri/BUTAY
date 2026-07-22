@@ -10,7 +10,7 @@ describe('CatalogPage', () => {
     expect(
       screen.getByRole('heading', { name: 'Catalog' }),
     ).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'Still Here' })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: /Still Here/ })).toHaveAttribute(
       'href',
       '/product/still-here',
     );
@@ -19,7 +19,7 @@ describe('CatalogPage', () => {
   it('does not list archived products', async () => {
     render(await CatalogPage());
     expect(
-      screen.queryByRole('link', { name: 'First Draft' }),
+      screen.queryByRole('link', { name: /First Draft/ }),
     ).not.toBeInTheDocument();
   });
 
@@ -27,7 +27,9 @@ describe('CatalogPage', () => {
     render(await CatalogPage());
     const active = getSkusByStatus('active');
     for (const sku of active) {
-      expect(screen.getByRole('link', { name: sku.name })).toBeInTheDocument();
+      expect(
+        screen.getByRole('link', { name: new RegExp(sku.name) }),
+      ).toBeInTheDocument();
     }
   });
 });

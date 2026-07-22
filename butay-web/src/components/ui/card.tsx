@@ -33,7 +33,7 @@ export function Card({
       className={cn(
         'bg-background rounded-lg border border-neutral-200',
         interactive &&
-          'focus-visible:ring-accent transition-colors hover:border-neutral-300 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none',
+          'focus-visible:ring-accent transition-colors hover:border-neutral-300 hover:shadow-md focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none',
         paddingClass[padding],
         className,
       )}

@@ -34,7 +34,7 @@ describe('Component system composed together', () => {
               <Stack direction="row" gap="sm" align="center">
                 <Button onClick={onSelect}>Select</Button>
                 <Link href="/catalog">
-                  Learn more <Icon name="arrow-right" />
+                  Learn more <Icon name="close" />
                 </Link>
               </Stack>
             </Stack>

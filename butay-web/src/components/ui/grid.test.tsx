@@ -12,4 +12,15 @@ describe('Grid', () => {
     render(<Grid columns={4}>content</Grid>);
     expect(screen.getByText('content').className).toMatch(/lg:grid-cols-4/);
   });
+
+  it('forwards arbitrary HTML attributes like role and aria-label to the rendered element', () => {
+    render(
+      <Grid role="status" aria-label="Loading catalog">
+        content
+      </Grid>,
+    );
+    expect(
+      screen.getByRole('status', { name: 'Loading catalog' }),
+    ).toBeInTheDocument();
+  });
 });

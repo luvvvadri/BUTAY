@@ -1,9 +1,9 @@
 # CONTEXT.md
 
 > **Tipo de documento:** Sistema — Memoria permanente
-> **Versión:** 2.9
+> **Versión:** 3.1
 > **Fecha de creación:** 2026-07-18
-> **Última actualización:** 2026-07-21
+> **Última actualización:** 2026-07-22
 > **Estado:** Vivo (se reescribe, no se acumula)
 > **Depende de:** Ninguno (documento raíz de continuidad)
 
@@ -74,13 +74,13 @@ mantiene siempre corto (objetivo: legible en menos de dos minutos).
 **Fase actual:** Fase 2 y Fase 3 (marca/producto) cerradas y aprobadas.
 La Fase 4 (Identidad Visual / Design System) **está abierta, con un
 documento raíz en borrador (v0.1) pendiente de aprobación** — ver más
-abajo. En el track técnico de `DEVELOPMENT_ROADMAP.md`, las Fases 1, 2,
-3, 4 y 5 (Configuración del proyecto; Fundamentos visuales
-provisionales; Sistema de componentes base; Modelo de datos y capa de
-catálogo; Layouts y navegación) están **completas y fusionadas a
-`main`** (PR #4, #5 y #6, el último el 2026-07-21) — no queda ninguna
-rama de desarrollo pendiente de fusionar; solo existe `main`. El
-proyecto
+abajo. En el track técnico de `DEVELOPMENT_ROADMAP.md`, las Fases 1-6
+(Configuración del proyecto; Fundamentos visuales provisionales;
+Sistema de componentes base; Modelo de datos y capa de catálogo;
+Layouts y navegación; Páginas de catálogo) están **completas**; las
+Fases 1-5 están fusionadas a `main` (PR #4, #5 y #6, el último el
+2026-07-21); la Fase 6 se trabaja en `feature/fase-6-catalog-pages`,
+pendiente de PR y revisión del fundador. El proyecto
 completó el 2026-07-20 su entrega técnica ("Developer Handoff") para
 Claude Code: `WEB_HANDOFF.md`, `CLAUDE_CODE.md`,
 `FRONTEND_ARCHITECTURE.md` y `DEVELOPMENT_ROADMAP.md` (Decisión 021),
@@ -333,6 +333,59 @@ aprobados y fusionados, `main` queda como única rama del repositorio
 listo para abrir la Fase 6 técnica (Páginas de catálogo) en cuanto el
 fundador dé la instrucción explícita.
 
+**Fase 6 de `DEVELOPMENT_ROADMAP.md` completa (2026-07-22) — Páginas
+de catálogo.** Por instrucción explícita del fundador de construir
+"la primera versión completamente navegable de Butay" sin detenerse
+entre páginas, se ejecutó esta fase junto con partes sustanciales de
+las Fases 7 y 8 en un único movimiento autónomo, sobre
+`feature/fase-6-catalog-pages`. Catálogo, categoría y colección
+(Fase 6 propiamente dicha) quedan completas: filtros
+(`CategoryFilters`, enlaza a rutas ya aprobadas, no un filtro cliente
+inventado), `ProductGrid`/`ProductCard`/`CollectionCard` reutilizables
+(consolidan el patrón duplicado de la Fase 5 en cuatro páginas),
+`generateStaticParams`/`generateMetadata` en las tres páginas. La
+ficha de producto (`/product/[sku]`, Fase 7) se reconstruyó con
+`Gallery` (placeholders), `VariantSelector` (interactivo, sin carrito
+ni checkout), badges y estado/visibilidad explícitos — pero **la Fase
+7 no se marca cerrada**: el tipo `Sku` no tiene un campo de texto para
+el mensaje/frase real de la prenda, solo su nivel de visibilidad, y no
+se inventó ese texto para no generar copy de marca. Home y Manifiesto
+(Fase 8) se reconstruyeron con estructura editorial completa (`Hero`,
+`ValuesList`, `FeaturedCollections`, `FeaturedProducts`, `CTASection`)
+pero **la Fase 8 tampoco se marca cerrada**: todo el copy es
+explícitamente de prueba, documentado como tal, nunca el manifiesto
+real (sigue sin aprobación del fundador) ni contenido del Brand Bible
+a través de una capa `/content` versionada. 41 tests nuevos (150 en
+total). `npm run lint`, `npm run format:check`, `npm run test`, `npx
+tsc --noEmit` y `npm run build` se ejecutan sin errores — 23 rutas
+generadas; verificación manual en navegador de las siete páginas,
+navegación por teclado, drawer móvil y los tres breakpoints
+responsive (375px/768px/1280px). Ver el apartado "Estado" de la Fase 6
+en `DEVELOPMENT_ROADMAP.md` para el detalle completo, incluidas las
+notas de alcance de las Fases 7 y 8. El PR correspondiente está
+pendiente de creación/revisión — no se ha fusionado a `main`.
+
+**Auditoría y refinamiento de la experiencia (2026-07-22).** Por
+instrucción explícita del fundador, se auditó y refinó todo lo
+construido en las Fases 3-6 (arquitectura, responsive, accesibilidad,
+SEO, rendimiento) y se mejoró la composición visual usando únicamente
+los tokens provisionales existentes — sin tocar logo, tipografía ni
+color. Hallazgo más relevante: `Container`/`Section`/`Grid`/`Stack`
+descartaban en silencio cualquier prop no declarada explícitamente
+(a diferencia del resto de primitivos), lo que dejaba el landmark de
+`CategoryFilters` sin nombre accesible en el DOM real pese a que
+TypeScript no marcaba ningún error — corregido en los cuatro
+componentes, con test de regresión en cada uno. También corregidos:
+saltos de nivel de encabezado (h2/h1 → h4 directo) en `ProductCard`/
+`CollectionCard`/`ValuesList`; ausencia de enlace "Skip to content"
+(WCAG 2.4.1); ausencia de `description`/`canonical`/OpenGraph en las
+siete rutas (solo tenían `title`); un tipo `Tone` duplicado
+idénticamente entre `Link` y `Typography`; un icono sin uso en el
+registro de `Icon`. 10 tests nuevos de regresión (160 en total). Ver
+el apartado "Estado" de la Fase 6 en `DEVELOPMENT_ROADMAP.md` para el
+detalle completo de la auditoría. Mismo PR pendiente que la Fase 6 —
+no se ha fusionado a `main`.
+
 ## Aprobado
 
 - Arquitectura del proyecto Butay (v1.0)
@@ -353,7 +406,7 @@ fundador dé la instrucción explícita.
 - **WEB_HANDOFF.md (v1.0, Final)**
 - **CLAUDE_CODE.md (v1.1, Final)**
 - **FRONTEND_ARCHITECTURE.md (v1.0, Final)**
-- **DEVELOPMENT_ROADMAP.md (v1.7, Final en estructura, vivo en su seguimiento de estado — Fases 1-5 Completas)**
+- **DEVELOPMENT_ROADMAP.md (v1.9, Final en estructura, vivo en su seguimiento de estado — Fases 1-6 Completas, Fase 6 auditada y refinada; Fases 7 y 8 con base sustancial construida, no cerradas)**
 - **00_SYSTEM_WORKFLOW.md (v1.0, `Approved`, Decisión 022)**
 
 ## En borrador / en curso
@@ -365,14 +418,21 @@ fundador dé la instrucción explícita.
 
 ## Próximo paso
 
-Las Fases 1-5 de `DEVELOPMENT_ROADMAP.md` (Configuración del proyecto;
+Las Fases 1-6 de `DEVELOPMENT_ROADMAP.md` (Configuración del proyecto;
 Fundamentos visuales provisionales; Sistema de componentes base;
-Modelo de datos y capa de catálogo; Layouts y navegación) están
-completas y **fusionadas a `main`** (PR #4, #5 y #6) — no queda
-ninguna rama de desarrollo pendiente, solo `main`. El siguiente paso
-es esperar instrucción explícita del fundador para abrir la Fase 6
-técnica (Páginas de catálogo), que no se abre automáticamente por
-haberse cerrado la Fase 5.
+Modelo de datos y capa de catálogo; Layouts y navegación; Páginas de
+catálogo) están completas. Las Fases 1-5 están **fusionadas a `main`**
+(PR #4, #5 y #6); la Fase 6 se trabajó en
+`feature/fase-6-catalog-pages`, pendiente de PR y revisión del
+fundador. Las Fases 7 (Ficha de producto) y 8 (Contenido editorial de
+marca) tienen su base estructural ya construida como parte del mismo
+movimiento, pero **no están cerradas**: la Fase 7 necesita, como
+mínimo, una decisión sobre si el modelo de datos debe ampliarse con un
+campo de mensaje/frase real; la Fase 8 necesita contenido real del
+Brand Bible a través de una capa `/content`, no el copy de prueba
+actual. El siguiente paso es esperar instrucción explícita del
+fundador — para revisar/fusionar la Fase 6, o para decidir cómo cerrar
+las Fases 7 y 8.
 
 La Fase 4 (Identidad Visual / Design System) del roadmap de marca/
 producto sigue **abierta pero no cerrada**: el documento raíz (v0.1)
@@ -448,11 +508,11 @@ contradicción crítica que lo exija.
     *(Decisión 025)*. La raíz contiene `docs/` (esta carpeta) y
     `butay-web/` (código fuente de la web, Next.js). Cualquier IA que
     retome el proyecto debe trabajar sobre esta ubicación.
-19. Las Fases 1-5 de `DEVELOPMENT_ROADMAP.md` (Configuración del
+19. Las Fases 1-6 de `DEVELOPMENT_ROADMAP.md` (Configuración del
     proyecto; Fundamentos visuales provisionales; Sistema de
     componentes base; Modelo de datos y capa de catálogo; Layouts y
-    navegación) están **Completas** — la Fase 1 incluye el pipeline de
-    despliegue (GitHub → Vercel, producción en
+    navegación; Páginas de catálogo) están **Completas** — la Fase 1
+    incluye el pipeline de despliegue (GitHub → Vercel, producción en
     `https://butay.vercel.app/`); la Fase 2, los tokens de diseño
     provisionales y el envoltorio de iconografía; la Fase 3, los
     componentes base de `src/components/ui/` (botón, input, badge,
@@ -462,10 +522,13 @@ contradicción crítica que lo exija.
     funciones de acceso (`src/data/`); la Fase 5, el layout raíz
     (`Header`/`Footer`/`Navigation`/`AnnouncementBar`), los primitivos
     `Drawer`/`Breadcrumb`/`EmptyState`, y la estructura de rutas
-    completa en `src/app/(site)/` y `src/app/(shop)/`. Ver el apartado
-    "Estado" de cada fase en ese documento. Las Fases 3, 4 y 5 están
-    **fusionadas a `main`** (PR #4, #5 y #6, el último el 2026-07-21) —
-    sus ramas de desarrollo se eliminaron; solo existe `main`.
+    completa en `src/app/(site)/` y `src/app/(shop)/`; la Fase 6, las
+    páginas de catálogo/categoría/colección con filtros y componentes
+    de producto reutilizables (`ProductCard`/`ProductGrid`/
+    `CollectionCard`/`CategoryFilters`). Ver el apartado "Estado" de
+    cada fase en ese documento. Las Fases 3, 4 y 5 están **fusionadas a
+    `main`** (PR #4, #5 y #6, el último el 2026-07-21); la Fase 6 vive
+    en `feature/fase-6-catalog-pages`, sin fusionar todavía.
 20. Los PR #1, #2 y #3 están **fusionados a `main`** desde el
     2026-07-21 — no queda ninguna rama de trabajo pendiente de
     fusionar; las tres ramas (`feature/fase-2-foundations`,
@@ -488,14 +551,27 @@ contradicción crítica que lo exija.
 23. Desde el 2026-07-21, el foco del proyecto es el **desarrollo**
     técnico — por instrucción explícita del fundador, no se retoma
     documentación de marca/identidad salvo que surja una contradicción
-    crítica que lo exija. Las Fases 3, 4 y 5 técnicas (Sistema de
-    componentes base; Modelo de datos y capa de catálogo; Layouts y
-    navegación) ya están completas; el siguiente movimiento de
-    desarrollo (Fase 6 técnica, Páginas de catálogo) requiere
-    instrucción explícita del fundador, igual que el resto de fases.
-24. La Fase 5 (Layouts y navegación) no incluye componentes de dominio
-    (`components/product`) ni diseño visual pulido de catálogo —
-    deliberadamente reservado a las Fases 6 (Páginas de catálogo) y 7
-    (Ficha de producto). Tampoco existe una ruta `/drops` dedicada: no
-    está en `FRONTEND_ARCHITECTURE.md` §6, y un Drop se muestra como
-    sección dentro de `/collections/[collection]` cuando existe.
+    crítica que lo exija. Las Fases 3-6 técnicas ya están completas; el
+    siguiente movimiento de desarrollo (cerrar formalmente la Fase 7 o
+    la Fase 8, ver notas 25-26) requiere instrucción explícita del
+    fundador, igual que el resto de fases.
+24. Tampoco existe una ruta `/drops` dedicada: no está en
+    `FRONTEND_ARCHITECTURE.md` §6, y un Drop se muestra como sección
+    dentro de `/collections/[collection]` cuando existe realmente
+    (Decisión de arquitectura tomada en el cierre de la Fase 5).
+25. La Fase 7 (Ficha de producto) tiene su interacción y su UI
+    completas (`VariantSelector`, badges, estado archivado/activo) pero
+    **no está cerrada**: el tipo `Sku` (Fase 4) no tiene un campo de
+    texto para el mensaje/frase real de la prenda, solo su nivel de
+    visibilidad (`messageVisibility`). No se inventó ese texto — sería
+    copy de marca. Cerrar formalmente la Fase 7 requiere, como mínimo,
+    una decisión sobre si el modelo de datos debe ampliarse.
+26. La Fase 8 (Contenido editorial de marca) tiene la estructura
+    completa de Home y Manifiesto ya construida, pero **no está
+    cerrada**: todo el copy es explícitamente de prueba (documentado
+    como tal en cada archivo de `src/app/(site)/` y
+    `src/components/content/`), nunca el manifiesto real de
+    `WEB_HANDOFF.md` §2 (sigue sin aprobación del fundador) ni
+    contenido del Brand Bible a través de una capa `/content`
+    versionada. Ninguna IA debe tratar ese copy como definitivo ni
+    citarlo como fuente de voz de marca.

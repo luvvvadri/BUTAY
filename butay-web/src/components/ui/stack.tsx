@@ -1,4 +1,4 @@
-import type { ElementType, ReactNode } from 'react';
+import type { ElementType, HTMLAttributes, ReactNode } from 'react';
 import { cn } from '@/lib/cn';
 import { gapClass, type Spacing } from '@/lib/spacing';
 
@@ -25,7 +25,7 @@ const justifyClass: Record<StackJustify, string> = {
   between: 'justify-between',
 };
 
-interface StackProps {
+interface StackProps extends Omit<HTMLAttributes<HTMLElement>, 'className'> {
   as?: ElementType;
   /** `column` (default) stacks vertically, `row` lays out horizontally. */
   direction?: StackDirection;
@@ -47,6 +47,7 @@ export function Stack({
   wrap = false,
   className,
   children,
+  ...props
 }: StackProps) {
   return (
     <Component
@@ -59,6 +60,7 @@ export function Stack({
         wrap && 'flex-wrap',
         className,
       )}
+      {...props}
     >
       {children}
     </Component>

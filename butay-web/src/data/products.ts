@@ -1,4 +1,4 @@
-import type { ProductStatus, Sku } from '@/types/catalog';
+import type { MessageVisibility, ProductStatus, Sku } from '@/types/catalog';
 
 /**
  * Test/fixture catalog (DEVELOPMENT_ROADMAP.md, Fase 4) — 10 fictional
@@ -161,4 +161,8 @@ export function getSkusByCollection(collectionSlug: string): Sku[] {
 
 export function getSkusByStatus(status: ProductStatus): Sku[] {
   return skus.filter((sku) => sku.status === status);
+}
+
+export function getSkusByVisibility(visibility: MessageVisibility): Sku[] {
+  return skus.filter((sku) => sku.messageVisibility === visibility);
 }

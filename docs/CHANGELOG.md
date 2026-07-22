@@ -1,9 +1,9 @@
 # CHANGELOG.md
 
 > **Tipo de documento:** Sistema — Historial de cambios (append-only)
-> **Versión:** 2.9
+> **Versión:** 3.0
 > **Fecha de creación:** 2026-07-18
-> **Última actualización:** 2026-07-21
+> **Última actualización:** 2026-07-22
 > **Estado:** Vivo (solo se añade, nunca se reescribe)
 > **Depende de:** INDEX.md (todo cambio aquí debe reflejarse en el estado
 > de INDEX.md)
@@ -53,6 +53,181 @@ por todo el historial. Si el archivo crece demasiado, se archivan por año
 ---
 
 ## Historial
+
+### 2026-07-22 (auditoría completa y refinamiento de experiencia sobre la Fase 6)
+
+- **Misma rama `feature/fase-6-catalog-pages`** (sin fusionar
+  todavía). Por instrucción explícita del fundador de auditar el PR
+  #7 mientras se mejoraba el proyecto, sin esperar aprobación para
+  corregir lo que se encontrara, se ejecutó una auditoría completa
+  (arquitectura, responsive, accesibilidad, SEO, rendimiento) sobre
+  todo lo construido en las Fases 3-6, seguida de un refinamiento
+  visual con los tokens provisionales existentes.
+  - **Arquitectura.** `Container`/`Section`/`Grid`/`Stack` descartaban
+    en silencio cualquier prop no declarada explícitamente en su
+    interfaz — a diferencia de `Card`/`Button`/`Link`/`Input`, que ya
+    reenviaban `...props`. TypeScript no lo detectaba porque
+    `@types/react` permite atributos `aria-*` en cualquier elemento
+    JSX sin importar el tipo de props declarado por el componente. En
+    la práctica, `CategoryFilters` pasaba `aria-label="Filter by
+    category"` a un `<Stack as="nav">` y ese atributo nunca llegaba al
+    DOM — verificado directamente en navegador. Corregido en los
+    cuatro primitivos (extienden `Omit<HTMLAttributes<HTMLElement>,
+    'className'>` y reenvían `...props`), con test de regresión en
+    cada uno. `catalog/loading.tsx` simplificado de paso, ya no
+    necesita un `<div>` extra para llevar `role`/`aria-label`.
+  - Tipo `Tone`/`toneClass` duplicado idénticamente entre `Link` y
+    `Typography`, consolidado en `src/lib/tone.ts`.
+  - Entrada `arrow-right` sin uso en el registro de `Icon` (violaba la
+    política ya documentada en el propio archivo), eliminada.
+  - **Responsive** verificado en 320/375/390/700/768/1024/1280/1440px
+    en las siete páginas — sin overflow horizontal en ningún caso. El
+    único hallazgo real: el split a dos columnas de la ficha de
+    producto usaba el breakpoint `sm` (640px) del primitivo `Grid`
+    compartido, dejando ~294px por columna entre 640-767px — corregido
+    con un breakpoint `md` (768px) específico para esa página.
+  - **Accesibilidad.** `ProductCard`/`CollectionCard`/`ValuesList`
+    saltaban de h2 o h1 directamente a h4 en cada página que los usa
+    — corregido vía el prop `as` de `Typography` (mismo tamaño visual,
+    nivel semántico correcto: h3). Añadido un enlace "Skip to content"
+    (WCAG 2.4.1), ausente hasta ahora — cada página obligaba a tabular
+    por todo el header antes de llegar al contenido.
+  - **SEO.** Las siete rutas solo tenían `title`. Añadidas
+    `description`, `alternates.canonical` y OpenGraph/Twitter en
+    todas, derivadas de datos reales (nombres de categoría/colección/
+    producto) — nunca copy de marca inventado. La descripción raíz
+    ("Butay — project setup in progress.") seguía siendo la de la
+    Fase 1, ya obsoleta — reemplazada por una frase mínima y factual.
+  - **Rendimiento.** Revisados los límites Server/Client Component,
+    memoización existente y ausencia de fetching de datos en
+    componentes cliente: ya correctos por construcción desde las
+    Fases 3, 5 y 6 — no se encontró ninguna optimización real que
+    aplicar, y no se añadió ninguna especulativa.
+  - **Composición visual** (sin tocar logo, tipografía ni color):
+    `Typography` `variant="display"` pasa a escala responsiva
+    (`text-4xl` → `text-6xl`); `Card` `interactive` (ya existente, sin
+    usar hasta ahora) se aplica a `ProductCard`/`CollectionCard` con
+    `hover:shadow-md` añadido; `ProductCard` gana un scale-on-hover
+    sutil en la imagen; `Gallery` rediseñada a imagen principal +
+    fila de miniaturas; la página de colección ahora muestra su
+    `description` (ya existía en los datos, no se mostraba en la
+    ficha de colección); `Link` gana `transition-colors`.
+  - 10 tests nuevos de regresión para los hallazgos anteriores (160 en
+    total).
+- **DEVELOPMENT_ROADMAP.md** — v1.8 → v1.9. Se añade el apartado de
+  auditoría y refinamiento al cierre de la Fase 6.
+- **CONTEXT.md** — v3.0 → v3.1. Se añade el párrafo de auditoría en
+  "Estado general"; se actualiza la versión de `DEVELOPMENT_ROADMAP.md`
+  en "Aprobado".
+- **INDEX.md** — v2.9 → v3.0. Se actualiza la fila de
+  `DEVELOPMENT_ROADMAP.md`; se sincroniza la versión de CONTEXT.md; se
+  añade nota de auditoría.
+- **CHANGELOG.md** — este mismo registro.
+
+**Nota de auditoría de cierre.** Se ejecutaron `npm run lint`, `npm
+run format:check`, `npm run test`, `npx tsc --noEmit` y `npm run
+build`: los cinco sin errores (160/160 tests, 23 rutas). Verificación
+manual en navegador confirmando en vivo tanto el bug de `aria-label`
+(antes y después de la corrección) como el resto de hallazgos. No se
+registra ninguna decisión nueva en `DECISIONS.md`: todos los cambios
+son correcciones de errores reales o mejoras de composición sobre
+infraestructura ya aprobada.
+
+### 2026-07-22 (Fase 6 técnica de DEVELOPMENT_ROADMAP.md — páginas de catálogo, con base de las Fases 7-8)
+
+- **Rama `feature/fase-6-catalog-pages`** (creada desde `main`; sin
+  fusionar todavía). Por instrucción explícita del fundador de
+  construir "la primera versión completamente navegable de Butay"
+  usando datos mock y contenido provisional, sin detenerse entre
+  páginas ni pedir aprobación intermedia, se ejecutó en bloques:
+  1. `getSkusByVisibility` — nueva función de acceso en `/data`,
+     reutiliza el atributo de visibilidad del Product DNA para
+     seleccionar productos destacados, en vez de una regla arbitraria.
+  2. Componentes de dominio nuevos y reutilizables
+     (`src/components/product/`): `ProductCard`, `ProductGrid`,
+     `CollectionCard`, `VariantSelector`, `CategoryFilters`, `Gallery`.
+     Consolidan el patrón `Card`+`Link` que la Fase 5 había duplicado
+     en cuatro páginas (catálogo, categoría, colección, archivo).
+     `SectionHeader` (nivel 1, agnóstico) añadido en `components/ui/`.
+  3. Componentes de contenido/editoriales (`src/components/content/`):
+     `Hero`, `CTASection`, `ValuesList`, `FeaturedProducts`,
+     `FeaturedCollections`. El CTA de `Hero`/`CTASection` es un enlace
+     de texto en negrita, no un `<button>` anidado dentro de un
+     `<a>` (HTML inválido) — coherente además con la dirección
+     editorial "librería" del Design System §13.
+  4. **Home** (`/`) reconstruida por completo: Hero, introducción,
+     `ValuesList` (los cinco valores ya aprobados — Decisión 010 —,
+     con descriptores explícitamente de prueba), `FeaturedCollections`,
+     `FeaturedProducts`, `CTASection` de cierre.
+  5. **Manifiesto** (`/manifesto`) reconstruido con copy editorial
+     completo, deliberadamente distinto del borrador real de
+     `WEB_HANDOFF.md` §2 (sigue sin aprobación del fundador).
+  6. **Catálogo y categoría**: `CategoryFilters` (enlaza a las rutas ya
+     aprobadas `/catalog` y `/catalog/[category]`, no un filtro
+     cliente inventado) + `ProductGrid`. `NavLink` gana un modo
+     `exact` (opcional, retrocompatible) para que "All" no se quede
+     activo dentro de una categoría concreta.
+  7. **Colección**: `ProductGrid` sustituye el patrón inline; badge de
+     tipo y sección de drop-si-existe sin cambios de comportamiento.
+  8. **Ficha de producto** reconstruida por completo: `Gallery`
+     (placeholders etiquetados), `VariantSelector` (interactivo, sin
+     carrito ni checkout), badges de categoría/colección/archivado/
+     destacado, texto explícito de estado y de visibilidad del
+     mensaje, CTA deliberadamente deshabilitado.
+  9. **Archivo**: `ProductGrid` sustituye el patrón inline.
+  Tests de la Fase 5 actualizados donde `ProductCard` cambió el
+  nombre accesible de los enlaces de producto (el badge queda dentro
+  del propio enlace): consultas de texto exacto pasaron a expresiones
+  regulares; el mock de `next/navigation` en el test de categoría
+  ganó `usePathname` para `CategoryFilters`.
+- **DEVELOPMENT_ROADMAP.md** — v1.7 → v1.8. La Fase 6 (Páginas de
+  catálogo) pasa a **Completa** en la tabla "Estado de avance" y gana
+  su apartado "Estado". Las Fases 7 y 8 permanecen `Pendiente` en la
+  tabla, con una nota explícita en cada una documentando qué se
+  construyó ya y qué falta para cerrarlas formalmente — ninguna de las
+  dos se marca cerrada sin cumplir sus propios criterios de
+  finalización. Se actualiza el bloque de cierre estándar.
+- **CONTEXT.md** — v2.9 → v3.0. Se añade el párrafo de cierre de la
+  Fase 6 en "Estado general", incluida la nota de alcance sobre las
+  Fases 7 y 8; se actualiza "Aprobado", "Próximo paso" y la nota 19;
+  se reescribe la nota 23 y se añaden las notas 25-26 documentando por
+  qué las Fases 7 y 8 no se cierran todavía.
+- **INDEX.md** — v2.8 → v2.9. Se actualiza la fila de
+  `DEVELOPMENT_ROADMAP.md` (v1.8, Fases 1-6 Completas); se sincroniza
+  la versión de CONTEXT.md y CHANGELOG.md; se añade el párrafo de
+  cierre de la Fase 6 en "Notas".
+- **CHANGELOG.md** — este mismo registro.
+
+**Nota de auditoría de cierre de fase.** Se ejecutaron `npm run lint`,
+`npm run format:check`, `npm run test`, `npx tsc --noEmit` y `npm run
+build` sobre `butay-web/` en el estado final de
+`feature/fase-6-catalog-pages`: los cinco sin errores (150/150 tests,
+41 nuevos; 23 rutas generadas). Verificación manual adicional en
+navegador (servidor de desarrollo, `.claude/launch.json` creado para
+ello): las siete páginas (home, manifiesto, catálogo, categoría,
+colección, producto, archivo) renderizan con datos reales de `/data`,
+sin errores de consola ni de red; navegación completa por teclado,
+foco visible, y el drawer móvil (apertura, cierre por Escape, cierre
+al navegar) verificados; responsive verificado en 375px (nav en
+drawer), 768px y 1280px (nav horizontal) — el breakpoint `md` de
+Tailwind cambia correctamente de uno a otro. Se verificó
+específicamente que ningún componente nuevo introduce contenido de
+marca definitivo: `ValuesList` usa solo los nombres ya aprobados de
+los cinco valores (Decisión 010); el resto del copy de Home/Manifiesto
+está documentado en el propio código como explícitamente provisional;
+el manifiesto real de `WEB_HANDOFF.md` §2 no aparece en ningún archivo
+nuevo. Se verificaron por grep las versiones de cabecera de
+`DEVELOPMENT_ROADMAP.md`, `CONTEXT.md` e `INDEX.md` contra la tabla de
+`INDEX.md`: coinciden. No se registra ninguna decisión nueva en
+`DECISIONS.md`: la extensión de `NavLink` con un modo `exact` es una
+ampliación retrocompatible de un componente ya existente, no una
+decisión de arquitectura nueva; la Fase 6 ejecuta directamente lo ya
+especificado en `FRONTEND_ARCHITECTURE.md` y Product Strategy. La Fase
+6 técnica queda **Completa**; las Fases 7 y 8 quedan con base
+sustancial construida pero explícitamente sin cerrar, a la espera de
+las decisiones señaladas en sus propias notas de `DEVELOPMENT_ROADMAP.md`.
+Pendiente de creación de PR y revisión del fundador — no se fusiona a
+`main` en este movimiento.
 
 ### 2026-07-21 (cierre de documentación — merge de PR #5 y PR #6, limpieza de ramas)
 

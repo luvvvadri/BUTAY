@@ -17,4 +17,12 @@ describe('Section', () => {
     render(<Section contained={false}>content</Section>);
     expect(screen.getByText('content').className).not.toMatch(/mx-auto/);
   });
+
+  it('forwards arbitrary HTML attributes like aria-label to the rendered element', () => {
+    render(<Section aria-label="Loading">content</Section>);
+    expect(screen.getByText('content').closest('section')).toHaveAttribute(
+      'aria-label',
+      'Loading',
+    );
+  });
 });
